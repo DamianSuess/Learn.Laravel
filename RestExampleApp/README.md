@@ -40,7 +40,32 @@
 ]
 ```
 
-### References
+## Test with Postman
+
+### Register
+
+* URL: `http://localhost:8000/api/register`
+* Type: POST
+* Body -> Form-Data
+  * name        = "Some Name
+  * email       = "some@email.com"
+  * password    = "aaaa"
+  * c_password  = "aaaa"
+
+Response:
+
+```json
+{
+    "success": true,
+    "data": {
+        "token": "1|ubgWOVrG8OSpra3bsJf5bS9hrZGY9SwWBbQJUjBV3a7f6e13",
+        "name": "Samtha"
+    },
+    "message": "User register successfully."
+}
+```
+
+## References
 
 * https://www.itsolutionstuff.com/post/laravel-11-rest-api-authentication-using-sanctum-tutorialexample.html
 * https://www.itsolutionstuff.com/post/laravel-11-crud-application-example-tutorialexample.html

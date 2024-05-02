@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass asasignable
+     * The attributes that are mass assignable.
      *
      * @var array
      */
