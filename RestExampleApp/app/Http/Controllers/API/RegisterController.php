@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 
 class RegisterController extends BaseController
 {
- /**
+  /**
    * Register api
    *
    * @return \Illuminate\Http\Response
@@ -45,14 +45,16 @@ class RegisterController extends BaseController
    */
   public function login(Request $request): JsonResponse
   {
-    if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+    if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+    {
       $user = Auth::user();
       $success['token'] =  $user->createToken('MyApp')->plainTextToken;
       $success['name'] =  $user->name;
 
       return $this->sendResponse($success, 'User login successfully.');
     }
-    else{
+    else
+    {
       return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
     }
   }
