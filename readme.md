@@ -7,6 +7,7 @@
 * [AJAX Request Tutorial](https://www.itsolutionstuff.com/post/laravel-11-ajax-request-example-tutorialexample.html)
 * [Generate and Read Sitemap XML File](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
 * [Form Validation Example](https://www.itsolutionstuff.com/post/laravel-11-form-validation-example-tutorialexample.html)
+* [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
 
 ### Other References
 
