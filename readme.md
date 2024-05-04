@@ -17,6 +17,13 @@ The projects listed here are based on the following examples
 * [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
 * [Generate and Read Sitemap XML File Example](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
 
-### Other References
+## Naming Conventions
+
+There are many "rules" out there which veer off from one another, however, the following appears to be widely accepted. (_Frankly, I often use Xeno Innovations' legacy rules._)
+
+* Models - Always singular and `PascalCase`
+* Controllers - Usually singular and ending with the word, `Controller`. i.e. `PostController`
+
+## Other References
 
 * [Database: Query Builder](https://laravel.com/docs/11.x/queries)
