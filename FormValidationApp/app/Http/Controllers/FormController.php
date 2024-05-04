@@ -30,7 +30,7 @@ class FormController extends Controller
       ],
       [
         "name.required"     => "Name filed is required.",
-        "password.required" => "Password field is required.",
+        "password.required" => "Password must be at least 5 characters.",
         "email.required"    => "Email field is required.",
         "email.email"       => "Email field must be an email address.",
       ]

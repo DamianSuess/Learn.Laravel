@@ -39,7 +39,8 @@
 
             <div class="mb-3">
               <label class="form-label" for="inputName">Name:</label>
-              <input type="text" name="name" id="inputName" class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+              <input type="text" name="name" id="inputName" class="form-control @error('name') is-invalid @enderror" placeholder="Name"
+                     value="{{ old('name') }}">
 
               <!-- Way 2: Display Error Message -->
               @error('name')
@@ -59,7 +60,8 @@
 
             <div class="mb-3">
               <label class="form-label" for="inputEmail">Email:</label>
-              <input type="text" name="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" placeholder="Email" />
+              <input type="text" name="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
+                     value="{{ old('email') }}" />
 
               @error('email')
                 <span class="text-danger">{{ $message }}</span>
