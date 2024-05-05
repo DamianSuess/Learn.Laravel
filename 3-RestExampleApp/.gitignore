@@ -1,3 +1,5 @@
+# Copyright 2024 Xeno Innovations, Inc.
+
 /.phpunit.cache
 /node_modules
 /public/build
@@ -16,4 +18,9 @@ npm-debug.log
 yarn-error.log
 /.fleet
 /.idea
-/.vscode
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
