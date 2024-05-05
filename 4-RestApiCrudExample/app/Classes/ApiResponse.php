@@ -16,16 +16,28 @@ class ApiResponse
    *
    * @return  void
    */
-  public static function rollback(\Exception $ex, $message = "Something went wrong! Rolling back.")
+  public static function rollback(\Exception $ex, string $message = "Something went wrong! Rolling back.")
   {
     DB::rollBack();
     self::throw($ex, $message);
   }
 
-  public static function throw($ex, $message = "Something went wrong")
+  public static function throw(\Exception $ex, string $message = "Something went wrong")
   {
     Log::info($ex);
-    throw new HttpResponseException(response()->json(["message" => $message], 500));
+
+    // throw new HttpResponseException(response()->json(["message" => $message], 500));
+    throw new HttpResponseException(response()->json(
+      [
+        "message" => $message,
+        "exception" =>
+        [
+          "message" => $ex->getMessage(),
+          "trace" => $ex->getTraceAsString()
+        ]
+      ],
+      500
+    ));
   }
 
   /**
