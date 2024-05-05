@@ -1,5 +1,7 @@
 # Laravel 11 REST API
 
+This example uses the RESTful Sanctum API package and
+
 ## Steps to Reproduce
 
 1. Create new Laravel app
@@ -24,8 +26,8 @@
    3. `php artisan make:controller API/ProductController`
    4. Edit controllers:
       1. **Path:** `app/Http/Controllers/API/BaseController.php`
-      2. **Path:** `app/Http/Controllers/API/BaseController.php`
-      3. **Path:** `app/Http/Controllers/API/BaseController.php`
+      2. **Path:** `app/Http/Controllers/API/RegisterController.php`
+      3. **Path:** `app/Http/Controllers/API/ProductController.php`
 7. Create Eloquent API Resources
    1. `php artisan make:resource ProductResource`
    2. Path: `app/Http/Resources/ProductResource.php`
