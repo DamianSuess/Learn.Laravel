@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
-use App\Models\Product;
-use Validator;
 use App\Http\Resources\ProductResource;
+use App\Models\Product;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends BaseController
 {
@@ -18,9 +18,9 @@ class ProductController extends BaseController
    */
   public function index(): JsonResponse
   {
-      $products = Product::all();
+    $products = Product::all();
 
-      return $this->sendResponse(ProductResource::collection($products), 'Products retrieved successfully.');
+    return $this->sendResponse(ProductResource::collection($products), 'Products retrieved successfully.');
   }
 
   /**
@@ -31,20 +31,20 @@ class ProductController extends BaseController
    */
   public function store(Request $request): JsonResponse
   {
-      $input = $request->all();
+    $input = $request->all();
 
-      $validator = Validator::make($input, [
-          'name' => 'required',
-          'detail' => 'required'
-      ]);
+    $validator = Validator::make($input, [
+      'name' => 'required',
+      'detail' => 'required'
+    ]);
 
-      if($validator->fails()){
-          return $this->sendError('Validation Error.', $validator->errors());
-      }
+    if ($validator->fails()) {
+      return $this->sendError('Validation Error.', $validator->errors());
+    }
 
-      $product = Product::create($input);
+    $product = Product::create($input);
 
-      return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
+    return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
   }
 
   /**
@@ -55,13 +55,13 @@ class ProductController extends BaseController
    */
   public function show($id): JsonResponse
   {
-      $product = Product::find($id);
+    $product = Product::find($id);
 
-      if (is_null($product)) {
-          return $this->sendError('Product not found.');
-      }
+    if (is_null($product)) {
+      return $this->sendError('Product not found.');
+    }
 
-      return $this->sendResponse(new ProductResource($product), 'Product retrieved successfully.');
+    return $this->sendResponse(new ProductResource($product), 'Product retrieved successfully.');
   }
 
   /**
@@ -73,22 +73,22 @@ class ProductController extends BaseController
    */
   public function update(Request $request, Product $product): JsonResponse
   {
-      $input = $request->all();
+    $input = $request->all();
 
-      $validator = Validator::make($input, [
-          'name' => 'required',
-          'detail' => 'required'
-      ]);
+    $validator = Validator::make($input, [
+      'name' => 'required',
+      'detail' => 'required'
+    ]);
 
-      if($validator->fails()){
-          return $this->sendError('Validation Error.', $validator->errors());
-      }
+    if ($validator->fails()) {
+      return $this->sendError('Validation Error.', $validator->errors());
+    }
 
-      $product->name = $input['name'];
-      $product->detail = $input['detail'];
-      $product->save();
+    $product->name = $input['name'];
+    $product->detail = $input['detail'];
+    $product->save();
 
-      return $this->sendResponse(new ProductResource($product), 'Product updated successfully.');
+    return $this->sendResponse(new ProductResource($product), 'Product updated successfully.');
   }
 
   /**
@@ -99,8 +99,8 @@ class ProductController extends BaseController
    */
   public function destroy(Product $product): JsonResponse
   {
-      $product->delete();
+    $product->delete();
 
-      return $this->sendResponse([], 'Product deleted successfully.');
+    return $this->sendResponse([], 'Product deleted successfully.');
   }
 }
