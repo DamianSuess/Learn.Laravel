@@ -49,7 +49,7 @@ class ProductController extends Controller
 
     DB::beginTransaction();
 
-    try {php
+    try {
       $product = $this->_productRepository->store($details);
       DB::commit();
       return ApiResponse::sendResponse(new ProductResource($product), "Product created successfully", 201);
