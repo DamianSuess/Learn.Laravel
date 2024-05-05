@@ -1,4 +1,4 @@
-# CRUD Example App
+# Laravel 11 - CRUD Example App
 
 ## Steps to Reproduce
 

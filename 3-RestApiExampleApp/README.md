@@ -1,6 +1,6 @@
-# Tests
+# Laravel 11 REST API
 
-## CRUD Test
+## Steps to Reproduce
 
 1. Create new Laravel app
    1. `composer create-project laravel/laravel example-app`
