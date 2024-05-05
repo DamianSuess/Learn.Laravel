@@ -19,6 +19,13 @@ class FormController extends Controller
     return view('createUser');
   }
 
+  /**
+   * Stores validates the user entry and stores into the database if successful.
+   *
+   * @param   Request           $request  HTTP Form input.
+   *
+   * @return  RedirectResponse            HTTP Response class which performs the redirect.
+   */
   public function store(Request $request): RedirectResponse
   {
     // Validate the fields according to the specified rules

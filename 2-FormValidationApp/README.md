@@ -2,10 +2,6 @@
 
 Sample web app performing form validation
 
-### Reference
-
-https://www.itsolutionstuff.com/post/laravel-11-form-validation-example-tutorialexample.html
-
 ## Steps to Reproduce
 
 1. `composer create-project laravel/laravel FormValidationApp`
@@ -19,3 +15,17 @@ https://www.itsolutionstuff.com/post/laravel-11-form-validation-example-tutorial
    2. File: `resources\views\createUser.blade.php`
 5. `php artisan serve`
    1. [Launch!](http://localhost:8000/users/create)
+
+## Code Sample Highlights
+
+### FormController.php
+
+There are multiple ways to report back Form errors found via the FormController.php
+
+1. Using `@if ($errors->any()) ... @endif` to display a `Div` block at the top
+2. Using `@error('fieldName') ... @enderror` to display a `Span` under the input box.
+3. Using `@if ($errors->has('fieldName')) ... @endif` to display a `Span` under the input box
+
+## Reference
+
+https://www.itsolutionstuff.com/post/laravel-11-form-validation-example-tutorialexample.html

@@ -1,10 +1,18 @@
 {{--
+This View creates a simple form for inputting the User's Name, Password, and Email.
+
+There are multiple ways it reports back form errors found via the FormController.php
+
+1. Using `@if ($errors->any()) ... @endif` to display a `Div` block at the top
+2. Using `@error('fieldName') ... @enderror` to display a `Span` under the input box.
+3. Using `@if ($errors->has('fieldName')) ... @endif` to display a `Span` under the input box
+  --}}
+
 <!DOCTYPE html>
---}}
 <html>
 
   <head>
-    <title>Laravel 11 Form Validation Example - ItSolutionStuff.com</title>
+    <title>Laravel 11 Form Validation Example</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
@@ -13,15 +21,19 @@
     <div class="container">
 
       <div class="card mt-5">
-        <h3 class="card-header p-3"><i class="fa fa-star"></i> Laravel 11 Form Validation Example - ItSolutionStuff.com</h3>
+        <h3 class="card-header p-3"><i class="fa fa-star"></i> Laravel 11 Form Validation Example</h3>
         <div class="card-body">
+
+          {{-- Uncomment the line below to set a breakpoint in the View. Next, F10 to view the step-through the generated code. --}}
+          {{-- {{ @xdebug_break() }} --}}
+
           @session('success')
             <div class="alert alert-success" role="alert">
               {{ $value }}
             </div>
           @endsession
 
-          <!-- Way 1: Display All Error Messages -->
+          <!-- Way 1 - Display All Error Messages, if 'any()' -->
           @if ($errors->any())
             <div class="alert alert-danger">
               <strong>Whoops!</strong> There were some problems with your input.<br><br>
