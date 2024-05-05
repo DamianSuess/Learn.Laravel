@@ -2,6 +2,15 @@
 
 There's a lot here in this example, some of which may seem unnecessary. However, it can serve as template structure for much larger enterprise applications.
 
+## Supported RESTful CRUD operations
+
+Check the file `tests/restTest.http` for more information.
+
+* POST - **C**reate new product
+* GET - **R**ead all available products
+* PUT - **U**pdate products
+* DELETE - **D**elete product
+
 ## Getting Started
 
 1. `composer create-project laravel/laravel RestApiCrudExample`
