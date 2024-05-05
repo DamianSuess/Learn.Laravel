@@ -1,8 +1,12 @@
-# Project Name Here
+# Laravel 11 - Project Name Here
 
-## Getting Started
+## Steps to Reproduce
 
 1. Blarg
+
+## Code Sample Highlights
+
+...
 
 ## References
 

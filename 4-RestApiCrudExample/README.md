@@ -1,9 +1,13 @@
-# Project Name Here
+# Laravel 11 - REST API with CRUD Operations
 
 ## Getting Started
 
 1. Blarg
 
+## Code Sample Highlights
+
+...
+
 ## References
 
-* Item-1
+* Laravel 11 REST API CRUD found on Medium.com
