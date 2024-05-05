@@ -19,8 +19,7 @@ The projects listed here are based on the following examples
 
 ## Debugging Tips
 
-To debug your Views, you can insert `{{ @xdebug_break() }}` in your HTML to hit a breakpoint
-when that area of the code is reached. From there, F10, to step through the generated PHP/HTML code.
+Checkout [debugging.md](debugging.md) for more information
 
 ## Naming Conventions
 
