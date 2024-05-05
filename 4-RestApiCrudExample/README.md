@@ -1,5 +1,7 @@
 # Laravel 11 - REST API with CRUD Operations
 
+There's a lot here in this example, some of which may seem unnecessary. However, it can serve as template structure for much larger enterprise applications.
+
 ## Getting Started
 
 1. `composer create-project laravel/laravel RestApiCrudExample`
@@ -45,10 +47,66 @@
 13. Run the app
     1. `php artisan serve`
 
-## Code Sample Highlights
+## Testing the Code
 
-...
+After launching, open Postman and try out the following:
+
+### POST
+
+POST: "http://localhost:8000/api/products"
+Raw:
+
+```json
+{
+    "name": "Product 2",
+    "details": "desc here"
+}
+```
+
+Response:
+
+```json
+{
+    "success": true,
+    "data": {
+        "id": 1,
+        "name": "Product 2",
+        "details": "desc here"
+    },
+    "message": "Product created successfully"
+}
+```
+
+### GET
+
+GET: "http://localhost:8000/api/products"
+
+Results:
+
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "Product 2",
+            "details": "desc here"
+        },
+        {
+            "id": 2,
+            "name": "Product 1",
+            "details": "product 1a"
+        }
+    ]
+}
+```
+
+### DELETE
+
+DELETE: "http://localhost:8000/api/products"
 
 ## References
 
 * Laravel 11 REST API CRUD found on Medium.com
+
+My repository here fixes errors and missing chunks from the original article, adding verbose logging output.
