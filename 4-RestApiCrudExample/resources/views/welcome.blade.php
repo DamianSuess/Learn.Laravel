@@ -2,7 +2,10 @@
 <html>
 
   <body>
-    <b>API ONLY! Use Postman to interact with route '/products'</b>
+    <h2>API ONLY!</h2>
+    <p>
+      Use Postman to interact with RESTful route, <a href="api/products">api/products</a>.
+    </p>
   </body>
 
 </html>

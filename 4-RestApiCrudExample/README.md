@@ -43,6 +43,7 @@
     2. Input `yes` to perform migrations
     3. Update `routes/api.php` to hook route, `/products` to the `ProductController`.
 13. Run the app
+    1. `php artisan serve`
 
 ## Code Sample Highlights
 

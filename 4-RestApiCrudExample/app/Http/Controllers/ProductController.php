@@ -49,7 +49,7 @@ class ProductController extends Controller
 
     DB::beginTransaction();
 
-    try {
+    try {php
       $product = $this->_productRepository->store($details);
       DB::commit();
       return ApiResponse::sendResponse(new ProductResource($product), "Product created successfully", 201);
@@ -61,7 +61,7 @@ class ProductController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Product $product)
+  public function show($id)
   {
     $product = $this->_productRepository->getById($id);
     return ApiResponse::sendResponse(new ProductResource($product), "", 200);
