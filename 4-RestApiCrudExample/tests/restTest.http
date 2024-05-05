@@ -1,0 +1,29 @@
+@hostname = http://localhost:8000
+
+###
+
+GET http://localhost:8000/api/products
+
+###
+
+POST {{hostname}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Product A",
+  "details": "Short description"
+}
+
+###
+
+PUT {{hostname}}/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Product X",
+  "details": "Updated description"
+}
+
+###
+
+DELETE {{hostname}}/api/products/1

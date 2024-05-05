@@ -23,7 +23,8 @@
     // "humao.rest-client",
     // -=[ Other ]=-
     "streetsidesoftware.code-spell-checker",
-    "eamodio.gitlense"
+    "eamodio.gitlense",
+    "humao.rest-client"
     //"esbenp.prettier-vscode"
   ]
 }
