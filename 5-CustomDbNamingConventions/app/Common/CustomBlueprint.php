@@ -3,6 +3,7 @@
 namespace App\Common;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Custom Database Blueprint class
@@ -13,6 +14,16 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class CustomBlueprint extends Blueprint
 {
+  public static function GetSchema()
+  {
+    $schema = DB::connection()->getSchemaBuilder();
+    $schema->blueprintResolver(function ($table, $callback) {
+      return new CustomBlueprint($table, $callback);
+    });
+
+    return $schema;
+  }
+
   /**
    * Create a new auto-incrementing big integer (8-byte) column on the table.
    *

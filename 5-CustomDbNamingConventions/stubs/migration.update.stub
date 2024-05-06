@@ -17,10 +17,8 @@ return new class extends Migration
       return new CustomBlueprint($table, $callback);
     });
 
-    $schema->create("{{ table }}", function (CustomBlueprint $table)
-    {
-      $table->id();
-      $table->timestamps();
+    $schema->table('{{ table }}', function (CustomBlueprint $table) {
+      //
     });
   }
 
@@ -29,6 +27,13 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('{{ table }}');
+    $schema = DB::connection()->getSchemaBuilder();
+    $schema->blueprintResolver(function ($table, $callback) {
+      return new CustomBlueprint($table, $callback);
+    });
+
+    $schema->table('{{ table }}', function (CustomBlueprint $table) {
+      //
+    });
   }
 };

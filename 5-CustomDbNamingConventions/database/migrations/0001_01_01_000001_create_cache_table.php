@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
+  private function GetSchema()
+  {
+    $schema = DB::connection()->getSchemaBuilder();
+    $schema->blueprintResolver(function ($table, $callback) {
+      return new CustomBlueprint($table, $callback);
+    });
+
+    return $schema;
+  }
+
   /**
    * Run the migrations.
    */
@@ -18,10 +28,12 @@ return new class extends Migration
     ////  return new CustomBlueprint($table, $callback);
     ////});
 
-    $schema = DB::connection()->getSchemaBuilder();
-    $schema->blueprintResolver(function ($table, $callback) {
-      return new CustomBlueprint($table, $callback);
-    });
+    ////$schema = DB::connection()->getSchemaBuilder();
+    ////$schema->blueprintResolver(function ($table, $callback) {
+    ////  return new CustomBlueprint($table, $callback);
+    ////});
+
+    $schema = $this->GetSchema();
 
     $schema->create('Cache', function (CustomBlueprint $table) {
       $table->string('Key')->primary();

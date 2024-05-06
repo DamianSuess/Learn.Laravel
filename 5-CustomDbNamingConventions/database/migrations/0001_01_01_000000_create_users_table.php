@@ -30,10 +30,12 @@ return new class extends Migration
     });
     */
 
-    $schema = DB::connection()->getSchemaBuilder();
-    $schema->blueprintResolver(function ($table, $callback) {
-      return new CustomBlueprint($table, $callback);
-    });
+    ////$schema = DB::connection()->getSchemaBuilder();
+    ////$schema->blueprintResolver(function ($table, $callback) {
+    ////  return new CustomBlueprint($table, $callback);
+    ////});
+
+    $schema = CustomBlueprint::GetSchema();
 
     $schema->create("User", function (CustomBlueprint $table) {
       $table->id();
@@ -66,7 +68,7 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('Users');
+    Schema::dropIfExists('User');
     Schema::dropIfExists('PasswordResetTokens');
     Schema::dropIfExists('Sessions');
   }
