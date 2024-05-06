@@ -11,29 +11,29 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('users', function (Blueprint $table) {
+    Schema::create('User', function (Blueprint $table) {
       $table->id();
-      $table->string('name');
-      $table->string('email')->unique();
-      $table->timestamp('email_verified_at')->nullable();
-      $table->string('password');
+      $table->string('Name');
+      $table->string('Email')->unique();
+      $table->timestamp('EmailVerifiedAt')->nullable();
+      $table->string('Password');
       $table->rememberToken();
       $table->timestamps();
     });
 
-    Schema::create('password_reset_tokens', function (Blueprint $table) {
-      $table->string('email')->primary();
-      $table->string('token');
-      $table->timestamp('created_at')->nullable();
+    Schema::create('PasswordResetTokens', function (Blueprint $table) {
+      $table->string('Email')->primary();
+      $table->string('Token');
+      $table->timestamp('CreatedAt')->nullable();
     });
 
-    Schema::create('sessions', function (Blueprint $table) {
-      $table->string('id')->primary();
-      $table->foreignId('user_id')->nullable()->index();
-      $table->string('ip_address', 45)->nullable();
-      $table->text('user_agent')->nullable();
-      $table->longText('payload');
-      $table->integer('last_activity')->index();
+    Schema::create('Sessions', function (Blueprint $table) {
+      $table->string('Id')->primary();
+      $table->foreignId('UserId')->nullable()->index();
+      $table->string('IpAddress', 45)->nullable();
+      $table->text('UserAgent')->nullable();
+      $table->longText('Payload');
+      $table->integer('LastActivity')->index();
     });
   }
 
@@ -42,8 +42,8 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('users');
-    Schema::dropIfExists('password_reset_tokens');
-    Schema::dropIfExists('sessions');
+    Schema::dropIfExists('Users');
+    Schema::dropIfExists('PasswordResetTokens');
+    Schema::dropIfExists('Sessions');
   }
 };
