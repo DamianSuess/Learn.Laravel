@@ -1,8 +1,10 @@
 <?php
 
+use App\Common\CustomBlueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+// use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,13 +13,23 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('Cache', function (Blueprint $table) {
+    // Doesn't work
+    ////Schema::blueprintResolver(function ($table, $callback) {
+    ////  return new CustomBlueprint($table, $callback);
+    ////});
+
+    $schema = DB::connection()->getSchemaBuilder();
+    $schema->blueprintResolver(function ($table, $callback) {
+      return new CustomBlueprint($table, $callback);
+    });
+
+    $schema->create('Cache', function (CustomBlueprint $table) {
       $table->string('Key')->primary();
       $table->mediumText('Value');
       $table->integer('Expiration');
     });
 
-    Schema::create('CacheLocks', function (Blueprint $table) {
+    $schema->create('CacheLocks', function (CustomBlueprint $table) {
       $table->string('Key')->primary();
       $table->string('Owner');
       $table->integer('Expiration');

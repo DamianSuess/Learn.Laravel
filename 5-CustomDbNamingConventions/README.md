@@ -10,6 +10,9 @@
 3. Create [stubs](https://laravel-news.com/customizing-stubs-in-laravel)
    1. `php artisan stub:publish`
    2. Edit `stubs/model.stub`, replacing `Model` with `BaseModel`
+4. Update migration stub and create `CustomBlueprint`
+   1. Create `Common/CustomBlueprint.php` used to override `Blueprint` class' `snake_case` column names.
+   2. Update `stubs/migration.create.stub` to use our `CustomBlueprint` class
 
 ## Code Sample Highlights
 

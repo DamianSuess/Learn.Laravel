@@ -1,8 +1,10 @@
 <?php
 
+use App\Common\CustomBlueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+// use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,7 +13,17 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('Jobs', function (Blueprint $table) {
+    // Doesn't work
+    ////Schema::blueprintResolver(function ($table, $callback) {
+    ////  return new CustomBlueprint($table, $callback);
+    ////});
+
+    $schema = DB::connection()->getSchemaBuilder();
+    $schema->blueprintResolver(function ($table, $callback) {
+      return new CustomBlueprint($table, $callback);
+    });
+
+    $schema->create('Jobs', function (CustomBlueprint $table) {
       $table->id();
       $table->string('Queue')->index();
       $table->longText('Payload');
@@ -21,7 +33,7 @@ return new class extends Migration
       $table->unsignedInteger('CreatedAt');
     });
 
-    Schema::create('JobBatches', function (Blueprint $table) {
+    $schema->create('JobBatches', function (CustomBlueprint $table) {
       $table->string('Id')->primary();
       $table->string('Name');
       $table->integer('TotalJobs');
@@ -34,7 +46,7 @@ return new class extends Migration
       $table->integer('FinishedAt')->nullable();
     });
 
-    Schema::create('FailedJobs', function (Blueprint $table) {
+    $schema->create('FailedJobs', function (CustomBlueprint $table) {
       $table->id();
       $table->string('Uuid')->unique();
       $table->text('Connection');
