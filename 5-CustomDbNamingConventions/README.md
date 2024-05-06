@@ -6,6 +6,18 @@ This example replaces Laravel's database naming conventions with your own custom
 
 This leverages the Stubs for class templates and overrides `Blueprint` class with our own `PascalBlueprint` class.
 
+## Hard-Codded Warning
+
+Though you can change the `Sessions` table name via `config/session.php`, you CANNOT change the `snake_case` column names. These are hardcoded into the framework's vendor package `laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php`
+
+Hard coded column name references
+
+* `id`
+* `user_id`
+* `ip_address`
+* `user_agent`
+* `last_activity`
+
 ## Steps to Reproduce
 
 1. Create base project
@@ -22,6 +34,7 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
    2. Edit `stubs/model.stub`, replacing `Model` with `BaseModel`
    3. Edit `stubs/migration.create.stub` to use our `PascalBlueprint` class
    4. Edit `stubs/migration.update.stub` to use our `PascalBlueprint` class
+5. Updated table names in `config/*.php` folder
 
 ## Code Sample Highlights
 

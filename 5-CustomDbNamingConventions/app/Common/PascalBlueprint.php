@@ -8,17 +8,15 @@ use Illuminate\Support\Facades\DB;
 /**
  * Custom Database Blueprint class
  *
- * Overrides:
- *  - rememberToken()
- *  - timestamps()
+ * Overrides methods which define `snake_case` columns with `PascalCase` ones
  */
-class CustomBlueprint extends Blueprint
+class PascalBlueprint extends Blueprint
 {
   public static function GetSchema()
   {
     $schema = DB::connection()->getSchemaBuilder();
     $schema->blueprintResolver(function ($table, $callback) {
-      return new CustomBlueprint($table, $callback);
+      return new PascalBlueprint($table, $callback);
     });
 
     return $schema;
@@ -52,7 +50,7 @@ class CustomBlueprint extends Blueprint
    */
   public function dropRememberToken()
   {
-    $this->dropColumn('remember_token');
+    $this->dropColumn('RememberToken');
   }
 
   /**

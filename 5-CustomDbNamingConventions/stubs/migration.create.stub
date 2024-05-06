@@ -1,6 +1,6 @@
 <?php
 
-use App\Common\CustomBlueprint;
+use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +14,10 @@ return new class extends Migration
   {
     $schema = DB::connection()->getSchemaBuilder();
     $schema->blueprintResolver(function ($table, $callback) {
-      return new CustomBlueprint($table, $callback);
+      return new PascalBlueprint($table, $callback);
     });
 
-    $schema->create("{{ table }}", function (CustomBlueprint $table)
+    $schema->create("{{ table }}", function (PascalBlueprint $table)
     {
       $table->id();
       $table->timestamps();

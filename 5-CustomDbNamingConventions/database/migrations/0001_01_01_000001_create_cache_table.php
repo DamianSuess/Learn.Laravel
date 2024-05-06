@@ -1,47 +1,25 @@
 <?php
 
-use App\Common\CustomBlueprint;
+use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
-// use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
-  private function GetSchema()
-  {
-    $schema = DB::connection()->getSchemaBuilder();
-    $schema->blueprintResolver(function ($table, $callback) {
-      return new CustomBlueprint($table, $callback);
-    });
-
-    return $schema;
-  }
-
   /**
    * Run the migrations.
    */
   public function up(): void
   {
-    // Doesn't work
-    ////Schema::blueprintResolver(function ($table, $callback) {
-    ////  return new CustomBlueprint($table, $callback);
-    ////});
+    $schema = PascalBlueprint::GetSchema();
 
-    ////$schema = DB::connection()->getSchemaBuilder();
-    ////$schema->blueprintResolver(function ($table, $callback) {
-    ////  return new CustomBlueprint($table, $callback);
-    ////});
-
-    $schema = $this->GetSchema();
-
-    $schema->create('Cache', function (CustomBlueprint $table) {
+    $schema->create('Cache', function (PascalBlueprint $table) {
       $table->string('Key')->primary();
       $table->mediumText('Value');
       $table->integer('Expiration');
     });
 
-    $schema->create('CacheLocks', function (CustomBlueprint $table) {
+    $schema->create('CacheLocks', function (PascalBlueprint $table) {
       $table->string('Key')->primary();
       $table->string('Owner');
       $table->integer('Expiration');

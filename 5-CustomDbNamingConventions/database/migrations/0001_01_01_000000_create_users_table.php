@@ -1,10 +1,8 @@
 <?php
 
-use App\Common\CustomBlueprint;
+use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
-// use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,10 +14,10 @@ return new class extends Migration
     /*
     // Doesn't work
     ////Schema::blueprintResolver(function ($table, $callback) {
-    ////  return new CustomBlueprint($table, $callback);
+    ////  return new PascalBlueprint($table, $callback);
     ////});
 
-    Schema::create('User', function (CustomBlueprint $table) {
+    Schema::create('User', function (PascalBlueprint $table) {
       $table->id();
       $table->string('Name');
       $table->string('Email')->unique();
@@ -30,14 +28,9 @@ return new class extends Migration
     });
     */
 
-    ////$schema = DB::connection()->getSchemaBuilder();
-    ////$schema->blueprintResolver(function ($table, $callback) {
-    ////  return new CustomBlueprint($table, $callback);
-    ////});
+    $schema = PascalBlueprint::GetSchema();
 
-    $schema = CustomBlueprint::GetSchema();
-
-    $schema->create("User", function (CustomBlueprint $table) {
+    $schema->create("User", function (PascalBlueprint $table) {
       $table->id();
       $table->string('Name');
       $table->string('Email')->unique();
@@ -47,19 +40,20 @@ return new class extends Migration
       $table->timestamps();
     });
 
-    $schema->create('PasswordResetTokens', function (CustomBlueprint $table) {
+    $schema->create('PasswordResetTokens', function (PascalBlueprint $table) {
       $table->string('Email')->primary();
       $table->string('Token');
       $table->timestamp('CreatedAt')->nullable();
     });
 
-    $schema->create('Sessions', function (CustomBlueprint $table) {
-      $table->string('Id')->primary();
-      $table->foreignId('UserId')->nullable()->index();
-      $table->string('IpAddress', 45)->nullable();
-      $table->text('UserAgent')->nullable();
+    // NOTE! The column names here are HARDCODED!
+    $schema->create('Sessions', function (PascalBlueprint $table) {
+      $table->string('id')->primary();
+      $table->foreignId('user_id')->nullable()->index();
+      $table->string('ip_address', 45)->nullable();
+      $table->text('user_agent')->nullable();
       $table->longText('Payload');
-      $table->integer('LastActivity')->index();
+      $table->integer('last_activity')->index();
     });
   }
 
