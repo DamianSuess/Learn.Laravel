@@ -1,7 +1,7 @@
 <?php
 
+use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,28 +11,48 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('users', function (Blueprint $table) {
+    /*
+    // Doesn't work
+    ////Schema::blueprintResolver(function ($table, $callback) {
+    ////  return new PascalBlueprint($table, $callback);
+    ////});
+
+    Schema::create('User', function (PascalBlueprint $table) {
       $table->id();
-      $table->string('name');
-      $table->string('email')->unique();
-      $table->timestamp('email_verified_at')->nullable();
-      $table->string('password');
+      $table->string('Name');
+      $table->string('Email')->unique();
+      $table->timestamp('EmailVerifiedAt')->nullable();
+      $table->string('Password');
+      $table->rememberToken();
+      $table->timestamps();
+    });
+    */
+
+    $schema = PascalBlueprint::GetSchema();
+
+    $schema->create("User", function (PascalBlueprint $table) {
+      $table->id();
+      $table->string('Name');
+      $table->string('Email')->unique();
+      $table->timestamp('EmailVerifiedAt')->nullable();
+      $table->string('Password');
       $table->rememberToken();
       $table->timestamps();
     });
 
-    Schema::create('password_reset_tokens', function (Blueprint $table) {
-      $table->string('email')->primary();
-      $table->string('token');
-      $table->timestamp('created_at')->nullable();
+    $schema->create('PasswordResetTokens', function (PascalBlueprint $table) {
+      $table->string('Email')->primary();
+      $table->string('Token');
+      $table->timestamp('CreatedAt')->nullable();
     });
 
-    Schema::create('sessions', function (Blueprint $table) {
+    // NOTE! The column names here are HARDCODED!
+    $schema->create('Sessions', function (PascalBlueprint $table) {
       $table->string('id')->primary();
       $table->foreignId('user_id')->nullable()->index();
       $table->string('ip_address', 45)->nullable();
       $table->text('user_agent')->nullable();
-      $table->longText('payload');
+      $table->longText('Payload');
       $table->integer('last_activity')->index();
     });
   }
@@ -42,8 +62,8 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('users');
-    Schema::dropIfExists('password_reset_tokens');
-    Schema::dropIfExists('sessions');
+    Schema::dropIfExists('User');
+    Schema::dropIfExists('PasswordResetTokens');
+    Schema::dropIfExists('Sessions');
   }
 };
