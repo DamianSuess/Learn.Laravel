@@ -12,10 +12,7 @@ return new class extends Migration
    */
   public function up(): void
   {
-    $schema = DB::connection()->getSchemaBuilder();
-    $schema->blueprintResolver(function ($table, $callback) {
-      return new PascalBlueprint($table, $callback);
-    });
+    $schema = PascalBlueprint::GetSchema();
 
     $schema->create("{{ table }}", function (PascalBlueprint $table)
     {
