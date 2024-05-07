@@ -1,4 +1,8 @@
-# Tests
+# Learn Laravel 11
+
+In this edition of the Suess Labs' Learn repository, we'll dive into the Laravel PHP framework for web applications.
+
+Looking back, I've usually always created my own micro-frameworks with PHP to keep things lean and quick. However, maintainability and scalability can become a pinch-point throughout the product's lifecycle, so considerations should be made when starting a new product.
 
 ## References
 
