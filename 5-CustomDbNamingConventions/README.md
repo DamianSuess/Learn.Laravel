@@ -38,9 +38,20 @@ Hard coded column name references
 
 ## Code Sample Highlights
 
+### Tips for Creating Migration
+
+* `php artisan make:migration CreateProductInventoryTable`
+  * Use PascalCase
+  * Begin with `Create` prefix and end with `Table` suffix
+  * This will create a table using `snake_case` unfortunately (`product_inventory`)
+
+### Sample Migration Script
+
 Migration scripts now look like the following:
 
 ```php
+  public function up(): void
+  {
     $schema = PascalBlueprint::GetSchema();
 
     $schema->create("User", function (PascalBlueprint $table) {
@@ -52,6 +63,15 @@ Migration scripts now look like the following:
       $table->rememberToken();
       $table->timestamps();
     });
+  }
+```
+
+## TO DO
+
+1. Make `php artisan make:migration Create<TableName>Table` generate PascalCase not `snake_case`
+
+```php
+str_replace('_', '', ucwords($key, '_'));
 ```
 
 ## References

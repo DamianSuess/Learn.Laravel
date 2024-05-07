@@ -3,6 +3,7 @@
 use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,8 +14,9 @@ return new class extends Migration
   {
     $schema = PascalBlueprint::GetSchema();
 
-    $schema->table('{{ table }}', function (PascalBlueprint $table) {
-      //
+    $schema->create("Product", function (PascalBlueprint $table) {
+      $table->id();
+      $table->timestamps();
     });
   }
 
@@ -23,10 +25,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    $schema = PascalBlueprint::GetSchema();
-
-    $schema->table('{{ table }}', function (PascalBlueprint $table) {
-      //
-    });
+    Schema::dropIfExists('product');
   }
 };
