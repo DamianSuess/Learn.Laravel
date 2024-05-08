@@ -15,7 +15,7 @@ class RegisterController extends BaseController
   /**
    * Register api
    *
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Http\JsonResponse
    */
   public function register(Request $request): JsonResponse
   {
@@ -50,18 +50,21 @@ class RegisterController extends BaseController
   /**
    * Login api
    *
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Http\JsonResponse
    */
   public function login(Request $request): JsonResponse
   {
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+
+      // Intellisense fix: This informs Inteliphense to base on our User model which utilizes, `HasApiTokens` to 'createToken(..)'
+      /** @var \App\Models\User $user */
       $user = Auth::user();
       $success['token'] =  $user->createToken('MyApp')->plainTextToken;
       $success['name'] =  $user->name;
 
       return $this->sendResponse($success, 'User login successfully.');
     } else {
-      return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
+      return $this->sendError('Unauthorized.', ['error' => 'Unauthorized']);
     }
   }
 }

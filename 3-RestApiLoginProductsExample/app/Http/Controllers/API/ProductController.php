@@ -69,7 +69,7 @@ class ProductController extends BaseController
    *
    * @param  \Illuminate\Http\Request  $request
    * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Http\JsonResponse
    */
   public function update(Request $request, Product $product): JsonResponse
   {
@@ -95,7 +95,7 @@ class ProductController extends BaseController
    * Remove the specified resource from storage.
    *
    * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Http\JsonResponse
    */
   public function destroy($id): JsonResponse
   {
