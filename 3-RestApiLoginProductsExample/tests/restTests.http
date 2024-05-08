@@ -1,4 +1,4 @@
-@hostname = http://localhost:8000
+@baseUrl = http://localhost:8000
 
 # Register User Name
 #
@@ -12,7 +12,8 @@
 #   "message": "User register successfully."
 # }
 #
-POST {{hostname}}/api/register HTTP/1.1
+// @name login
+POST {{baseUrl}}/api/register HTTP/1.1
 Content-Type: multipart/form-data; boundary=DummyFormData
 
 --DummyFormData
@@ -22,7 +23,7 @@ John5
 --DummyFormData
 Content-Disposition: form-data; name="email"
 
-some4@email.com
+some@email.com
 --DummyFormData
 Content-Disposition: form-data; name="password"
 
@@ -54,34 +55,81 @@ aaaa2
 #     "error": "Unauthorised"
 #   }
 # }
-POST {{hostname}}/api/login
+#
+// @name login
+POST {{baseUrl}}/api/login
 Content-Type: multipart/form-data; boundary=DummyFormData
 
 --DummyFormData
 Content-Disposition: form-data; name="email"
 
-some4@email.com
+some@email.com
 --DummyFormData
 Content-Disposition: form-data; name="password"
 
 aaaa2
 --DummyFormData--
-###
-
-# Test not implemented
-GET {{hostname}}/api/products
 
 ###
 
-# Test not implemented
-POST {{hostname}}/api/products
+# Method 2 - for logging in
+// @name login
+POST {{baseUrl}}/api/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+email=some@email.com&password=aaaa2
 
 ###
 
-# Test not implemented
-GET {{hostname}}/api/products/1
+## Test not fully implemented yet
+## This works:
+## Authorization: Bearer 13|tl9txMVqI7yMAXpV0WVmgg6zTQiVXIzXUvnxZGQZ1d041e7d
+##
+## This fails:
+## @authToken = {{login.response.headers.X-AuthToken}}
+## Authorization: Bearer {{authToken.response.body.$.data.token}}
+## Authorization: Bearer {{login.resp.headers.token}}
+## Authorization: Bearer {{login.response.headers.token}}
+
+GET {{baseUrl}}/api/products HTTP/1.1
+Authorization: Bearer {{login.response.body.$.data.token}}
 
 ###
 
-# Test not implemented
-DELETE {{hostname}}/api/products/1
+# Create new product and get its Id
+// @name newProduct
+POST {{baseUrl}}/api/products HTTP/1.1
+Authorization: Bearer {{login.response.body.$.data.token}}
+Content-Type: application/json
+
+{
+    "name": "Ball",
+    "detail": "Its round."
+}
+
+###
+
+# Get Product Id you just created
+@productId = {{newProduct.response.body.$.data.id}}
+GET {{baseUrl}}/api/products/{{productId}}
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+###
+
+# Get Product Id: 1
+GET {{baseUrl}}/api/products/1
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+
+###
+
+# Delete Product Id you just created
+@productId = {{newProduct.response.body.$.data.id}}
+DELETE {{baseUrl}}/api/products/{{productId}}
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+###
+
+# Delete Product Id: 1
+DELETE {{baseUrl}}/api/products/1
+Authorization: Bearer {{login.response.body.$.data.token}}
