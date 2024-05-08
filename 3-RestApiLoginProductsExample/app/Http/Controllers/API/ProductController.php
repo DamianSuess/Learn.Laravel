@@ -58,7 +58,7 @@ class ProductController extends BaseController
     $product = Product::find($id);
 
     if (is_null($product)) {
-      return $this->sendError('Product not found.');
+      return $this->sendError("Product Id: '$id' not found.");
     }
 
     return $this->sendResponse(new ProductResource($product), 'Product retrieved successfully.');
@@ -97,8 +97,14 @@ class ProductController extends BaseController
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Product $product): JsonResponse
+  public function destroy($id): JsonResponse
   {
+    $product = Product::find($id);
+
+    if (is_null($product)) {
+      return $this->sendError("Product Id: '$id' not found.");
+    }
+
     $product->delete();
 
     return $this->sendResponse([], 'Product deleted successfully.');
