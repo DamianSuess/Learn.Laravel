@@ -1,5 +1,9 @@
 # Laravel 11 - CRUD Example App
 
+Example of performing CRUD operations via a view's Form input. The displaying of data automatically creates the "Page 1, 2, ..." pagination.
+
+The pagnate is set to 5 results in the `ProductController.php`
+
 ## Steps to Reproduce
 
 1. `composer create-project laravel/laravel CrudExampleApp`
