@@ -6,7 +6,7 @@ Looking back, I've usually always created my own micro-frameworks with PHP to ke
 
 ## References
 
-The projects listed here are based on the following examples
+The projects listed here are based on the following examples. The examples in this repository have been modified and improved upon (_bug fixes, added functionality, testability, etc._)
 
 * [REST API Example](https://www.itsolutionstuff.com/post/laravel-11-rest-api-authentication-using-sanctum-tutorialexample.html)
 * [CRUD Example](https://www.itsolutionstuff.com/post/laravel-11-crud-application-example-tutorialexample.html)
