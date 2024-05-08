@@ -2,6 +2,12 @@
 
 There's a lot here in this example, some of which may seem unnecessary. However, it can serve as template structure for much larger enterprise applications.
 
+In this example we expand on the previous Products Rest API example by adding:
+
+* Database transaction
+* Helper class for common API Responses
+* Class interfaces
+
 ## Supported RESTful CRUD operations
 
 Check the file `tests/restTest.http` for more information.
