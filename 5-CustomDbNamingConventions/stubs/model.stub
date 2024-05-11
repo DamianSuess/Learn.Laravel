@@ -8,4 +8,16 @@ use App\Models\BaseModel;
 class {{ class }} extends BaseModel
 {
     use HasFactory;
+
+  /**
+   * The table associated with the model. (Singular, not plural)
+   * @var string
+   */
+  protected $table = '{{ class }}';
+
+  /**
+   * The primary key associated with the table.
+   * @var string
+   */
+  protected $primaryKey = 'Id';
 }
