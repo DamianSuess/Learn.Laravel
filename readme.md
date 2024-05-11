@@ -20,6 +20,7 @@ The projects listed here are based on the following examples. The examples in th
 * [AJAX Request Example](https://www.itsolutionstuff.com/post/laravel-11-ajax-request-example-tutorialexample.html)
 * [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
 * [Generate and Read Sitemap XML File Example](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
+* Testing Database with Factory and Seeders - [Blog](https://code.tutsplus.com/how-to-build-a-rest-api-with-laravel-php-full-course--cms-93786t), [Video](https://www.youtube.com/watch?v=YGqCZjdgJJk&t=1045s)
 
 ## Debugging Tips
 
