@@ -20,10 +20,7 @@ return new class extends Migration
     Schema::create('User', function (PascalBlueprint $table) {
       $table->id();
       $table->string('Name');
-      $table->string('Email')->unique();
-      $table->timestamp('EmailVerifiedAt')->nullable();
-      $table->string('Password');
-      $table->rememberToken();
+      ...
       $table->timestamps();
     });
     */

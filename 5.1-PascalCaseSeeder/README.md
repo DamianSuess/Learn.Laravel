@@ -6,6 +6,81 @@ This example replaces Laravel's database naming conventions with your own custom
 
 This leverages the Stubs for class templates and overrides `Blueprint` class with our own `PascalBlueprint` class.
 
+## Eloquent Seeder Bug
+
+### Database Definition
+
+### Invoice Model
+
+```php
+  public function Customer()
+  {
+    // Works only if column is named, `customer_id`
+    // return $this->belongsTo(Customer::class);
+
+    // Set the Foreign Key column name. Otherwise, seeder will fail
+    return $this->belongsTo(
+      Customer::class,
+      "CustomerId"
+    );
+  }
+```
+
+### Customer and Invoice Factory
+
+```php
+class InvoiceFactory extends Factory
+{
+  protected $model = Invoice::class;
+
+  public function definition(): array
+  {
+    // 1 = Billed, 2 = Paid, 3 = Void
+    $statusTypeId = $this->faker->numberBetween(0, 3);
+
+    return [
+      "CustomerId" => Customer::factory(),             // TODO (2024-05-11 DJS): Make Eloquent use "CustomerId" (See, CreateWorksoutsTable migration)
+      "Amount" => $this->faker->numberBetween(1, 5000),
+      "PaidStatusId" => $statusTypeId,
+      "BilledDttm" => $this->faker->dateTimeThisDecade(),
+      "PaidDttm" => $statusTypeId == 1 ? $this->faker->dateTimeThisDecade() : null,
+    ];
+  }
+}
+```
+
+### CustomerSeeder.php
+
+Below, well create 25 `Customer` database entries with 3 Invoices each.
+
+Implementation for using seeder and factory with PascalCase/camelCase column names.
+
+```php
+public function run(): void
+{
+  // Works with PascalCase foreign key column, `Inventory.CustomerId`
+  for ($i = 1; $i <= 25; $i++)
+  {
+    $customer = Customer::factory()->create();
+    $invoices = Invoice::factory()
+      ->count(3)
+      ->for($customer)
+      ->create();
+  }
+}
+```
+
+Buggy Implementation:
+
+```php
+// Eloquent Bug: Create 25 customers with 3 invoices
+Customer::factory()
+  ->count(25)
+  // ->hasInvoice(3)                   // Magic method; same as below
+  ->has(Invoice::factory()->count(3))  // Same as `->hasInvoice(3)`
+  ->create();
+```
+
 ## Hard-Codded Warning
 
 Though you can change the `Sessions` table name via `config/session.php`, you CANNOT change the `snake_case` column names. These are hardcoded into the framework's vendor package `laravel/framework/src/Illuminate/Session/DatabaseSessionHandler.php`
