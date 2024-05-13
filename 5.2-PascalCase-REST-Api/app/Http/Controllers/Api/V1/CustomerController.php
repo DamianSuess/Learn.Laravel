@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\CustomerResource;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -24,5 +25,15 @@ class CustomerController extends Controller
    */
   public function create()
   {
+  }
+
+  /**
+   *
+   * @param   Customer  $customer  [$customer description]
+   * @return  [type]               [return description]
+   */
+  public function show(Customer $customer)
+  {
+    return new CustomerResource($customer);
   }
 }

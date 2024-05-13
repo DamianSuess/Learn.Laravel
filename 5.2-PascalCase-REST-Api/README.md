@@ -24,6 +24,13 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
    2. `php artisan make:controller Api/V1/InvoiceController`
 4. Add routes to `routes/api.php`
    1. Create endpoints to point to our controllers.
+5. Debug and preview your results
+   1. Seed your DB with test data: ` php artisan migrate:fresh --seed `
+   2. [Customers API](http://localhost:8000/api/v1/customers)
+   3. [Invoice API](http://localhost:8000/api/v1/invoices)
+6. Create Resources
+   1. `php artisan make:resource V1\CustomerResource`
+   2. File: `app\Http\Resources\V1\CustomerResource.php`
 
 ## Base Models for PascalCase
 
