@@ -6,6 +6,11 @@ This example replaces Laravel's database naming conventions with your own custom
 
 This leverages the Stubs for class templates and overrides `Blueprint` class with our own `PascalBlueprint` class.
 
+## Base Models for PascalCase
+
+* `BaseModel` -
+* `BaseUser` - Enforces the use of `BaseModel` for `CreatedAt` and `UpdatedAt` columns are used.
+
 ## Eloquent Seeder Bug
 
 ### Database Definition
