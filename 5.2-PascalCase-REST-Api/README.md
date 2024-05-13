@@ -19,6 +19,7 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
 1. Starting with the previous project, _**5.1 - PascalCase Seeder**_
 2. Install API routes
    1. `php artisan install:api`
+   2. NOTE: The `personal_access_tokens` table is still ugly, `snake_case` (_for now_)
 3. Create controllers for Customer and Invoice
    1. `php artisan make:controller Api/V1/CustomerController`
    2. `php artisan make:controller Api/V1/InvoiceController`
@@ -40,8 +41,7 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
    5. This allos us to return the CustomerCollection based on CustomerResource using pagnation in CustomerController
 8. Create Resources, `InvoiceResource` and `InvoiceCollection`
    1. `php artisan make:resource V1\InvoiceResource`
-   1. `php artisan make:resource V1\InvoiceCollection`
-
+   2. `php artisan make:resource V1\InvoiceCollection`
 
 ## Base Models for PascalCase
 
