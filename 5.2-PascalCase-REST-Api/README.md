@@ -38,6 +38,10 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
    3. Test: [Customers - Page 1](http://localhost:8000/api/v1/customers)
    4. Test: [Customers - Page 2](http://localhost:8000/api/v1/customers?page=2)
    5. This allos us to return the CustomerCollection based on CustomerResource using pagnation in CustomerController
+8. Create Resources, `InvoiceResource` and `InvoiceCollection`
+   1. `php artisan make:resource V1\InvoiceResource`
+   1. `php artisan make:resource V1\InvoiceCollection`
+
 
 ## Base Models for PascalCase
 
