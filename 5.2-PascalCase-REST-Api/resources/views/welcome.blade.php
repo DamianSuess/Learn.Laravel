@@ -6,7 +6,10 @@
   </head>
 
   <body>
-    Nothing to see here
+    API Endpoints:
+    <ul>
+      <li><a href="http://localhost:8000/api/v1/customers">Customers</a></li>
+      <li><a href="http://localhost:8000/api/v1/invoices">Invoices</a></li>
   </body>
 
 </html>
