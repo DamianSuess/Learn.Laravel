@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CustomerResource;
+use App\Http\Resources\V1\CustomerCollection;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -15,7 +16,14 @@ class CustomerController extends Controller
    */
   public function index()
   {
-    return Customer::all();
+    // return Customer::all();
+
+    // Use the CustomerCollection resource for transforming all customers `Customer::all()`
+    ////return new CustomerCollection(Customer::all());
+
+    // Return results paginated (15 at a time)
+    // With links to which page
+    return new CustomerCollection(Customer::paginate());
   }
 
   /**

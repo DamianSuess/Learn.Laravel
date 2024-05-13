@@ -28,9 +28,16 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
    1. Seed your DB with test data: ` php artisan migrate:fresh --seed `
    2. [Customers API](http://localhost:8000/api/v1/customers)
    3. [Invoice API](http://localhost:8000/api/v1/invoices)
-6. Create Resources
+6. Create Resources, `CustomerResource` for viewing a single customer
    1. `php artisan make:resource V1\CustomerResource`
    2. File: `app\Http\Resources\V1\CustomerResource.php`
+   3. Test: [Customers API](http://localhost:8000/api/v1/customers/1)
+7. Create Resource, `CustomerCollection` for viewing all customers
+   1. `php artisan make:resource V1\CustomerCollection`
+   2. File: `app\Http\Resources\V1\CustomerCollection.php`
+   3. Test: [Customers - Page 1](http://localhost:8000/api/v1/customers)
+   4. Test: [Customers - Page 2](http://localhost:8000/api/v1/customers?page=2)
+   5. This allos us to return the CustomerCollection based on CustomerResource using pagnation in CustomerController
 
 ## Base Models for PascalCase
 

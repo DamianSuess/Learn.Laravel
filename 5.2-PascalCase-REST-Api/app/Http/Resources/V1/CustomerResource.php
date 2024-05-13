@@ -5,6 +5,9 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * JSON Resource for returning back a single customer based on it's Id.
+ */
 class CustomerResource extends JsonResource
 {
   /**
