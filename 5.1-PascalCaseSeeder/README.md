@@ -2,6 +2,12 @@
 
 No every organization uses the same database naming conventions, especially when there is a debate between singular vs plural, PascalCase/camelCase/snake_case.
 
+> **Why PascalCase and not snake_case?**
+>
+> No every organization uses the same database naming conventions, especially when there is a debate between singular vs plural, PascalCase/camelCase/snake_case. >
+>
+> Frankly, my organization moved away from `snake_case` years ago. And most 3rd-party frameworks (_should_) allow you to pick and choose your own naming conventions.
+
 This example replaces Laravel's database naming conventions with your own custom definitions. Now tables are singular (`Users` -> `User`) and columns use `PascalCase` instead of `snake_case`
 
 This leverages the Stubs for class templates and overrides `Blueprint` class with our own `PascalBlueprint` class.

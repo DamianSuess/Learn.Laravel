@@ -1,10 +1,8 @@
 # Laravel 11 - Custom DB Naming Conventions
 
-This example builds a full RESTful API with the database using PascalCase naming conventions for both tables and column names.
+Building on the previous example, **5.2-PascalCase-REST-Api**, we're adding the ability to filter information via the _URL Query_.
 
-The example created here is based on the PHP course, [How to build a REST API with Laravel](https://www.youtube.com/watch?v=YGqCZjdgJJk) sections 3.1 and 3.2.
-
-> **Why build this?**
+> **Why PascalCase and not snake_case?**
 >
 > No every organization uses the same database naming conventions, especially when there is a debate between singular vs plural, PascalCase/camelCase/snake_case. >
 >
@@ -16,7 +14,7 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
 
 ## Reproduce
 
-1. Starting with the previous project, _**5.1 - PascalCase Seeder**_
+1. Starting with the previous project, _**5.2-PascalCase-REST-Api**_
 2. Install API routes
    1. `php artisan install:api`
    2. NOTE: The `personal_access_tokens` table is still ugly, `snake_case` (_for now_)
@@ -45,10 +43,8 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
 
 ## Base Models for PascalCase
 
-
 ## Sample Code Highlights
 
 ## References
 
-* [How to build a REST API with Laravel](https://www.youtube.com/watch?v=YGqCZjdgJJk)
-  * Sections 3.1 and 3.2
+The example created here is based on the PHP course, [How to build a REST API with Laravel](https://www.youtube.com/watch?v=YGqCZjdgJJk) sections 3.3 and 3.4.
