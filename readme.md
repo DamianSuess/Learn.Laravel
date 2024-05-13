@@ -4,6 +4,16 @@ In this edition of the Suess Labs' Learn repository, we'll dive into the Laravel
 
 Looking back, I've usually always created my own micro-frameworks with PHP to keep things lean and quick. However, maintainability and scalability can become a pinch-point throughout the product's lifecycle, so considerations should be made when starting a new product.
 
+## Sample Projects
+
+0. Template used for all projects
+1. CRUD - _Basic webpage form with Create, Read, Update, and Delete operations_
+2. Form Validation - _Form submission validator with recall of previously entered values_
+3. REST API Login and CRUD operation - _Including VS Code tester using REST Client extension_
+4. REST API and CRUD - _Slightly more complex implementation of the same thing_
+5. Custom DB Naming Conventions - _Column names using PascalCase and not the gross `snake_case`._
+   1. Pascal Case Seeder - _DB Factory and Seeder example using your PascalCase columns_
+
 ## References
 
 The projects listed here are based on the following examples. The examples in this repository have been modified and improved upon (_bug fixes, added functionality, testability, etc._)
