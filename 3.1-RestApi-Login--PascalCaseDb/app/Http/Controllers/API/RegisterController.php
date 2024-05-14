@@ -41,7 +41,7 @@ class RegisterController extends BaseController
     $input = $request->all();
     $input['password'] = bcrypt($input['password']);
 
-    // Up
+    // Convert HTTP Form field names to Model's attribute names (case-sensitive)
     $transformedInput["Name"] = $input["name"];
     $transformedInput["Email"] = $input["email"];
     $transformedInput["Password"] = $input["password"];

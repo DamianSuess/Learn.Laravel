@@ -12,6 +12,10 @@ Those tables are:
 
 * `Sessions`
 
+## Issues
+
+1. Able to create user, but cannot log-in due to hard-coded restrictions
+
 ## Steps to Reproduce
 
 1. Copy the `3.0-RestApi-Login` sample project
