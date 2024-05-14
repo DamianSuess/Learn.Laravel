@@ -10,7 +10,7 @@ class CustomerQuery
   // Allowable rules from CustomerResource fields
   protected $safeParams =
   [
-    "Name"    => ["eq"],
+    "name"    => ["eq"],
     "type"    => ["eq"],
     "email"   => ["eq"],
     "address" => ["eq"],
@@ -43,18 +43,22 @@ class CustomerQuery
   public function Transform(Request $request)
   {
     $eloQuery = [];
+
     foreach ($this->safeParams as $param => $operators) {
       $query = $request->query($param);
 
       if (!isset($query))
         continue;
 
-      $column = $this->columnMap[$param];
+      $column = $this->columnMap[$param] ?? $param;
+
       foreach ($operators as $operator) {
         if (isset($query[$operator])) {
           $eloQuery[] = [$column, $this->operatorMap[$operator], $query[$operator]];
         }
       }
     }
+
+    return $eloQuery;
   }
 }
