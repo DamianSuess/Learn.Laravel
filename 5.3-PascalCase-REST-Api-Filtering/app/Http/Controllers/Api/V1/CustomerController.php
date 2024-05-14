@@ -26,8 +26,6 @@ class CustomerController extends Controller
     // Check for item result count to display properly
     // Customer::where($queryItems);
 
-    ////if ($queryItems == null)
-    ////  return "";
     if (count($queryItems) == 0)
       return new CustomerCollection(Customer::paginate());
     else
