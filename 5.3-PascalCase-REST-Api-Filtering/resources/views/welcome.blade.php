@@ -13,7 +13,8 @@
         <ul>
           <li><a href="http://localhost:8000/api/v1/customers&page=2">Customers - <i>Page 2</i></a></li>
           <li><a href="http://localhost:8000/api/v1/customers/1">Customer #1</a></li>
-          <li><a href="http://localhost:8000/api/v1/customers?postalCode[gt]3000">Customers - "postalCode > 3000"</a></li>
+          <li><a href="http://localhost:8000/api/v1/customers?postalCode[gt]=40000">Customers - "postalCode > 40000"</a></li>
+          <li><a href="http://localhost:8000/api/v1/customers?postalCode[gt]=40000&type[eq]=1">Customers - "postalCode > 40000 AND type = 1"</a></li>
         </ul>
       </li>
 
