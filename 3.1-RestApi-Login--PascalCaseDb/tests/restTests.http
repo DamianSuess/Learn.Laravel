@@ -1,0 +1,135 @@
+@baseUrl = http://localhost:8000
+
+# Register User Name
+#
+# Sample Response:
+# {
+#   "success": true,
+#   "data": {
+#     "token": "4|MqPPHpfaB88uYmEovqInNr2WQLzCJe7aovRDZSE3a6cf249f",
+#     "name": "John5"
+#   },
+#   "message": "User register successfully."
+# }
+#
+// @name login
+POST {{baseUrl}}/api/register HTTP/1.1
+Content-Type: multipart/form-data; boundary=DummyFormData
+
+--DummyFormData
+Content-Disposition: form-data; name="name"
+
+John5
+--DummyFormData
+Content-Disposition: form-data; name="email"
+
+some@email.com
+--DummyFormData
+Content-Disposition: form-data; name="password"
+
+aaaa2
+--DummyFormData
+Content-Disposition: form-data; name="c_password"
+
+aaaa2
+--DummyFormData--
+
+###
+
+# Login User
+# Sample Success:
+# {
+#   "success": true,
+#   "data": {
+#     "token": "6|qGh47kFkMHsqjS0mMZ2rXsqy4iEAOt1OhNYjMycv02d60b46",
+#     "name": "John2"
+#   },
+#   "message": "User login successfully."
+# }
+#
+# Sample Failure:
+# {
+#   "success": false,
+#   "message": "Unauthorised.",
+#   "data": {
+#     "error": "Unauthorised"
+#   }
+# }
+#
+// @name login
+POST {{baseUrl}}/api/login
+Content-Type: multipart/form-data; boundary=DummyFormData
+
+--DummyFormData
+Content-Disposition: form-data; name="email"
+
+some@email.com
+--DummyFormData
+Content-Disposition: form-data; name="password"
+
+aaaa2
+--DummyFormData--
+
+###
+
+# Method 2 - for logging in
+// @name login
+POST {{baseUrl}}/api/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+email=some@email.com&password=aaaa2
+
+###
+
+## Test not fully implemented yet
+## This works:
+## Authorization: Bearer 13|tl9txMVqI7yMAXpV0WVmgg6zTQiVXIzXUvnxZGQZ1d041e7d
+##
+## This fails:
+## @authToken = {{login.response.headers.X-AuthToken}}
+## Authorization: Bearer {{authToken.response.body.$.data.token}}
+## Authorization: Bearer {{login.resp.headers.token}}
+## Authorization: Bearer {{login.response.headers.token}}
+
+GET {{baseUrl}}/api/products HTTP/1.1
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+###
+
+# Create new product and get its Id
+// @name newProduct
+POST {{baseUrl}}/api/products HTTP/1.1
+Authorization: Bearer {{login.response.body.$.data.token}}
+Content-Type: application/json
+
+{
+    "name": "Ball",
+    "detail": "Its round."
+}
+
+###
+
+# Get Product Id you just created
+@productId = {{newProduct.response.body.$.data.id}}
+GET {{baseUrl}}/api/products/{{productId}}
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+###
+
+# Get Product Id: 1
+GET {{baseUrl}}/api/products/1
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+
+###
+
+# Delete Product Id you just created
+@productId = {{newProduct.response.body.$.data.id}}
+DELETE {{baseUrl}}/api/products/{{productId}}
+Authorization: Bearer {{login.response.body.$.data.token}}
+
+###
+
+# Delete Product Id: 1
+DELETE {{baseUrl}}/api/products/1
+Authorization: Bearer {{login.response.body.$.data.token}}
