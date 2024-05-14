@@ -40,9 +40,21 @@ class RegisterController extends BaseController
 
     $input = $request->all();
     $input['password'] = bcrypt($input['password']);
-    $user = User::create($input);
+
+    // Up
+    $transformedInput["Name"] = $input["name"];
+    $transformedInput["Email"] = $input["email"];
+    $transformedInput["Password"] = $input["password"];
+
+    // NOTE - Case-Sensitive Ahead:
+    // When passing the HTTP Form's `$input` directly into the model's base `Create()` method
+    // the Form's names are case-sensitive and MUST match your database.
+    //// $user = User::create($input);
+
+    // Call to undefined method App\Models\User::createToken() in file "\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php" on line 67
+    $user = User::create($transformedInput);
     $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-    $success['name'] =  $user->name;
+    $success['name'] =  $user->Name;
 
     return $this->sendResponse($success, 'User register successfully.');
   }
