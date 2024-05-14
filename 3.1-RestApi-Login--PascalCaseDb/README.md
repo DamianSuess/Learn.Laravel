@@ -20,9 +20,16 @@ Those tables are:
    1. Import: `app\Common\PascalBlueprint.php`
    2. Import: `app\Models\BaseModel.php`
    3. Import: `app\Models\BaseUser.php`
-   4. Update: `database\seeders\DatabaseSeeder.php`
+   4. Import stubs:
+      1. `migration.create.stub`
+      2. `migration.stub`
+      3. `migration.update.stub`
+      4. `model.stub`
+   5. Update: `database\seeders\DatabaseSeeder.php`
       1. Renaming `name`->`Name` and  `email`->`Email`
-3. asdf
+   6. Update: `database\factories\UserFactory.php`
+3. Cleanup database using `migrate:fresh`
+   1. `php artisan migrate:fresh`
 
 ### Bearer Token Sample
 
