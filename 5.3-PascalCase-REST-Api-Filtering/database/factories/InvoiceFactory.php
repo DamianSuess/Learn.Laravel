@@ -29,7 +29,7 @@ class InvoiceFactory extends Factory
     $statusTypeId = $this->faker->numberBetween(0, 3);
 
     return [
-      "CustomerId" => Customer::factory(),             // TODO (2024-05-11 DJS): Make Eloquent use "CustomerId" (See, CreateWorksoutsTable migration)
+      "CustomerId" => Customer::factory(),
       "Amount" => $this->faker->numberBetween(1, 5000),
       "PaidStatusId" => $statusTypeId,
       "BilledDttm" => $this->faker->dateTimeThisDecade(),
