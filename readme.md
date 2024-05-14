@@ -12,7 +12,9 @@ In the PascalCase sample project the following motto is applied:
 
 ## Sample Projects
 
-0. Template used for all projects
+0. Template Projects
+   1. VS Code Project Template
+   2. Custom Database Naming Convention Template
 1. CRUD - _Basic webpage form with Create, Read, Update, and Delete operations_
 2. Form Validation - _Form submission validator with recall of previously entered values_
 3. REST API Login and CRUD operation - _Including VS Code tester using REST Client extension_
