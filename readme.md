@@ -4,6 +4,12 @@ In this edition of the Suess Labs' Learn repository, we'll dive into the Laravel
 
 Looking back, I've usually always created my own micro-frameworks with PHP to keep things lean and quick. However, maintainability and scalability can become a pinch-point throughout the product's lifecycle, so considerations should be made when starting a new product.
 
+In the PascalCase sample project the following motto is applied:
+
+> The projects using PascalCase is an example for overriding Laravel's default naming conventions. In reality, most organizations have their own (legacy) conventions. Whether it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
+>
+> The point is, a framework should be flexible and well documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
+
 ## Sample Projects
 
 0. Template used for all projects

@@ -47,8 +47,8 @@ class RegisterController extends BaseController
     $transformedInput["Password"] = $input["password"];
 
     // NOTE - Case-Sensitive Ahead:
-    // When passing the HTTP Form's `$input` directly into the model's base `Create()` method
-    // the Form's names are case-sensitive and MUST match your database.
+    //  When passing the HTTP Form's `$input` directly into the model's base `Create()` method
+    //  the Form's names are case-sensitive and MUST match your database.
     //// $user = User::create($input);
 
     // Call to undefined method App\Models\User::createToken() in file "\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php" on line 67
@@ -70,7 +70,7 @@ class RegisterController extends BaseController
     // $pass = $request->password;
 
     // EloquentUserProvider.php and DatabaseUserProvider both check hard-coded column `password`
-    // FAILS: if (Auth::attempt(['Email' => $request->email, 'Password' => $pass])) {
+    // You must override `$authPasswordName` in the User model.
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
       // Intellisense fix: This informs Inteliphense to base on our User model which utilizes, `HasApiTokens` to 'createToken(..)'

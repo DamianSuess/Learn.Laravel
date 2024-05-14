@@ -21,6 +21,18 @@ class User extends BaseUser
    */
   protected $table = 'User';
 
+  /**
+   * The column name of the password field using during authentication. (See also, Illuminate\Auth\Authenticatable)
+   *
+   * @var string
+   */
+  protected $authPasswordName = 'Password';
+
+  /**
+   * The column name of the "remember me" token. (See also, Illuminate\Auth\Authenticatable)
+   * @var string
+   */
+  protected $rememberTokenName = 'RememberToken';
 
   /**
    * The attributes that are mass assignable.
@@ -55,4 +67,15 @@ class User extends BaseUser
       'Password' => 'hashed',
     ];
   }
+
+  // Alternate approach to overriding, `$authPasswordName`
+  /////**
+  //// * Get the password for the user (overriding laravel's naming conventions).
+  //// * @return string
+  //// */
+  ////public function getAuthPassword()
+  ////{
+  ////  // overrides the default `password`
+  ////  return $this->Password;
+  ////}
 }

@@ -2,38 +2,46 @@
 
 This example bulids upon our RESTful API (Sanctum package) with user authentication and customer database naming conventions. That's right, not `snake_case`!
 
+> This project uses PascalCase as an example for overriding Laravel's default naming conventions. In reality, most organizations have their own conventions. Whether it be `passwd` instead of `password`, `userName` vs `name`, or `rememberToken` instead of `remember_token`.
+>
+> The point is, a framework should be flexible and well documented to suit a customer's needs.
+
 Using the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension, you can perform manual tests with the project's [restTests.http](tests/restTests.http) file.
 
 ## Laravel Hard-Coded Crap
 
 Most of this project's database uses `PascalCase`, however, some table are pluralized and have columns that are still `snake_case` due to Laravel hard-coding them. This project will be updated when a workaround can be made.
 
-Those tables are:
+Untouched Tables:
 
 * `Sessions`
+* `personal_access_tokens`
 
 ## ATTENTION
 
 With the custom DB rules we set the following changes MUST happen. Otherwise Laravel "magic" will attempt to use plural tables and snake_case columns.
 
 1. Models MUST:
-   1. Set the table name to singular via `protected $table = "MyTableName";`.
-   2. Set the attribute's (`$fillable`) casing to match the database.
+   1. Override table names to be singular via `protected $table = "MyTableName";`.
+   2. Override column **PrimaryKey** to `Id`
+   3. Set the attribute's (`$fillable`) casing to match the database.
+   4. `User` model MUST override `getAuthPassword` to set our custom column name. [ref](https://stackoverflow.com/a/39375007/249492)
 2. Factory
    1. The `definition(): array` method must return the proper attribute casing
 3. Controllers
    1. HTTP Form `$input` must translate to model's attribute casing to create/read/update/delete. Otherwise the model "magic" will assume the input's name `detail` rather than `Detail`.
 
-### Issues
-
-1. [ ] Able to create user, but cannot log-in due to hard-coded restrictions
-
-
 ## Steps to Reproduce
 
 1. Copy the `3.0-RestApi-Login` sample project
    1. `composer install` - Install vendor packages
-2. Import Custom DB base classes and seeders from `5.1-PascalCaseSeeder`
+2. Update migration scripts
+   1. Singular table names and PascalCase column names
+   2. This affects tables
+      1. User
+      2. Product
+      3.
+3. Import Custom DB base classes and seeders from `5.1-PascalCaseSeeder`
    1. Import: `app\Common\PascalBlueprint.php`
    2. Import: `app\Models\BaseModel.php`
    3. Import: `app\Models\BaseUser.php`
@@ -45,7 +53,14 @@ With the custom DB rules we set the following changes MUST happen. Otherwise Lar
    5. Update: `database\seeders\DatabaseSeeder.php`
       1. Renaming `name`->`Name` and  `email`->`Email`
    6. Update: `database\factories\UserFactory.php`
-3. Cleanup database using `migrate:fresh`
+4. Update `BaseModel`
+   1. Override `$primaryKey` with column named, `Id`
+5. Update `User` model
+   1. Override `$table = 'User'`
+   2. Override `$authPasswordName = 'Password';`
+   3. Override `$rememberTokenName = 'RememberToken'`
+      1. Required by `Auth::attempt(..., $remember = true)`
+6. Cleanup database using `migrate:fresh`
    1. `php artisan migrate:fresh`
 
 ### Bearer Token Sample
@@ -211,4 +226,4 @@ Response:
 
 ## References
 
-This example is based on [rest-api-authentication-using-sanctum-tutorial](https://www.itsolutionstuff.com/post/laravel-11-rest-api-authentication-using-sanctum-tutorialexample.html), extending functionality, fixing bugs, and added REST Client tests for VS Code.
+* [Laravel: How can I change the default Auth Password field name?](https://stackoverflow.com/a/39375007/249492)
