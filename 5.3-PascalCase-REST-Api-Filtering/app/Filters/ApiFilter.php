@@ -1,31 +1,32 @@
 <?php
 
-namespace App\Services\V1;
+namespace App\Filters;
 
 use Illuminate\Http\Request;
 
 
-class CustomerQuery
+class ApiFilter
 {
-  // Allowable rules from CustomerResource fields
-  protected $safeParams =
+  /**
+   * Allowable rules from from Resource fields
+   * Sample: ["name" => ["eq", "gt", ]]
+   * @var array<string,array<string>>
+   */
+  protected $safeParams =  [];
+
+  /**
+   * Transform our fields into DB Columns
+   * @var array<string>
+   */
+  protected $columnMap = [];
+
+  /**
+   * Transform our operators into DB operators
+   *
+   * @var array<string>
+   */
+  protected $operatorMap =
   [
-    "name"    => ["eq"],
-    "type"    => ["eq"],
-    "email"   => ["eq"],
-    "address" => ["eq"],
-    "city"    => ["eq"],
-    "state"   => ["eq"],
-    "postalCode" => ["eq", "gt", "lt"]
-  ];
-
-  // Transform our fields into DB Columns
-  protected $columnMap = [
-    "postalCode" => "PostalCode",
-  ];
-
-  // Transform our operators into DB operators
-  protected $operatorMap = [
     "eq"  => "=",
     "lt"  => "<",
     "lte" => "<=",
