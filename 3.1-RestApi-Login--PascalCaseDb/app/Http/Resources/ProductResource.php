@@ -8,19 +8,21 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class ProductResource extends JsonResource
 {
   /**
-   * Transform the resource into an array.
+   * Transform the resource into an array (JSON format).
    *
-   * @return array<string, mixed>
+   * @return array<string, \App\Models\Product>
    */
   public function toArray(Request $request): array
   {
     ////return parent::toArray($request);
+
+    // REMEMBER: You must match your model's attribute casing (properties)
     return [
-      'id' => $this->id,
-      'name' => $this->name,
-      'detail' => $this->detail,
-      'created_at' => $this->created_at->format('d/m/Y'),
-      'updated_at' => $this->updated_at->format('d/m/Y'),
+      'id' => $this->Id,
+      'name' => $this->Name,
+      'detail' => $this->Detail,
+      'createdAt' => $this->CreatedAt->format('d/m/Y'),
+      'updatedAt' => $this->UpdatedAt->format('d/m/Y'),
     ];
   }
 }
