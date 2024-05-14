@@ -123,7 +123,7 @@ Authorization: Bearer {{login.response.body.$.data.token}}
 
 ###
 
-# Delete Product Id you just created
+# Delete Product Id you just created in previous step
 @productId = {{newProduct.response.body.$.data.id}}
 DELETE {{baseUrl}}/api/products/{{productId}}
 Authorization: Bearer {{login.response.body.$.data.token}}

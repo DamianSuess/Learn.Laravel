@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+// ATTENTION:
+//  1. You MUST set the table and primary key since our DB uses `Id` instead of `id`
+//
 class BaseModel extends Model
 {
-
   /**
    * The name of the "created at" column.
    *
@@ -29,6 +31,12 @@ class BaseModel extends Model
    * @var string|null
    */
   const DELETED_AT = "DeletedAt";
+
+  /**
+   * The primary key for the model
+   * @var string
+   */
+  protected $primaryKey = "Id";
 
   public function getTable()
   {

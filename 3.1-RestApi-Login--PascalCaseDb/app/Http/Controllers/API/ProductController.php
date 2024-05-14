@@ -101,7 +101,7 @@ class ProductController extends BaseController
    * @param  int  $id
    * @return \Illuminate\Http\JsonResponse
    */
-  public function destroy($id): JsonResponse
+  public function destroy(int $id): JsonResponse
   {
     $product = Product::find($id);
 

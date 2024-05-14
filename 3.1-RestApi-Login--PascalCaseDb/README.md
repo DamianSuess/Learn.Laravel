@@ -12,9 +12,22 @@ Those tables are:
 
 * `Sessions`
 
-## Issues
+## ATTENTION
 
-1. Able to create user, but cannot log-in due to hard-coded restrictions
+With the custom DB rules we set the following changes MUST happen. Otherwise Laravel "magic" will attempt to use plural tables and snake_case columns.
+
+1. Models MUST:
+   1. Set the table name to singular via `protected $table = "MyTableName";`.
+   2. Set the attribute's (`$fillable`) casing to match the database.
+2. Factory
+   1. The `definition(): array` method must return the proper attribute casing
+3. Controllers
+   1. HTTP Form `$input` must translate to model's attribute casing to create/read/update/delete. Otherwise the model "magic" will assume the input's name `detail` rather than `Detail`.
+
+### Issues
+
+1. [ ] Able to create user, but cannot log-in due to hard-coded restrictions
+
 
 ## Steps to Reproduce
 
