@@ -73,11 +73,12 @@ class ProductController extends BaseController
    */
   public function update(Request $request, Product $product): JsonResponse
   {
+    // $input is from the HTTP Form
     $input = $request->all();
 
     $validator = Validator::make($input, [
-      'name' => 'required',
-      'detail' => 'required'
+      'Name' => 'required',
+      'Detail' => 'required'
     ]);
 
     if ($validator->fails()) {
