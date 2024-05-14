@@ -6,7 +6,7 @@ use App\Models\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\CustomerResource;
 use App\Http\Resources\V1\CustomerCollection;
-use App\Services\V1\CustomerQuery;
+use App\Filters\V1\CustomerFilter;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -17,10 +17,18 @@ class CustomerController extends Controller
    */
   public function index(Request $request)
   {
-    // Don't filter the data, provides a raw DB JSON output
+    // Returns raw DB JSON output
     // return Customer::all();
+    //
+    // Use the CustomerCollection resource for transforming all customers `Customer::all()`
+    ////return new CustomerCollection(Customer::all());
+    //
+    // Return results paginated (15 at a time)
+    // With links to which page
+    //return new CustomerCollection(Customer::paginate());
 
-    $filter = new CustomerQuery();
+    // CustomerFilter could be a Facade so we don't have to use 'new' keyword
+    $filter = new CustomerFilter();
     $queryItems = $filter->Transform($request);
 
     // Check for item result count to display properly
@@ -28,15 +36,16 @@ class CustomerController extends Controller
 
     if (count($queryItems) == 0)
       return new CustomerCollection(Customer::paginate());
-    else
-      return new CustomerCollection(Customer::where($queryItems)->paginate());
+    else {
+      // Note: Results link doesn't retain filter when applied
+      // "url": "http://localhost:8000/api/v1/customers?page=1",
+      // return new CustomerCollection(Customer::where($queryItems)->paginate());
 
-    // Use the CustomerCollection resource for transforming all customers `Customer::all()`
-    ////return new CustomerCollection(Customer::all());
-
-    // Return results paginated (15 at a time)
-    // With links to which page
-    return new CustomerCollection(Customer::paginate());
+      // Make clickable link maintain filter
+      // "url": "http://localhost:8000/api/v1/customers?postalCode%5Bgt%5D=30000&page=1",
+      $customers = Customer::where($queryItems)->paginate();
+      return new CustomerCollection($customers->appends($request->query()));
+    }
   }
 
   /**

@@ -23,8 +23,10 @@
         <ul>
           <li><a href="http://localhost:8000/api/v1/invoices&page=2">Invoices - <i>Page 2</i></a></li>
           <li><a href="http://localhost:8000/api/v1/invoices/5">Invoices #5</a></li>
+          <li><a href="http://localhost:8000/api/v1/invoices?paidStatusId[ne]=2">Invoiced not Paid</a></li>
         </ul>
       </li>
+    </ul>
   </body>
 
 </html>

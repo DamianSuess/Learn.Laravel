@@ -28,9 +28,9 @@ return new class extends Migration
 
     $schema->create("Invoice", function (PascalBlueprint $table) {
       $table->id("Id");
-      $table->integer("CustomerId");   // TODO (2024-05-11 DJS): Make Eloquent use "CustomerId" (see, InvoiceFactory.php)
+      $table->integer("CustomerId");    // TODO (2024-05-11 DJS): Make Eloquent use "CustomerId" (see, InvoiceFactory.php)
       $table->double("Amount");         // TODO (2024-04-28 DJS): Change to "0.0000" precision
-      $table->string("PaidStatusId");
+      $table->string("PaidStatusId");   // 1 = Billed, 2 = Paid, 3 = Void
       $table->dateTime("BilledDttm");
       $table->dateTime("PaidDttm")->nullable();
       $table->timestamps();
