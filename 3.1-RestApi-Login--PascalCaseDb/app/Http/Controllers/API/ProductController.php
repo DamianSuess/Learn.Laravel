@@ -42,7 +42,10 @@ class ProductController extends BaseController
       return $this->sendError('Validation Error.', $validator->errors());
     }
 
-    $product = Product::create($input);
+    $transformedInput["Name"] = $input["name"];
+    $transformedInput["Detail"] = $input["detail"];
+
+    $product = Product::create($transformedInput);
 
     return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
   }
@@ -73,11 +76,12 @@ class ProductController extends BaseController
    */
   public function update(Request $request, Product $product): JsonResponse
   {
+    // $input is from the HTTP Form
     $input = $request->all();
 
     $validator = Validator::make($input, [
-      'name' => 'required',
-      'detail' => 'required'
+      'Name' => 'required',
+      'Detail' => 'required'
     ]);
 
     if ($validator->fails()) {
@@ -97,7 +101,7 @@ class ProductController extends BaseController
    * @param  int  $id
    * @return \Illuminate\Http\JsonResponse
    */
-  public function destroy($id): JsonResponse
+  public function destroy(int $id): JsonResponse
   {
     $product = Product::find($id);
 

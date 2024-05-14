@@ -31,7 +31,7 @@ class RegisterController extends BaseController
     $validator = Validator::make($request->all(), [
       'name' => 'required',
       'email' => 'required|email',
-      'password' => 'required',
+      'password' => 'required|min:5',
       'c_password' => 'required|same:password',
     ]);
 
@@ -40,9 +40,21 @@ class RegisterController extends BaseController
 
     $input = $request->all();
     $input['password'] = bcrypt($input['password']);
-    $user = User::create($input);
+
+    // Convert HTTP Form field names to Model's attribute names (case-sensitive)
+    $transformedInput["Name"] = $input["name"];
+    $transformedInput["Email"] = $input["email"];
+    $transformedInput["Password"] = $input["password"];
+
+    // NOTE - Case-Sensitive Ahead:
+    //  When passing the HTTP Form's `$input` directly into the model's base `Create()` method
+    //  the Form's names are case-sensitive and MUST match your database.
+    //// $user = User::create($input);
+
+    // Call to undefined method App\Models\User::createToken() in file "\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php" on line 67
+    $user = User::create($transformedInput);
     $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-    $success['name'] =  $user->name;
+    $success['name'] =  $user->Name;
 
     return $this->sendResponse($success, 'User register successfully.');
   }
@@ -54,6 +66,11 @@ class RegisterController extends BaseController
    */
   public function login(Request $request): JsonResponse
   {
+    // $pass = bcrypt($request->password);
+    // $pass = $request->password;
+
+    // EloquentUserProvider.php and DatabaseUserProvider both check hard-coded column `password`
+    // You must override `$authPasswordName` in the User model.
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
       // Intellisense fix: This informs Inteliphense to base on our User model which utilizes, `HasApiTokens` to 'createToken(..)'

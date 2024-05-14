@@ -13,11 +13,9 @@ return new class extends Migration
   {
     $schema = PascalBlueprint::GetSchema();
 
-    $schema->create("Product", function (PascalBlueprint $table) {
-
+    $schema->create("{{ table }}", function (PascalBlueprint $table)
+    {
       $table->id();
-      $table->string("Name");
-      $table->text("Detail");
       $table->timestamps();
     });
   }
@@ -27,6 +25,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('Product');
+    Schema::dropIfExists('{{ table }}');
   }
 };

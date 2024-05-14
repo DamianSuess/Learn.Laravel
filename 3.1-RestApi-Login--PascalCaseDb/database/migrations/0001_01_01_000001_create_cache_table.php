@@ -1,35 +1,37 @@
 <?php
 
+use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->mediumText('value');
-            $table->integer('expiration');
-        });
+  /**
+   * Run the migrations.
+   */
+  public function up(): void
+  {
+    $schema = PascalBlueprint::GetSchema();
 
-        Schema::create('cache_locks', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->string('owner');
-            $table->integer('expiration');
-        });
-    }
+    $schema->create('Cache', function (PascalBlueprint $table) {
+      $table->string('Key')->primary();
+      $table->mediumText('Value');
+      $table->integer('Expiration');
+    });
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('cache');
-        Schema::dropIfExists('cache_locks');
-    }
+    $schema->create('CacheLocks', function (PascalBlueprint $table) {
+      $table->string('Key')->primary();
+      $table->string('Owner');
+      $table->integer('Expiration');
+    });
+  }
+
+  /**
+   * Reverse the migrations.
+   */
+  public function down(): void
+  {
+    Schema::dropIfExists('Cache');
+    Schema::dropIfExists('CacheLocks');
+  }
 };

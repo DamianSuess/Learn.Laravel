@@ -1,41 +1,69 @@
 # Laravel 11 REST API
 
-This example uses the RESTful Sanctum API package with user authentication.
+This example bulids upon our RESTful API (Sanctum package) with user authentication and customer database naming conventions. That's right, not `snake_case`!
+
+> This project uses PascalCase as an example for overriding Laravel's default naming conventions. In reality, most organizations have their own conventions. Whether it be `passwd` instead of `password`, `userName` vs `name`, or `rememberToken` instead of `remember_token`.
+>
+> The point is, a framework should be flexible and well documented to suit a customer's needs.
 
 Using the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension, you can perform manual tests with the project's [restTests.http](tests/restTests.http) file.
 
+## Laravel Hard-Coded Crap
+
+Most of this project's database uses `PascalCase`, however, some table are pluralized and have columns that are still `snake_case` due to Laravel hard-coding them. This project will be updated when a workaround can be made.
+
+Untouched Tables:
+
+* `Sessions`
+* `personal_access_tokens`
+
+## ATTENTION
+
+With the custom DB rules we set the following changes MUST happen. Otherwise Laravel "magic" will attempt to use plural tables and snake_case columns.
+
+1. Models MUST:
+   1. Override table names to be singular via `protected $table = "MyTableName";`.
+   2. Override column **PrimaryKey** to `Id`
+   3. Set the attribute's (`$fillable`) casing to match the database.
+   4. `User` model MUST override `getAuthPassword` to set our custom column name. [ref](https://stackoverflow.com/a/39375007/249492)
+2. Factory
+   1. The `definition(): array` method must return the proper attribute casing
+3. Controllers
+   1. HTTP Form `$input` must translate to model's attribute casing to create/read/update/delete. Otherwise the model "magic" will assume the input's name `detail` rather than `Detail`.
+
 ## Steps to Reproduce
 
-1. Create new Laravel app
-   1. `composer create-project laravel/laravel example-app`
-2. Install Sanctum API
-   1. `php artisan install:api`
-3. Configure Sanctum
-   1. Open `app/Models/User.php`
-   2. Add code: `, HasApiTokens;`
-4. Add Product Table and Model
-   1. `php artisan make:migration create_products_table` - Create new migration script
-   2. Add extra columns to `Products` table (path: `/database/migrations/...`)
-   3. `php artisan migrate` - Run migration scripts
-   4. `php artisan make:model Product` - Create new model
-   5. Modify model: `app/Models/Product.php`, adding DB columns
-5. Create API Routes
-   1. Create API routes for login, register, and products REST API
-   2. **Path:** `routes/api.php`
-6. Create Controller Files
-   1. `php artisan make:controller API/BaseController`
-   2. `php artisan make:controller API/RegisterController`
-   3. `php artisan make:controller API/ProductController`
-   4. Edit controllers:
-      1. **Path:** `app/Http/Controllers/API/BaseController.php`
-      2. **Path:** `app/Http/Controllers/API/RegisterController.php`
-      3. **Path:** `app/Http/Controllers/API/ProductController.php`
-7. Create Eloquent API Resources
-   1. `php artisan make:resource ProductResource`
-   2. Path: `app/Http/Resources/ProductResource.php`
-8. Run Laravel
-   1. `php artisan serve`
-   2. Use Postman and check API
+1. Copy the `3.0-RestApi-Login` sample project
+   1. `composer install` - Install vendor packages
+2. Update migration scripts
+   1. Singular table names and PascalCase column names
+   2. This affects tables
+      1. User
+      2. Product
+      3.
+3. Import Custom DB base classes and seeders from `5.1-PascalCaseSeeder`
+   1. Import: `app\Common\PascalBlueprint.php`
+   2. Import: `app\Models\BaseModel.php`
+   3. Import: `app\Models\BaseUser.php`
+   4. Import stubs:
+      1. `migration.create.stub`
+      2. `migration.stub`
+      3. `migration.update.stub`
+      4. `model.stub`
+   5. Update: `database\seeders\DatabaseSeeder.php`
+      1. Renaming `name`->`Name` and  `email`->`Email`
+   6. Update: `database\factories\UserFactory.php`
+4. Update `BaseModel`
+   1. Override `$primaryKey` with column named, `Id`
+5. Update `User` model
+   1. Override `$table = 'User'`
+   2. Override `$authPasswordName = 'Password';`
+   3. Override `$rememberTokenName = 'RememberToken'`
+      1. Required by `Auth::attempt(..., $remember = true)`
+6. Cleanup database using `migrate:fresh`
+   1. `php artisan migrate:fresh`
+
+### Bearer Token Sample
 
 ```json
 'headers' => [
@@ -198,4 +226,4 @@ Response:
 
 ## References
 
-This example is based on [rest-api-authentication-using-sanctum-tutorial](https://www.itsolutionstuff.com/post/laravel-11-rest-api-authentication-using-sanctum-tutorialexample.html), extending functionality, fixing bugs, and added REST Client tests for VS Code.
+* [Laravel: How can I change the default Auth Password field name?](https://stackoverflow.com/a/39375007/249492)
