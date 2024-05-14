@@ -2,6 +2,12 @@
 
 Building on the previous example, **5.2-PascalCase-REST-Api**, we're adding the ability to filter information via the _URL Query_.
 
+This allows the user to filter via the query such as:
+
+```txt
+customers?postalCode[gt]=3000
+```
+
 > **Why PascalCase and not snake_case?**
 >
 > No every organization uses the same database naming conventions, especially when there is a debate between singular vs plural, PascalCase/camelCase/snake_case. >
@@ -47,4 +53,4 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
 
 ## References
 
-The example created here is based on the PHP course, [How to build a REST API with Laravel](https://www.youtube.com/watch?v=YGqCZjdgJJk) sections 3.3 and 3.4.
+The example created here is based on the PHP course, [How to build a REST API with Laravel](https://www.youtube.com/watch?v=YGqCZjdgJJk) sections 3.3 and 3.4. See also, [GitHub folders 3.3](https://github.com/tutsplus/build-a-restful-api-with-laravel-2022)
