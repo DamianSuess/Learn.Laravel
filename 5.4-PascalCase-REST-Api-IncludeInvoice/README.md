@@ -1,6 +1,6 @@
 # Laravel 11 - Custom DB Naming Conventions
 
-Building on the previous example, **5.2-PascalCase-REST-Api**, we're adding the ability to filter information via the _URL Query_.
+Building on the previous example, **5.3-PascalCase-REST-Api**, we're adding the ability to include Invoices to the Customer(s) being returned in JSON.
 
 This allows the user to filter via the query such as:
 
