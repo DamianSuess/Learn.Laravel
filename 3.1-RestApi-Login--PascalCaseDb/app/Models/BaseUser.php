@@ -10,13 +10,14 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
-//use Illuminate\Foundation\Auth\User as UserAuthenticatable;
 
+// NOTE:
+//  This is a copy/past of `Illuminate\Foundation\Auth\User.php` which extends `Model`.
+//  However, we need to extend BaseModel for column overrides.
 class BaseUser extends BaseModel implements
   AuthenticatableContract,
   AuthorizableContract,
   CanResetPasswordContract
-//UserAuthenticatable
 {
   use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
 }

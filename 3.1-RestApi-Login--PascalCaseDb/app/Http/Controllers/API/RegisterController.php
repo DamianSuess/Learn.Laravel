@@ -31,7 +31,7 @@ class RegisterController extends BaseController
     $validator = Validator::make($request->all(), [
       'name' => 'required',
       'email' => 'required|email',
-      'password' => 'required',
+      'password' => 'required|min:5',
       'c_password' => 'required|same:password',
     ]);
 
@@ -66,6 +66,11 @@ class RegisterController extends BaseController
    */
   public function login(Request $request): JsonResponse
   {
+    // $pass = bcrypt($request->password);
+    // $pass = $request->password;
+
+    // EloquentUserProvider.php and DatabaseUserProvider both check hard-coded column `password`
+    // FAILS: if (Auth::attempt(['Email' => $request->email, 'Password' => $pass])) {
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
       // Intellisense fix: This informs Inteliphense to base on our User model which utilizes, `HasApiTokens` to 'createToken(..)'
