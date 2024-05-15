@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\StoreCustomerRequest;
 use App\Http\Resources\V1\CustomerResource;
 use App\Http\Resources\V1\CustomerCollection;
 use App\Filters\V1\CustomerFilter;
@@ -42,15 +43,6 @@ class CustomerController extends Controller
   }
 
   /**
-   * Show the form for creating a new customer
-   *
-   * @return  \Illuminate\Http\Response
-   */
-  public function create()
-  {
-  }
-
-  /**
    *
    * @param   Customer  $customer  [$customer description]
    * @return  [type]               [return description]
@@ -64,5 +56,10 @@ class CustomerController extends Controller
       return new CustomerResource(($customer->loadMissing("Invoice"))); // Name of `Invoice` table
 
     return new CustomerResource($customer);
+  }
+
+  public function store(StoreCustomerRequest $request)
+  {
+    return new CustomerResource(Customer::create($request->all()));
   }
 }

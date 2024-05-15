@@ -3,6 +3,7 @@
 use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -24,6 +25,9 @@ return new class extends Migration
       $table->string("Country");
       $table->string("PostalCode");
       $table->timestamps();
+
+      // Naming Convention: "FK_LocalTableColumn_ReferenceTableColumn"
+      //$table->foreign("CustomerTypeId", "FK_CustomerCustomerTypeId_CustomerTypeId")->references("Id")->on("CustomerType");
     });
 
     $schema->create("Invoice", function (PascalBlueprint $table) {
@@ -37,6 +41,23 @@ return new class extends Migration
 
       $table->foreign("CustomerId", "FK_InvoiceCustomerId_CustomerId")->references("Id")->on("Customer");
     });
+
+    $schema->create("CustomerType", function (PascalBlueprint $table) {
+      $table->id("Id");
+      $table->string("Name");
+    });
+
+    DB::table("CustomerType")->insert(array("Id" => 1, "Name" => "Individual"));
+    DB::table("CustomerType")->insert(array("Id" => 2, "Name" => "Business"));
+
+    $schema->create("PaidStatus", function (PascalBlueprint $table) {
+      $table->id("Id");
+      $table->string("Name");
+    });
+
+    DB::table("PaidStatus")->insert(array("Id" => 1, "Name" => "Billed"));
+    DB::table("PaidStatus")->insert(array("Id" => 2, "Name" => "Paid"));
+    DB::table("PaidStatus")->insert(array("Id" => 3, "Name" => "Void"));
   }
 
   /**
