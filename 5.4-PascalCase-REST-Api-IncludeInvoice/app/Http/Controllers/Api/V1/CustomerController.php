@@ -29,23 +29,15 @@ class CustomerController extends Controller
 
     // CustomerFilter could be a Facade so we don't have to use 'new' keyword
     $filter = new CustomerFilter();
-    $queryItems = $filter->Transform($request);
+    $filterItems = $filter->Transform($request);
+    $includeInvoices = $request->query("includeInvoices");
 
-    // Check for item result count to display properly
-    // Customer::where($queryItems);
+    $customers = Customer::where($filterItems);
 
-    if (count($queryItems) == 0)
-      return new CustomerCollection(Customer::paginate());
-    else {
-      // Note: Results link doesn't retain filter when applied
-      // "url": "http://localhost:8000/api/v1/customers?page=1",
-      // return new CustomerCollection(Customer::where($queryItems)->paginate());
+    if ($includeInvoices)
+      $customers = $customers->with("Invoice");
 
-      // Make clickable link maintain filter
-      // "url": "http://localhost:8000/api/v1/customers?postalCode%5Bgt%5D=30000&page=1",
-      $customers = Customer::where($queryItems)->paginate();
-      return new CustomerCollection($customers->appends($request->query()));
-    }
+    return new CustomerCollection($customers->paginate()->appends($request->query()));
   }
 
   /**
