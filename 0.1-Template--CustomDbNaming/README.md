@@ -30,15 +30,31 @@ _This does not include Sanctum API._
    3. `protected $rememberTokenName = 'RememberToken';`
 3. The `BaseUser` class is a copy/paste of `use Illuminate\Foundation\Auth\User`, except we extend `BaseModel`
 
-## Laravel Factory and Seeder Bug
+## Laravel Model and Seeder
 
-When running the seed command via `php artisan migrate:fresh --seed` you can encounter a Laravel "magic" bug.
+When running the seed command via `php artisan migrate:fresh --seed` you may encounter a Laravel "magic" error where it attempts to automatically glue the parent model's name and the column using `snake_case`.
 
-There is a bug in Laravel "magic" where the Seeder and Factory classes will break attempting to auto-glue a database relationship. Most notably referencing the Foreign Key when you have one table dependent upon another.
+Consider the database's pseudo code as follows, noting that `Invoice` belongs to `Customer`, or in other words, there are many Invoices to a single Customer.
 
-This happens for a number of reasons, one being the model's usage of `belongsTo($related, $foreignKey)` method.
+```json
+Customer { Id, Name, ...};
+Invoice { Id, CustomerId, Amount, ... };
+```
 
-In the example of a `Customer` and `Invoice`. A customer can have many invoices, therefore the auto-glue in the `Invoice` model uses `belongsTo()` method to set the parent model and the column used as the foreign key.
+To avoid this issue, in the parent model (`Customer`) we configure the `->hasMany($related, $foreignKey, $localKey)` as follows, `->hasMany(Invoice::class, "CustomerId", "Id")`.
+
+And in the child model (`Invoice`) we configure the `->belongsTo($related, $foreignKey, $ownerKey)` as follows, `->belongsTo(Customer::class, "CustomerId")`
+
+If these are not explicitly setup, Laravel "magic" will attempt to auto-glue in the child to the parent using `snake_case` or even worse, if if the "ownerKey" isn't set the the seeder fail to create the parent model first, and `CustomerId` will have a `null` value.
+
+### Sample Code
+
+The sample code below shows you how to correctly join the relationship between these two.
+
+Remember:
+
+* If the parent's `hasMany(...)` doesn't specify the child's column relationship to the parent, the seeder may fail.
+* If the child's `belongsTo(..)` doesn't specify the ForeignKey column name, it will auto-glue using snake_case.
 
 ```php
 // ==========
@@ -50,7 +66,8 @@ class Customer extends BaseModel
 
   public function Invoice()
   {
-    return $this->hasMany(Invoice::class);
+    // Be sure to set the Invoice's FK (CustomerId) and this model's local key (Id)
+    return $this->hasMany(Invoice::class, "CustomerId", "Id");
   }
 }
 
@@ -85,17 +102,27 @@ class CustomerSeeder
       ->create();
   }
 
-  // Breaks:
-  //  The following attempts to magically use, `customer_id` not `CustomerId`
-  //  regardless of the predefined FK established in the database.
-  //
-  // Create 25 customers with 10 invoices
+  // Same as above. This only works when the parent correctly links via `hasMany(..)` relationship.
   Customer::factory()
     ->count(25)
     // ->hasInvoice(10)                   // Magic method; same as below
     ->has(Invoice::factory()->count(10))  // Same as `->hasInvoice(10)`
     ->create();
 }
+```
+
+In this snippet example, even when specifying the foreign key's name in the `belongsTo(..)` method causes a failure becase a customer hasn't been created yet.
+
+```php
+  public function Customer()
+  {
+    // Set the Foreign Key column name. Otherwise, seeder will fail
+    return $this->belongsTo(
+      Customer::class,
+      "CustomerId",
+      "FK_InvoiceCustomerId_CustomerId"
+    );
+  }
 ```
 
 ## References

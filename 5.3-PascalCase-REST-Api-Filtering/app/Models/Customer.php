@@ -32,7 +32,8 @@ class Customer extends BaseModel
 
   public function Invoice()
   {
-    return $this->hasMany(Invoice::class);
+    // Be sure to set the Invoice's FK (CustomerId) and this model's local key (Id)
+    return $this->hasMany(Invoice::class, "CustomerId", "Id");
   }
 
   public function getTable()

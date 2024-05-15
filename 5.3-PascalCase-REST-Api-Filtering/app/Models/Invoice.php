@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class Invoice extends BaseModel
@@ -28,7 +29,7 @@ class Invoice extends BaseModel
    */
   protected $primaryKey = 'Id';
 
-  public function Customer()
+  public function Customer(): BelongsTo
   {
     // Works only if column is named, `customer_id`
     // return $this->belongsTo(Customer::class);
