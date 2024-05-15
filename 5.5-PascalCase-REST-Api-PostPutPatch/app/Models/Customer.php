@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Models\BaseModel;
 use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Customer extends BaseModel
@@ -24,6 +23,22 @@ class Customer extends BaseModel
    * @var string
    */
   protected $table = 'Customer';
+
+  /**
+   * Table columns
+   *
+   * @var array<string>
+   */
+  protected $fillable = [
+    "Name",
+    "CustomerTypeId",
+    "Email",
+    "Address",
+    "City",
+    "State",
+    "Country",
+    "PostalCode",
+  ];
 
   public function Invoice()
   {

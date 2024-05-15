@@ -44,9 +44,17 @@ return new class extends Migration
       $table->string("Name");
     });
 
-    DB::table("CustomerType")->insert(array("Id" => 1, "Name" => "Billed"));
-    DB::table("CustomerType")->insert(array("Id" => 2, "Name" => "Paid"));
-    DB::table("CustomerType")->insert(array("Id" => 3, "Name" => "Void"));
+    DB::table("CustomerType")->insert(array("Id" => 1, "Name" => "Individual"));
+    DB::table("CustomerType")->insert(array("Id" => 2, "Name" => "Business"));
+
+    $schema->create("PaidStatus", function (PascalBlueprint $table) {
+      $table->id("Id");
+      $table->string("Name");
+    });
+
+    DB::table("PaidStatus")->insert(array("Id" => 1, "Name" => "Billed"));
+    DB::table("PaidStatus")->insert(array("Id" => 2, "Name" => "Paid"));
+    DB::table("PaidStatus")->insert(array("Id" => 3, "Name" => "Void"));
   }
 
   /**
