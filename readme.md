@@ -10,6 +10,21 @@ In the PascalCase sample project the following motto is applied:
 >
 > The point is, a framework should be flexible and well documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
 
+## Reproduce Samples
+
+Before running a sample project please note the following
+
+1. The `.env` files are not saved by default.
+   * Copy `.env.example` as `.env` before running
+   * Error 500 may occur when the `.env` file is missing.
+2. Run with VS Code and the suggested Extensions
+   1. See, `.vscode/extensions.json` for more info.
+3. Execute, `composer install` to download the Vendor packages.
+4. Execute, `php artisan migrate` to create the database before running
+   * `php artisan migrate:fresh` - Drop tables and recreate
+   * `php artisan migrate:fresh --seed`  - Seed table with test data (_when project states to do so_)
+5. Launch project, `php artisan serve`
+
 ## Sample Projects
 
 0. Template Projects
