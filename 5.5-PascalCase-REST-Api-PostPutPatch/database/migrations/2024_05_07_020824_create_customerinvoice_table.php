@@ -25,6 +25,9 @@ return new class extends Migration
       $table->string("Country");
       $table->string("PostalCode");
       $table->timestamps();
+
+      // Naming Convention: "FK_LocalTableColumn_ReferenceTableColumn"
+      //$table->foreign("CustomerTypeId", "FK_CustomerCustomerTypeId_CustomerTypeId")->references("Id")->on("CustomerType");
     });
 
     $schema->create("Invoice", function (PascalBlueprint $table) {

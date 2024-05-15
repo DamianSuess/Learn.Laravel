@@ -25,7 +25,7 @@ class StoreCustomerRequest extends FormRequest
   {
     // Array's key is the info coming from the client (hence, camelCase not PascalCase)
     return [
-      "name" => ["required"],
+      "Name" => ["required"],
       "type" => ["required", Rule::in([1, 2, 3])],
       "email" => ["required", "email"],
       "address" => ["required"],
@@ -45,7 +45,7 @@ class StoreCustomerRequest extends FormRequest
     // Convert between DB table schema and incoming json data
     $this->merge([
       "Name"            => $this->name,
-      "CustomerTypeId"  => $this->customerTypeId,
+      "CustomerTypeId"  => $this->type, // NOTE: "type" is used in 'rules()' method
       "Email"           => $this->email,
       "Address"         => $this->address,
       "City"            => $this->city,
