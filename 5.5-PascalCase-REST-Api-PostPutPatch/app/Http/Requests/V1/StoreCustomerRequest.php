@@ -26,7 +26,7 @@ class StoreCustomerRequest extends FormRequest
     // Array's key is the info coming from the client (hence, camelCase not PascalCase)
     return [
       "name" => ["required"],
-      "customerTypeId" => ["required", Rule::in([1, 2, 3])],
+      "type" => ["required", Rule::in([1, 2, 3])],
       "email" => ["required", "email"],
       "address" => ["required"],
       "city" => ["required"],
