@@ -3,6 +3,7 @@
 use App\Common\PascalBlueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -37,6 +38,15 @@ return new class extends Migration
 
       $table->foreign("CustomerId", "FK_InvoiceCustomerId_CustomerId")->references("Id")->on("Customer");
     });
+
+    $schema->create("CustomerType", function (PascalBlueprint $table) {
+      $table->id("Id");
+      $table->string("Name");
+    });
+
+    DB::table("CustomerType")->insert(array("Id" => 1, "Name" => "Billed"));
+    DB::table("CustomerType")->insert(array("Id" => 2, "Name" => "Paid"));
+    DB::table("CustomerType")->insert(array("Id" => 3, "Name" => "Void"));
   }
 
   /**
