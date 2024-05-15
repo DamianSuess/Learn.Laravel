@@ -34,8 +34,9 @@ class CustomerController extends Controller
 
     $customers = Customer::where($filterItems);
 
-    if ($includeInvoices)
-      $customers = $customers->with("Invoice");
+    // Must use the string "true" otherwise any value will evaluate as true
+    if ($includeInvoices == "true")
+      $customers = $customers->with("Invoice"); // Name of `Invoice` table
 
     return new CustomerCollection($customers->paginate()->appends($request->query()));
   }
@@ -56,6 +57,12 @@ class CustomerController extends Controller
    */
   public function show(Customer $customer)
   {
+    $includeInvoices = request()->query("includeInvoices");
+
+    // Must use the string "true" otherwise any value will evaluate as true
+    if ($includeInvoices == "true")
+      return new CustomerResource(($customer->loadMissing("Invoice"))); // Name of `Invoice` table
+
     return new CustomerResource($customer);
   }
 }

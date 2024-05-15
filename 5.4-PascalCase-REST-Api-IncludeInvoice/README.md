@@ -11,9 +11,13 @@ customers?postalCode[gt]=30000&includeInvoice
 ## Reproduce
 
 1. Starting with the previous project, _**5.3-PascalCase-Filter**_
-2. Update `CustomerController` adding the `includeInvoices` query filter.
-   1. Update `CustomerResource` to include `invoices` field when customer has invoices
-
+2. Update `CustomerController` method `index()` for showing all
+   1. Adding the `includeInvoices` query filter.
+   2. Update `CustomerResource` to include `invoices` field when customer has invoices
+3. Updated `CustomerController` method `show()` method for showing a single record
+4. Test
+   * http://localhost:8000/api/v1/customers?postalCode[gt]=40000&includeInvoices=true
+   * http://localhost:8000/api/v1/customers/1?includeInvoices=true
 
 ## Base Models for PascalCase
 
