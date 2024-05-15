@@ -2,12 +2,6 @@
 
 Building on the previous example, **5.3-PascalCase-REST-Api**, we're adding the ability to include Invoices to the Customer(s) being returned in JSON.
 
-This allows the user to filter via the query such as:
-
-```txt
-customers?postalCode[gt]=30000&includeInvoice
-```
-
 ## Reproduce
 
 1. Starting with the previous project, _**5.3-PascalCase-Filter**_
