@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
+use App\Models\BaseUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -19,7 +19,6 @@ class User extends BaseUser
 
   /**
    * The column name of the password field using during authentication. (See also, Illuminate\Auth\Authenticatable)
-   *
    * @var string
    */
   protected $authPasswordName = 'Password';

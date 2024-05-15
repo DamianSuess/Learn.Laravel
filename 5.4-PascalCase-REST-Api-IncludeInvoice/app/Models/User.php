@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
+use App\Models\BaseUser;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 
-//// BEFORE:
-////  use Illuminate\Foundation\Auth\User as Authenticatable;
-////  class User extends Authenticatable
 class User extends BaseUser
 {
   use HasFactory, Notifiable;
@@ -20,10 +17,20 @@ class User extends BaseUser
    */
   protected $table = 'User';
 
+  /**
+   * The column name of the password field using during authentication. (See also, Illuminate\Auth\Authenticatable)
+   * @var string
+   */
+  protected $authPasswordName = 'Password';
+
+  /**
+   * The column name of the "remember me" token. (See also, Illuminate\Auth\Authenticatable)
+   * @var string
+   */
+  protected $rememberTokenName = 'RememberToken';
 
   /**
    * The attributes that are mass assignable.
-   *
    * @var array<int, string>
    */
   protected $fillable = [

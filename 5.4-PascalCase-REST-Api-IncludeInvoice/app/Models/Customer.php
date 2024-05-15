@@ -25,15 +25,9 @@ class Customer extends BaseModel
    */
   protected $table = 'Customer';
 
-  /**
-   * The primary key associated with the table.
-   * @var string
-   */
-  protected $primaryKey = 'Id';
-
   public function Invoice()
   {
-    return $this->hasMany(Invoice::class);
+    return $this->hasMany(Invoice::class, "CustomerId", $this->primaryKey);
   }
 
   public function getTable()
