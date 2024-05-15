@@ -14,7 +14,7 @@ class CustomerSeeder extends Seeder
   public function run(): void
   {
     // Works with PascalCase foreign key column, `Inventory.CustomerId`
-    for ($i = 1; $i <= 25; $i++) {
+    for ($i = 1; $i <= 5; $i++) {
       $customer = Customer::factory()->create();
       $invoices = Invoice::factory()
         ->count(3)
@@ -33,17 +33,15 @@ class CustomerSeeder extends Seeder
     //  "SQLSTATE[HY000]: General error: 1 table Invoice has no column named customer_Id (Connection: sqlite, SQL: insert into "Invoice" ("CustomerId", "Amount", "PaidStatusId", "BilledDttm", "PaidDttm", "customer_Id", "UpdatedAt", "CreatedAt") values (3, 4426, 1, 2018-11-05 21:26:49, 2015-03-07 20:10:18, 2, 2024-05-12 19:40:11, 2024-05-12 19:40:11))"
     //
     //// Create 25 customers with 10 invoices
-    ////Customer::factory()
-    ////  ->count(25)
-    ////  // ->hasInvoice(10)                   // Magic method; same as below
-    ////  ->has(Invoice::factory()->count(10))  // Same as `->hasInvoice(10)`
-    ////  ->create();
+    Customer::factory()
+      ->count(10)
+      // ->hasInvoice(10)                   // Magic method; same as below
+      ->has(Invoice::factory()->count(5))  // Same as `->hasInvoice(10)`
+      ->create();
 
-    /*
     // 5 customer that have 0 invoices
     Customer::factory()
       ->count(5)
       ->create();
-    */
   }
 }

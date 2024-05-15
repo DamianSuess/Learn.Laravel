@@ -30,6 +30,9 @@ class CustomerResource extends JsonResource
       "city"    => $this->City,
       "state"    => $this->State,
       "postalCode"  => $this->PostalCode,
+      // Only include when an invoice "is loaded"
+      // $relationship is the name of `Invoice` table
+      "invoices" => InvoiceResource::collection($this->whenLoaded("Invoice")),
     ];
   }
 }
