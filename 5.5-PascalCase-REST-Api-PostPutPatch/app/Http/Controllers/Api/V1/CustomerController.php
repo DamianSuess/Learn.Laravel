@@ -45,7 +45,7 @@ class CustomerController extends Controller
   /**
    *
    * @param   Customer  $customer  [$customer description]
-   * @return  [type]               [return description]
+   * @return  JsonResource         [return description]
    */
   public function show(Customer $customer)
   {
@@ -53,7 +53,7 @@ class CustomerController extends Controller
 
     // Must use the string "true" otherwise any value will evaluate as true
     if ($includeInvoices == "true")
-      return new CustomerResource(($customer->loadMissing("Invoice"))); // Name of `Invoice` table
+      return new CustomerResource($customer->loadMissing("Invoice")); // Name of `Invoice` table
 
     return new CustomerResource($customer);
   }
