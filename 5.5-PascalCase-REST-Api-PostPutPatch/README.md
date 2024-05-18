@@ -4,6 +4,8 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
 
 ## Reproduce
 
+### Part 1 - Create POST handler AKA: "_store()_"
+
 1. Starting with the previous project, _**5.4-PascalCase-Filter**_
 2. Updated tables to migration script
    1. `CustomerType` for `Customer` table to denote 1=Individual, 2=Business
@@ -19,6 +21,7 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
    2. Add `POST` test with `Content-Type:` and `Accept:` set to `application/json`
       1. `Accept: application/json` is very important, otherwise it will redirect to a webpage (HTTP 302)
 
+### Part 2 - (Coming Soon)
 
 ## Base Models for PascalCase
 
