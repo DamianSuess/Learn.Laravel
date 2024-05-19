@@ -21,7 +21,9 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
    2. Add `POST` test with `Content-Type:` and `Accept:` set to `application/json`
       1. `Accept: application/json` is very important, otherwise it will redirect to a webpage (HTTP 302)
 
-### Part 2 - (Coming Soon)
+### Part 2 - Updating entries via PUT
+
+_Coming Soon_
 
 ## Base Models for PascalCase
 
