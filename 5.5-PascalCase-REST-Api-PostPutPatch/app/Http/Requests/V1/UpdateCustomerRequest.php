@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class UpdateCustomerRequest extends FormRequest
 {
   /**
-   * Determine if the user is authorized to make this request.
+   * 1st - Determine if the user is authorized to make this request.
    */
   public function authorize(): bool
   {
@@ -18,7 +18,7 @@ class UpdateCustomerRequest extends FormRequest
   }
 
   /**
-   * Get the validation rules that apply to the request.
+   * 3rd - Get the validation rules that apply to the request.
    *
    * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
    */
@@ -56,7 +56,7 @@ class UpdateCustomerRequest extends FormRequest
   }
 
   /**
-   * Prepare the data for validation. Overrides, ValidatesWhenResolvedTrait::prepareForValidation()
+   * 2nd - Prepare the data for validation. Overrides, ValidatesWhenResolvedTrait::prepareForValidation()
    * @return void
    */
   protected function prepareForValidation()

@@ -44,20 +44,26 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
    1. Add  `"sometimes"` to the rules array elements
    2. i.e. `"name" => ["sometimes", "required"],`
 
+## Sample Code Highlights
+
+### Request Class - Order of Execution
+
+1. `authorize()` - Check if we're authorized to access
+2. `prepareForValidation()` - Prepare the data for validation. _Overrides, ValidatesWhenResolvedTrait::prepareForValidation()_
+3. `rules()` - Get the validation rules that apply to the request
+
+### Request Class - Authorization
+
 > **Remember**: Request classes override `authorize()` for our tests only; but NEVER in production.
 >
 > ```php
 >   public function authorize(): bool
 >   {
->     // allow anyone to be authorized
+>     // Blindly returning `true` allows anyone to be authorized
 >     return true;
 >     ////return false;
 >   }
 > ```
-
-## Base Models for PascalCase
-
-## Sample Code Highlights
 
 ## References
 
