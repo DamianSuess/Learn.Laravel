@@ -43,7 +43,7 @@ class UpdateCustomerRequest extends FormRequest
     } else {
       // Assuming, PATCH
       return [
-        "name" => ["sometimes", "required"],
+        "Name" => ["sometimes", "required"],
         "type" => ["sometimes", "required", Rule::in([1, 2, 3])],
         "email" => ["sometimes", "required", "email"],
         "address" => ["sometimes", "required"],
@@ -64,16 +64,17 @@ class UpdateCustomerRequest extends FormRequest
     // Check for required constraint before merging in
     // If a required field is missing then we'll error-out.
 
-    if ($this->type && $this->address)
+    if ($this->postalCode)
+      //if ($this->type && $this->address)
       // Convert between DB table schema and incoming json data
       $this->merge([
-        "Name"            => $this->name,
-        "CustomerTypeId"  => $this->type, // NOTE: "type" is used in 'rules()' method
-        "Email"           => $this->email,
-        "Address"         => $this->address,
-        "City"            => $this->city,
-        "State"           => $this->state,
-        "Country"         => $this->country,
+        ////"Name"            => $this->name,
+        ////"CustomerTypeId"  => $this->type, // NOTE: "type" is used in 'rules()' method
+        ////"Email"           => $this->email,
+        ////"Address"         => $this->address,
+        ////"City"            => $this->city,
+        ////"State"           => $this->state,
+        ////"Country"         => $this->country,
         "PostalCode"      => $this->postalCode,
       ]);
   }

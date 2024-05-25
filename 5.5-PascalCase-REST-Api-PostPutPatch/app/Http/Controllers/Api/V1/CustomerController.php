@@ -61,7 +61,12 @@ class CustomerController extends Controller
 
   public function store(StoreCustomerRequest $request)
   {
-    return new CustomerResource(Customer::create($request->all()));
+    // Create a new customer using the inputs
+    $newCustomer = Customer::create($request->all());
+
+    // Return the transformed attributes into our custom JSON contract
+    // i.e. "CustomerTypeId" --> "type"
+    return new CustomerResource($newCustomer);
   }
 
   /**
@@ -74,6 +79,8 @@ class CustomerController extends Controller
    */
   public function update(UpdateCustomerRequest $request, Customer $customer)
   {
+    $isIt = $request->validated();
+
     $customer->update($request->all());
   }
 }
