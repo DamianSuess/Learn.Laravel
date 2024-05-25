@@ -2,7 +2,14 @@
 
 In this edition of the Suess Labs' Learn repository, we'll dive into the Laravel PHP framework for web applications.
 
+Author: [Damian Suess](https://www.linkedin.com/in/damiansuess/)<br />
+Website: [suesslabs.com](https://suesslabs.com)
+
+## Overview
+
 Looking back, I've usually always created my own micro-frameworks with PHP to keep things lean and quick. However, maintainability and scalability can become a pinch-point throughout the product's lifecycle, so considerations should be made when starting a new product.
+
+### PascalCase
 
 In the PascalCase sample project the following motto is applied:
 
