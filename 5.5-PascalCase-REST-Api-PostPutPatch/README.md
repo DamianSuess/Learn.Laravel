@@ -30,13 +30,30 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
 * HTTP PATCH - Update using only the supplied fields
 * Laravel's Controller `update()` handles both of these requests
 
-#### Steps - PUT
+#### Steps
 
 1. Crete `UpdateCustomerRequest`
    1. `php artisan make:request V1\UpdateCustomerRequest`
    2. File: `app/Requests/V1/UpdateCustomerRequest.php`
-   3. Copy the `rules()` and `prepareForValidation()` from `StoreCustomerRequest` class.
-2.
+2. Configure the `UpdateCustomerRequest`
+   1. Copy\paste the `rules()` and `prepareForValidation()` from `StoreCustomerRequest` class into our class.
+   2. Set the `authorization()` to `return true;`
+3. Add 'PUT' to our `rules()`
+   1. `if $method == 'PUT') {...}` - it **MUST** be UPPERCASE.
+4. Add 'PATCH' to our rules `rules()`
+   1. Add  `"sometimes"` to the rules array elements
+   2. i.e. `"name" => ["sometimes", "required"],`
+
+> **Remember**: Request classes override `authorize()` for our tests only; but NEVER in production.
+>
+> ```php
+>   public function authorize(): bool
+>   {
+>     // allow anyone to be authorized
+>     return true;
+>     ////return false;
+>   }
+> ```
 
 ## Base Models for PascalCase
 

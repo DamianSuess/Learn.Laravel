@@ -6,6 +6,9 @@ GET {{baseUrl}}/api/v1/customers HTTP/1.1
 
 # // @name login
 # Test Success: Create Individual (type: 1)
+# TODO: Get the ID for later (i.e. 21)
+
+// @name newCustomer
 POST {{baseUrl}}/api/v1/customers HTTP/1.1
 Content-Type: application/json
 Accept: application/json
@@ -22,7 +25,7 @@ Accept: application/json
 }
 
 ###
-# Test Failure Case: Bad CustomerTypeId
+# Failure Case Test: Bad CustomerTypeId
 POST {{baseUrl}}/api/v1/customers HTTP/1.1
 Content-Type: application/json
 Accept: application/json
@@ -36,4 +39,43 @@ Accept: application/json
   "state": "New England",
   "postalCode": "40202-5917",
   "country": "USA"
+}
+
+
+###
+# PUT - Update all values for customer
+# NOTE: Supplying CustomerId from previous POST
+# Expected: 200 OK
+
+@customerId = {{newCustomer.response.body.$.data.id}}
+PUT {{baseUrl}}/api/v1/customers/{{customerId}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Mispelled Name",
+  "type": "2",
+  "email": "abc123@yahoo.com",
+  "address": "9999 Jane Street",
+  "city": "Supa Dupa",
+  "state": "Pizza",
+  "postalCode": "55512-5917",
+  "country": "USA"
+}
+
+###
+# PATCH - Update all values for customer
+# NOTE: Supplying CustomerId from previous POST
+# Expected: 200 OK
+
+@customerId = {{newCustomer.response.body.$.data.id}}
+PATCH {{baseUrl}}/api/v1/customers/{{customerId}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "New Name",
+  "email": "new-name@yahoo.com",
+  "type": "1",
+  "state": "New New York"
 }
