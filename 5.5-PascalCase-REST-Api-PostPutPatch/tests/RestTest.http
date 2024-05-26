@@ -89,7 +89,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "Vault 21",
+  "name": "Vault 21",
   "email": "vault-21@yahoo.com",
   "type": "1",
   "state": "Wasteland"

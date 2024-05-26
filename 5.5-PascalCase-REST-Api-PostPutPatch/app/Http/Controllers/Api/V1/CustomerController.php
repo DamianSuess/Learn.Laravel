@@ -74,13 +74,59 @@ class CustomerController extends Controller
    *
    * @param   UpdateCustomerRequest  $request   Request to update customer properties
    * @param   Customer               $customer  Customer model
-   *
-   * @return  [type]                            [return description]
    */
-  public function update(UpdateCustomerRequest $request, Customer $customer)
+  public function update(UpdateCustomerRequest $request, Customer $customer): void
   {
-    $isIt = $request->validated();
+    $input = $request->validated();
+    $all = $request->all();
 
+    //$transformed = $this->TransformKeys($all);
+    //$customer->update($transformed);
+
+    // OG:
     $customer->update($request->all());
+  }
+
+  /**
+   * Converts API JSON key names to model's name
+   * @param array<string|mixed> $inputs Array using JSON API key names
+   * @return array<string|mixed>
+   */
+  private function TransformKeys($input)
+  {
+    $transformed = $input;
+    // TODO: Add translator for JSON to Model (`type` -> `CustomerTypeId`)
+
+    // Returns ALL db rows ):
+    //$attempt = Customer::select(
+    //  "name AS Name",
+    //  "type AS CustomerTypeId",
+    //  "email as Email",
+    //  "address as Address",
+    //  "city as City",
+    //  "state as State",
+    //  "country as Country",
+    //  "postalCode as PostalCode"
+    //)
+    //  ->get()
+    //  ->toArray();
+    // ===================
+    // Too a lot of checks. could use a ref array ["type" => "CustomerTypeId"]
+    //foreach ($input as $item) {
+    //  if ($item["name"])
+    //    $transformed["Name"] = $item["name"];
+    //}
+    // ===================
+    // Fails if missing
+    //$transformed["Name"] = $input["name"];
+    //$transformed["CustomerTypeId"] = $input["type"];
+    //$transformed["Email"] = $input["email"];
+    //$transformed["Address"] = $input["address"];
+    //$transformed["City"] = $input["city"];
+    //$transformed["State"] = $input["state"];
+    //$transformed["Country"] = $input["country"];
+    //$transformed["PostalCode"] = $input["postalCode"];
+
+    return $transformed;
   }
 }

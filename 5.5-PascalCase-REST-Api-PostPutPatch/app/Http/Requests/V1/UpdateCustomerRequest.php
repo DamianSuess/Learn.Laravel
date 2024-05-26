@@ -43,7 +43,7 @@ class UpdateCustomerRequest extends FormRequest
     } else {
       // Assuming, PATCH
       return [
-        "Name" => ["sometimes", "required"],
+        "name" => ["sometimes", "required"],
         "type" => ["sometimes", "required", Rule::in([1, 2, 3])],
         "email" => ["sometimes", "required", "email"],
         "address" => ["sometimes", "required"],
@@ -59,11 +59,15 @@ class UpdateCustomerRequest extends FormRequest
    * 2nd - Prepare the data for validation. Overrides, ValidatesWhenResolvedTrait::prepareForValidation()
    * @return void
    */
-  protected function prepareForValidation()
+  protected function prepareForValidation(): void
   {
-    // Check for required constraint before merging in
-    // If a required field is missing then we'll error-out.
-
+    // NOTE:
+    //  Prepare or sanitize any data from the request before you apply your validation rules.
+    //  `merge(..)` sets a route param into the request.
+    //
+    //  If an item is added below, but missing from POST/PUT/PATCH
+    //  it will fail to update the DB. This seems to force-add it
+    //  to the Form Input array
     if ($this->postalCode)
       //if ($this->type && $this->address)
       // Convert between DB table schema and incoming json data
@@ -77,5 +81,13 @@ class UpdateCustomerRequest extends FormRequest
         ////"Country"         => $this->country,
         "PostalCode"      => $this->postalCode,
       ]);
+
+    if ($this->name)    $this->merge(["Name"            => $this->name]);
+    if ($this->type)    $this->merge(["CustomerTypeId"  => $this->type]);
+    if ($this->email)   $this->merge(["Email"           => $this->email]);
+    if ($this->address) $this->merge(["Address"         => $this->address]);
+    if ($this->city)    $this->merge(["City"            => $this->city]);
+    if ($this->state)   $this->merge(["State"           => $this->state]);
+    if ($this->country) $this->merge(["Country"         => $this->country]);
   }
 }
