@@ -65,6 +65,74 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
 >   }
 > ```
 
+## Recap and Thoughts
+
+### PUT/PATCh JSON Key Transformation Approach
+
+> **Issue:**
+> When updating, if the JSON keys do not match our custom model properties (_`$fillable[..]`_), the `->update(..)` method wont be able to match the column names. In this project, our JSON element is called `type` and the model uses, `CustomerTypeId`.
+>
+> _In other language JSON implementations such as C# this can get auto-translated in a number of different ways._
+
+In this project, we use the `UpdateCustomerRequest`'s `prepareForValidation()` to add new keys that match our `Customer` model's names and cases. Essentially, we are now carrying along duplicates - _double the original information_. Remember, **PUT** updates all columns (_except, Id_) and **PATCH** updates only those supplied, which is why a series of `if($this->..) $this->merge([...` statements are used.
+
+> The `prepareForValidation()` create the following for **PATCH**.
+> ![Patch-Array](Update-PATCH-Array.png)
+>
+> ```php
+> $customer->update($request->all());
+> ```
+
+In smaller transactions, this isn't such a big of a deal, however, with larger data there will be a larger transactional cost in performance.
+
+There are other ways which this can be dealt with such as. One being, creating a method in our Controllers (_`CustomerController`_) to rename these keys so that our model can perform the database update.
+
+#### Failed Attempts
+
+Remember, the intent is to translate JSON element keys to our model's (`type` -> `CustomerTypeId`).
+
+Below are some failed attempts:
+
+```php
+// Fails if `$input[keyName]` missing.
+// A series of if-statements works, but it's error-prone
+private function TransformKeys($input)
+{
+  $transformed["Name"]            = $input["name"];
+  $transformed["CustomerTypeId"]  = $input["type"];
+  $transformed["Email"]           = $input["email"];
+  $transformed["Address"]         = $input["address"];
+  $transformed["City"]            = $input["city"];
+  $transformed["State"]           = $input["state"];
+  $transformed["Country"]         = $input["country"];
+  $transformed["PostalCode"]      = $input["postalCode"];
+
+  return $transformed;
+}
+```
+
+```php
+  // Same as above, but it would require a
+  $translator  = [
+    "name"       => "Name",
+    "type"       => "CustomerTypeId",
+    "email"      => "Email",
+    "address"    => "Address",
+    "city"       => "City",
+    "state"      => "State",
+    "country"    => "Country",
+    "postalCode" => "PostalCode",
+  ];
+
+  // Too a lot of checks. could use a ref array ["type" => "CustomerTypeId"]
+  foreach ($jsonInput as $item) {
+    foreach ($translator as $t) {
+      if ($item["name"])
+        $transformed["Name"] = $item["name"];
+    }
+  }
+```
+
 ## References
 
 The example created here is based on the PHP course,

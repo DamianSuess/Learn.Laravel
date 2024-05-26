@@ -12,9 +12,8 @@ class UpdateCustomerRequest extends FormRequest
    */
   public function authorize(): bool
   {
-    // allow anyone to be authorized
+    // Allow anyone to be authorized, otherwise `return false;`
     return true;
-    ////return false;
   }
 
   /**
@@ -68,20 +67,7 @@ class UpdateCustomerRequest extends FormRequest
     //  If an item is added below, but missing from POST/PUT/PATCH
     //  it will fail to update the DB. This seems to force-add it
     //  to the Form Input array
-    if ($this->postalCode)
-      //if ($this->type && $this->address)
-      // Convert between DB table schema and incoming json data
-      $this->merge([
-        ////"Name"            => $this->name,
-        ////"CustomerTypeId"  => $this->type, // NOTE: "type" is used in 'rules()' method
-        ////"Email"           => $this->email,
-        ////"Address"         => $this->address,
-        ////"City"            => $this->city,
-        ////"State"           => $this->state,
-        ////"Country"         => $this->country,
-        "PostalCode"      => $this->postalCode,
-      ]);
-
+    if ($this->postalCode) $this->merge(["PostalCode"   => $this->postalCode]);
     if ($this->name)    $this->merge(["Name"            => $this->name]);
     if ($this->type)    $this->merge(["CustomerTypeId"  => $this->type]);
     if ($this->email)   $this->merge(["Email"           => $this->email]);
