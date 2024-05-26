@@ -87,7 +87,52 @@ In smaller transactions, this isn't such a big of a deal, however, with larger d
 
 There are other ways which this can be dealt with such as. One being, creating a method in our Controllers (_`CustomerController`_) to rename these keys so that our model can perform the database update.
 
-#### Failed Attempts
+### REST Test
+
+```http
+PATCH {{baseUrl}}/api/v1/customers/21 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Vault 21",
+  "email": "vault-21@yahoo.com",
+  "type": "1",
+  "state": "Wasteland"
+}
+```
+
+### JSON Translate and Transform
+
+```php
+private function TransformKeys($input)
+{
+  $translator  = [
+    "name"       => "Name",
+    "type"       => "CustomerTypeId",
+    "email"      => "Email",
+    "address"    => "Address",
+    "city"       => "City",
+    "state"      => "State",
+    "country"    => "Country",
+    "postalCode" => "PostalCode",
+  ];
+
+  // Create new array using Model's naming conventions
+  // I.E. ["type" => "CustomerTypeId"]
+  $transformed = array();
+  foreach ($input as $iKey => $iValue) {
+    foreach ($translator as $jsonKey => $modelKey) {
+      if ($iKey == $jsonKey)
+        $transformed[$modelKey] = $iValue;
+    }
+  }
+
+  return $transformed;
+}
+```
+
+#### Failed Attempt
 
 Remember, the intent is to translate JSON element keys to our model's (`type` -> `CustomerTypeId`).
 
@@ -111,27 +156,6 @@ private function TransformKeys($input)
 }
 ```
 
-```php
-  // Same as above, but it would require a
-  $translator  = [
-    "name"       => "Name",
-    "type"       => "CustomerTypeId",
-    "email"      => "Email",
-    "address"    => "Address",
-    "city"       => "City",
-    "state"      => "State",
-    "country"    => "Country",
-    "postalCode" => "PostalCode",
-  ];
-
-  // Too a lot of checks. could use a ref array ["type" => "CustomerTypeId"]
-  foreach ($jsonInput as $item) {
-    foreach ($translator as $t) {
-      if ($item["name"])
-        $transformed["Name"] = $item["name"];
-    }
-  }
-```
 
 ## References
 
