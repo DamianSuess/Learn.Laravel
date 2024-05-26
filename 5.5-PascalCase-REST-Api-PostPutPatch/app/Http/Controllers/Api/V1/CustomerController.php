@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Models\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreCustomerRequest;
+use App\Http\Requests\V1\UpdateCustomerRequest;
 use App\Http\Resources\V1\CustomerResource;
 use App\Http\Resources\V1\CustomerCollection;
 use App\Filters\V1\CustomerFilter;
@@ -60,6 +61,58 @@ class CustomerController extends Controller
 
   public function store(StoreCustomerRequest $request)
   {
-    return new CustomerResource(Customer::create($request->all()));
+    // Create a new customer using the inputs
+    $newCustomer = Customer::create($request->all());
+
+    // Return the transformed attributes into our custom JSON contract
+    // i.e. "CustomerTypeId" --> "type"
+    return new CustomerResource($newCustomer);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param   UpdateCustomerRequest  $request   Request to update customer properties
+   * @param   Customer               $customer  Customer model
+   */
+  public function update(UpdateCustomerRequest $request, Customer $customer): void
+  {
+    // Attempt to translate/transform JSON element keys to Model's conventions.
+    $transformed = $this->TransformKeys($request->all());
+    $customer->update($transformed);
+
+    // Update Customer DB table using the supplied column/values
+    //$customer->update($request->all());
+  }
+
+  /**
+   * Converts API JSON key names to model's name
+   * @param array<string|mixed> $inputs Array using JSON API key names
+   * @return array<string|mixed>
+   */
+  private function TransformKeys($input)
+  {
+    $translator  = [
+      "name"       => "Name",
+      "type"       => "CustomerTypeId",
+      "email"      => "Email",
+      "address"    => "Address",
+      "city"       => "City",
+      "state"      => "State",
+      "country"    => "Country",
+      "postalCode" => "PostalCode",
+    ];
+
+    // Create new array using Model's naming conventions
+    // I.E. ["type" => "CustomerTypeId"]
+    $transformed = array();
+    foreach ($input as $iKey => $iValue) {
+      foreach ($translator as $jsonKey => $modelKey) {
+        if ($iKey == $jsonKey)
+          $transformed[$modelKey] = $iValue;
+      }
+    }
+
+    return $transformed;
   }
 }

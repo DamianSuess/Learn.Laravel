@@ -10,11 +10,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class CustomerResource extends JsonResource
 {
+  // * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
   /**
    * Transform the resource into an array.
    *
    * @param \Illuminate\Http\Request $request
-   * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+   * @return array<string, mixed>
    */
   public function toArray(Request $request): array
   {
