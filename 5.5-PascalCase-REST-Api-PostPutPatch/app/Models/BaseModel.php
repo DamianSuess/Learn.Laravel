@@ -57,7 +57,7 @@ class BaseModel extends Model
    * @param  array<string,string|mixed> $input  Input array
    * @return array<string,string|mixed> Input array using our desired key names.
    */
-  public function transformKeys($input)
+  public function transformKeys($input): array
   {
     $transformed = array();
     foreach ($input as $iKey => $iValue) {

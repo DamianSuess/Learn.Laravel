@@ -77,7 +77,7 @@ class CustomerController extends Controller
    */
   public function update(UpdateCustomerRequest $request, Customer $customer): void
   {
-    // Attempt to translate/transform JSON element keys to Model's conventions.
+    // Translate/transform JSON element keys to Model's conventions
     $transformed = $customer->transformKeys($request->all());
     $customer->update($transformed);
 
