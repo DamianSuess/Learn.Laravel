@@ -31,14 +31,15 @@ class Invoice extends BaseModel
 
   /**
    * JSON element key to Model property name translator.
+   * This is the reverse of \App\Http\Resources\V1\InvoiceResource
    * @var array<string,string>
    */
   protected $keyTranslator  = [
     "customerId"    => "CustomerID",
     "amount"        => "Amount",
-    "paidStatusId"  => "PaidStatusId",
-    "billedDttm"    => "BilledDttm",
-    "paidDttm"      => "PaidDttm",
+    "status"        => "PaidStatusId",
+    "billedDate"    => "BilledDttm",
+    "paidDate"      => "PaidDttm",
   ];
 
   public function Customer()

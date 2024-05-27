@@ -8,6 +8,23 @@ Building on the previous example, **5.6-PascalCase-REST-Api**, we're adding the 
 
 ## Sample Code Highlights
 
+### Invoice JSON Contract Differs from Model/DB
+
+The invoice JSON contract uses `billedDate` and `paidDate` whereas the model/database use, `BilledDttm` and `PaidDttm` respectively.
+
+An insert conversion happens with `InvoiceResource.php`.
+
+```json
+{
+  "id": 65,
+  "customerId": 15,
+  "amount": 2177,
+  "status": "0",
+  "billedDate": "2020-11-14 06:55:40",
+  "paidDate": null
+}
+```
+
 ## References
 
 The example created here is based on the PHP course,
