@@ -26,7 +26,6 @@ class Customer extends BaseModel
 
   /**
    * Table columns
-   *
    * @var array<string>
    */
   protected $fillable = [
@@ -38,6 +37,21 @@ class Customer extends BaseModel
     "State",
     "Country",
     "PostalCode",
+  ];
+
+  /**
+   * JSON element key to Model property name translator.
+   * @var array<string,string>
+   */
+  protected $keyTranslator  = [
+    "name"       => "Name",
+    "type"       => "CustomerTypeId",
+    "email"      => "Email",
+    "address"    => "Address",
+    "city"       => "City",
+    "state"      => "State",
+    "country"    => "Country",
+    "postalCode" => "PostalCode",
   ];
 
   public function Invoice()
