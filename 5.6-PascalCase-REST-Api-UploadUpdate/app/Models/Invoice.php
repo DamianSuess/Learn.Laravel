@@ -29,6 +29,18 @@ class Invoice extends BaseModel
    */
   protected $primaryKey = 'Id';
 
+  /**
+   * JSON element key to Model property name translator.
+   * @var array<string,string>
+   */
+  protected $keyTranslator  = [
+    "customerId"    => "CustomerID",
+    "amount"        => "Amount",
+    "paidStatusId"  => "PaidStatusId",
+    "billedDttm"    => "BilledDttm",
+    "paidDttm"      => "PaidDttm",
+  ];
+
   public function Customer()
   {
     // Works only if column is named, `customer_id`
