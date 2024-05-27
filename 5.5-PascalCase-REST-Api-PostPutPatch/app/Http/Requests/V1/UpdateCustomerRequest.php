@@ -68,9 +68,10 @@ class UpdateCustomerRequest extends FormRequest
     //  it will fail to update the DB. `merge(..)` forcibly adds it to the Form Input array
 
     // Kept as an example for PUT
-    if ($this->postalCode) $this->merge(["PostalCode"   => $this->postalCode]);
+    if ($this->postalCode)
+      $this->merge(["PostalCode" => $this->postalCode]);
 
-    // OLD approach for PATCH to rename JSON to Customer model/DB.
+    // Alt approach: For PATCH to rename JSON to Customer model/DB.
     ////if ($this->name)    $this->merge(["Name"            => $this->name]);
     ////if ($this->type)    $this->merge(["CustomerTypeId"  => $this->type]);
     ////if ($this->email)   $this->merge(["Email"           => $this->email]);
