@@ -77,42 +77,14 @@ class CustomerController extends Controller
    */
   public function update(UpdateCustomerRequest $request, Customer $customer): void
   {
-    // Attempt to translate/transform JSON element keys to Model's conventions.
-    $transformed = $this->TransformKeys($request->all());
+    // Translate/transform JSON element keys to Model's conventions
+    $transformed = $customer->transformKeys($request->all());
     $customer->update($transformed);
 
-    // Update Customer DB table using the supplied column/values
+    // Alt Approach:
+    // Update the Customer DB table using the supplied column/values
+    // assuming the supplied JSON/Form's keys match the Model's naming conventions
+    //
     //$customer->update($request->all());
-  }
-
-  /**
-   * Converts API JSON key names to model's name
-   * @param array<string|mixed> $inputs Array using JSON API key names
-   * @return array<string|mixed>
-   */
-  private function TransformKeys($input)
-  {
-    $translator  = [
-      "name"       => "Name",
-      "type"       => "CustomerTypeId",
-      "email"      => "Email",
-      "address"    => "Address",
-      "city"       => "City",
-      "state"      => "State",
-      "country"    => "Country",
-      "postalCode" => "PostalCode",
-    ];
-
-    // Create new array using Model's naming conventions
-    // I.E. ["type" => "CustomerTypeId"]
-    $transformed = array();
-    foreach ($input as $iKey => $iValue) {
-      foreach ($translator as $jsonKey => $modelKey) {
-        if ($iKey == $jsonKey)
-          $transformed[$modelKey] = $iValue;
-      }
-    }
-
-    return $transformed;
   }
 }

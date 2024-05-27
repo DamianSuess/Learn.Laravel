@@ -87,6 +87,8 @@ In smaller transactions, this isn't such a big of a deal, however, with larger d
 
 There are other ways which this can be dealt with such as. One being, creating a method in our Controllers (_`CustomerController`_) to rename these keys so that our model can perform the database update.
 
+## Translate API Input to PascalCase Model/DB
+
 ### REST Test
 
 ```http
@@ -102,12 +104,46 @@ Accept: application/json
 }
 ```
 
-### JSON Translate and Transform
+### BaseModel.php
 
 ```php
-private function TransformKeys($input)
-{
-  $translator  = [
+  /**
+   * JSON element key to Model property name translator.
+   * @var array<string,string>
+   */
+  protected $keyTranslator = array();
+
+  /**
+   * Transform input key(s) from JSON/FORM input to our model's property name(s)
+   * based on our model's $keyTranslator to maintain API contracts.
+   *
+   * i.e. Input JSON element key is `type` and database column is `CustomerTypeId`.
+   *
+   * @param  array<string,string|mixed> $input  Input array
+   * @return array<string,string|mixed> Input array using our desired key names.
+   */
+  public function transformKeys($input): array
+  {
+    $transformed = array();
+    foreach ($input as $iKey => $iValue) {
+      foreach ($this->keyTranslator as $jsonKey => $modelKey) {
+        if ($iKey == $jsonKey)
+          $transformed[$modelKey] = $iValue;
+      }
+    }
+
+    return $transformed;
+  }
+```
+
+### Customer.php
+
+```php
+  /**
+   * JSON element key to Model property name translator.
+   * @var array<string,string>
+   */
+  protected $keyTranslator  = [
     "name"       => "Name",
     "type"       => "CustomerTypeId",
     "email"      => "Email",
@@ -117,19 +153,17 @@ private function TransformKeys($input)
     "country"    => "Country",
     "postalCode" => "PostalCode",
   ];
+```
 
-  // Create new array using Model's naming conventions
-  // I.E. ["type" => "CustomerTypeId"]
-  $transformed = array();
-  foreach ($input as $iKey => $iValue) {
-    foreach ($translator as $jsonKey => $modelKey) {
-      if ($iKey == $jsonKey)
-        $transformed[$modelKey] = $iValue;
-    }
+### CustomerController.php
+
+```php
+  public function update(UpdateCustomerRequest $request, Customer $customer): void
+  {
+    // Translate/transform JSON element keys to Model's conventions
+    $transformed = $customer->transformKeys($request->all());
+    $customer->update($transformed);
   }
-
-  return $transformed;
-}
 ```
 
 #### Failed Attempt
@@ -155,7 +189,6 @@ private function TransformKeys($input)
   return $transformed;
 }
 ```
-
 
 ## References
 
