@@ -77,8 +77,7 @@ class InvoiceController extends Controller
     });
 
     // TODO: Fix the insert
-    // insert into \"Invoice\" (\"BilledDttm\", \"CustomerId\", \"PaidDttm\", \"amount\", \"billedDttm\", \"paidDttm\", \"status\") values (2024-04-01 07:45:00, 99, ?, 15, 2024-04-01 07:45:00, ?, 1), (2024-04-01 07:55:30, 1, ?, 25, 2024-04-01 07:55:30, ?, 2), (2024-04-01 15:59:59, 1, ?, 30, 2024-04-01 15:59:59, ?, 3))",
-    // NOTE: This just bypassed, CreatedAt and UpdatedAt columns.
+    // NOTE: This implementation bypasses, CreatedAt and UpdatedAt columns.
     Invoice::insert($bulk->toArray());
   }
 
