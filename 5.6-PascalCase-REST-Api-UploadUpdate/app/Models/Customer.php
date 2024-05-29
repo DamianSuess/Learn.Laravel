@@ -43,7 +43,7 @@ class Customer extends BaseModel
    * JSON element key to Model property name translator.
    * @var array<string,string>
    */
-  protected $keyTranslator  = [
+  public $keyTranslator  = [
     "name"       => "Name",
     "type"       => "CustomerTypeId",
     "email"      => "Email",

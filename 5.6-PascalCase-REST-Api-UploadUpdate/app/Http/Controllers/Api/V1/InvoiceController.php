@@ -6,8 +6,10 @@ use App\Models\Invoice;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\InvoiceResource;
 use App\Http\Resources\V1\InvoiceCollection;
+use App\Http\Requests\V1\BulkStoreInvoiceRequest;
 use App\Filters\V1\InvoiceFilter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class InvoiceController extends Controller
 {
@@ -42,6 +44,41 @@ class InvoiceController extends Controller
    */
   public function create()
   {
+  }
+
+  /**
+   * Store a newly created invoice resource into storage
+   * @param \Illuminate\Http\Request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
+  }
+
+  /**
+   * Bulk store many newly created invoices resource into storage
+   * @param BulkStoreInvoiceRequest
+   * @return \Illuminate\Http\Response
+   */
+  public function bulkStore(BulkStoreInvoiceRequest $request)
+  {
+    $items = $request->all();
+
+    // Returns only 'Amount' and 'Status'
+    $bulk = collect($items)->map(function ($arr, $key) {
+      // Array except helper, get all columns except for the following
+      // Inserting: Amount, Status columns
+
+      // Convert API contract's JSON key naming to match our model/DB
+      $inv = new Invoice();
+      $arrTransformed = $inv->transformKeys($arr);
+
+      return Arr::except($arrTransformed, ["customerId", "paidDate", "CustomerId", "PaidDttm"]);
+    });
+
+    // TODO: Fix the insert
+    // NOTE: This implementation bypasses, CreatedAt and UpdatedAt columns.
+    Invoice::insert($bulk->toArray());
   }
 
   /**

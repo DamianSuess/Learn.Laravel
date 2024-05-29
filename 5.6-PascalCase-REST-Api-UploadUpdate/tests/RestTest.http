@@ -8,6 +8,14 @@ GET {{baseUrl}}/api/v1/customers?page=2 HTTP/1.1
 
 ###
 
+GET {{baseUrl}}/api/v1/invoices HTTP/1.1
+
+###
+
+GET {{baseUrl}}/api/v1/invoices?page=5 HTTP/1.1
+
+###
+
 # // @name login
 # Test Success: Create Individual (type: 1)
 
@@ -98,3 +106,61 @@ Accept: application/json
   "type": "1",
   "state": "Wasteland"
 }
+
+###
+# Bulk insert invoices
+
+POST {{baseUrl}}/api/v1/invoices/bulk HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+[{
+  "customerId": "1",
+  "amount": "15",
+  "status": "1",
+  "billedDate": "2024-04-01 07:45:00",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "25",
+  "status": "2",
+  "billedDate": "2024-04-01 07:55:30",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "30",
+  "status": "3",
+  "billedDate": "2024-04-01 15:59:59",
+  "paidDate": null
+}]
+
+###
+# INVALID: Bulk insert invoices
+
+POST {{baseUrl}}/api/v1/invoices/bulk HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+[{
+  "customerId": "99",
+  "amount": "15",
+  "status": "1",
+  "billedDate": "2024-04-01 07:45:00",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "25",
+  "status": "2",
+  "billedDate": "2024-04-01 07:55:30",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "30",
+  "status": "3",
+  "billedDate": "2024-04-01 15:59:59",
+  "paidDate": null
+}]
