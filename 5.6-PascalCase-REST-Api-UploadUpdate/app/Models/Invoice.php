@@ -34,7 +34,7 @@ class Invoice extends BaseModel
    * This is the reverse of \App\Http\Resources\V1\InvoiceResource
    * @var array<string,string>
    */
-  protected $keyTranslator  = [
+  public $keyTranslator  = [
     "customerId"    => "CustomerID",
     "amount"        => "Amount",
     "status"        => "PaidStatusId",

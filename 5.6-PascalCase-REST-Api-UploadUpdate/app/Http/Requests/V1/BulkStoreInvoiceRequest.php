@@ -36,9 +36,9 @@ class BulkStoreInvoiceRequest extends FormRequest
       // If the invoices were under "data" element, you define it as: "data.*.customerId"
       "*.customerId" => ["required", "integer"],
       "*.amount" => ["required", "numeric"],
-      "*.status" => ["required", Rule::in([1, 2, 3])], // 1=Billed, 2=Paid, 3=Void
-      "*.billedDttm" => ["required", "date_format:Y-m-d H:i:s"],
-      "*.paidDttm" => ["date_format:Y-m-d H:i:s", "nullable"],
+      "*.status" => ["required", Rule::in([1, 2, 3])],            // 1=Billed, 2=Paid, 3=Void
+      "*.billedDate" => ["required", "date_format:Y-m-d H:i:s"],  // "billedDate" -> "BilledDttm"
+      "*.paidDate" => ["date_format:Y-m-d H:i:s", "nullable"],    // "paidDate"   -> "PaidDttm"
     ];
   }
 
@@ -48,15 +48,20 @@ class BulkStoreInvoiceRequest extends FormRequest
    */
   protected function prepareForValidation()
   {
+    // No need to double-load our request's array. Use `TransformKeys(..)` method
+    /*
     $data = [];
+
     foreach ($this->toArray() as $obj) {
       $obj["CustomerId"] = $obj["customerId"] ?? null;
-      $obj["BilledDttm"] = $obj["billedDttm"] ?? null;
-      $obj["PaidDttm"] = $obj["paidDttm"] ?? null;
+      $obj["BilledDttm"] = $obj["billedDate"] ?? null;
+      $obj["PaidDttm"] = $obj["paidDate"] ?? null;
+      $obj["PaidStatusTypeId"] = $obj["paidDate"] ?? null;
 
       $data[] = $obj;
     }
 
     $this->merge($data);
+    */
   }
 }

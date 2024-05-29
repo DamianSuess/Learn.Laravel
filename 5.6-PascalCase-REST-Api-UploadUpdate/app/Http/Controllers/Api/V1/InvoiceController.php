@@ -62,14 +62,23 @@ class InvoiceController extends Controller
    */
   public function bulkStore(BulkStoreInvoiceRequest $request)
   {
-    // Invoice::insert();
     $items = $request->all();
+
+    // Returns only 'Amount' and 'Status'
     $bulk = collect($items)->map(function ($arr, $key) {
       // Array except helper, get all columns except for the following
       // Inserting: Amount, Status columns
-      return Arr::except($arr, ["customerId", "billedDate", "paidDate"]);
+
+      // Convert API contract's JSON key naming to match our model/DB
+      $inv = new Invoice();
+      $arrTransformed = $inv->transformKeys($arr);
+
+      return Arr::except($arrTransformed, ["customerId", "paidDate", "CustomerId", "PaidDttm"]);
     });
 
+    // TODO: Fix the insert
+    // insert into \"Invoice\" (\"BilledDttm\", \"CustomerId\", \"PaidDttm\", \"amount\", \"billedDttm\", \"paidDttm\", \"status\") values (2024-04-01 07:45:00, 99, ?, 15, 2024-04-01 07:45:00, ?, 1), (2024-04-01 07:55:30, 1, ?, 25, 2024-04-01 07:55:30, ?, 2), (2024-04-01 15:59:59, 1, ?, 30, 2024-04-01 15:59:59, ?, 3))",
+    // NOTE: This just bypassed, CreatedAt and UpdatedAt columns.
     Invoice::insert($bulk->toArray());
   }
 

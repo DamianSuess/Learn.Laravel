@@ -4,7 +4,14 @@ Building on the previous example, **5.6-PascalCase-REST-Api**, we're adding the 
 
 ## Reproduce
 
-### Part 1
+1. Create `BulkStoreInvoiceRequest.php`
+   1. File: `app/Http/Requests/V1/BulkStoreInvoiceRequest.php`
+2. `InvoiceController` create `function bulkStore(BulkStoreInvoiceRequest $request)`
+3. `api.php` add POST entry to point to our new `bulkStore(..)` function
+   1. `Route::post("invoices/bulk", ["uses" => "InvoiceController@bulkStore"]);`
+4. `Invoice` class, filled our key translators in `$keyTranslator` (JSON to Model/DB)
+5. BaseModel
+   1. Made `$keyTranslator` and `transformKeys(..)` from `protected` to `public static` so we can call without needing to initialize a new class each time.
 
 ## Sample Code Highlights
 

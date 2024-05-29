@@ -118,22 +118,22 @@ Accept: application/json
   "customerId": "1",
   "amount": "15",
   "status": "1",
-  "billedDttm": "2024-04-01 07:45:00",
-  "paidDttm": null
+  "billedDate": "2024-04-01 07:45:00",
+  "paidDate": null
 },
 {
   "customerId": "1",
   "amount": "25",
   "status": "2",
-  "billedDttm": "2024-04-01 07:55:30",
-  "paidDttm": null
+  "billedDate": "2024-04-01 07:55:30",
+  "paidDate": null
 },
 {
   "customerId": "1",
   "amount": "30",
   "status": "3",
-  "billedDttm": "2024-04-01 15:59:59",
-  "paidDttm": null
+  "billedDate": "2024-04-01 15:59:59",
+  "paidDate": null
 }]
 
 ###
@@ -147,20 +147,20 @@ Accept: application/json
   "customerId": "99",
   "amount": "15",
   "status": "1",
-  "billedDttm": "2024-04-01 07:45:00",
-  "paidDttm": null
+  "billedDate": "2024-04-01 07:45:00",
+  "paidDate": null
 },
 {
   "customerId": "1",
   "amount": "25",
   "status": "2",
-  "billedDttm": "2024-04-01 07:55:30",
-  "paidDttm": null
+  "billedDate": "2024-04-01 07:55:30",
+  "paidDate": null
 },
 {
   "customerId": "1",
   "amount": "30",
   "status": "3",
-  "billedDttm": "2024-04-01 15:59:59",
-  "paidDttm": null
+  "billedDate": "2024-04-01 15:59:59",
+  "paidDate": null
 }]

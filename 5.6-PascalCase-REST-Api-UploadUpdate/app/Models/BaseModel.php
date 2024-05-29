@@ -36,7 +36,7 @@ class BaseModel extends Model
    * JSON element key to Model property name translator.
    * @var array<string,string>
    */
-  protected $keyTranslator = array();
+  public $keyTranslator = array();
 
   public function getTable()
   {
@@ -61,6 +61,7 @@ class BaseModel extends Model
   {
     $transformed = array();
     foreach ($input as $iKey => $iValue) {
+      // "message": "Using $this when not in object context",
       foreach ($this->keyTranslator as $jsonKey => $modelKey) {
         if ($iKey == $jsonKey)
           $transformed[$modelKey] = $iValue;
