@@ -35,7 +35,7 @@ class Invoice extends BaseModel
    * @var array<string,string>
    */
   public $keyTranslator  = [
-    "customerId"    => "CustomerID",
+    "customerId"    => "CustomerId",
     "amount"        => "Amount",
     "status"        => "PaidStatusId",
     "billedDate"    => "BilledDttm",

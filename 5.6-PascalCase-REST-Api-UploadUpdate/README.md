@@ -9,9 +9,9 @@ Building on the previous example, **5.6-PascalCase-REST-Api**, we're adding the 
 2. `InvoiceController` create `function bulkStore(BulkStoreInvoiceRequest $request)`
 3. `api.php` add POST entry to point to our new `bulkStore(..)` function
    1. `Route::post("invoices/bulk", ["uses" => "InvoiceController@bulkStore"]);`
-4. `Invoice` class, filled our key translators in `$keyTranslator` (JSON to Model/DB)
-5. BaseModel
-   1. Made `$keyTranslator` and `transformKeys(..)` from `protected` to `public static` so we can call without needing to initialize a new class each time.
+4. `Invoice`
+   1. `Invoice` model, implemented the JSON key to Model `$keyTranslator` (JSON to Model/DB)
+   2. `InvoiceController`, implemented `translateKeys(..)`
 
 ## Sample Code Highlights
 
@@ -30,6 +30,18 @@ An insert conversion happens with `InvoiceResource.php`.
   "billedDate": "2020-11-14 06:55:40",
   "paidDate": null
 }
+```
+
+Contract Translator
+
+```php
+public $keyTranslator  = [
+  "customerId"    => "CustomerId",
+  "amount"        => "Amount",
+  "status"        => "PaidStatusId",
+  "billedDate"    => "BilledDttm",
+  "paidDate"      => "PaidDttm",
+];
 ```
 
 ## References
