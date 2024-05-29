@@ -53,6 +53,18 @@ class InvoiceController extends Controller
    */
   public function store(Request $request)
   {
+    // Create a new Invoice using the inputs
+    $items = $request->all(); // Pulls from, $request->parameters[]
+    $inv = new Invoice();
+    $transformed = $inv->transformKeys($items);
+
+    // NOTE:
+    //  `create(..)` creates CreatedAt and Updated at, whereas, `insert()` does not.
+    //  This is because they're handled by two different mechanisms (Eloquent vs DB Query).
+    $newInvoice = Invoice::create($transformed);
+
+    // Return the transformed attributes into our custom JSON contract
+    return new InvoiceResource($newInvoice);
   }
 
   /**
@@ -76,8 +88,9 @@ class InvoiceController extends Controller
       return Arr::except($arrTransformed, ["customerId", "paidDate", "CustomerId", "PaidDttm"]);
     });
 
-    // TODO: Fix the insert
-    // NOTE: This implementation bypasses, CreatedAt and UpdatedAt columns.
+    // NOTE:
+    //  `insert(..)` does not automatically populate CreatedAt and Updated at, whereas, `create()` does.
+    //  This is because they're handled by two different mechanisms (Eloquent vs DB Query).
     Invoice::insert($bulk->toArray());
   }
 

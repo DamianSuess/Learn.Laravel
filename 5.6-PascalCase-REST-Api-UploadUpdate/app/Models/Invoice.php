@@ -30,6 +30,18 @@ class Invoice extends BaseModel
   protected $primaryKey = 'Id';
 
   /**
+   * Table columns that we're allowed to insert into
+   * @var array<string>
+   */
+  protected $fillable = [
+    "CustomerId",
+    "Amount",
+    "PaidStatusId",
+    "BilledDttm",
+    "PaidDttm",
+  ];
+
+  /**
    * JSON element key to Model property name translator.
    * This is the reverse of \App\Http\Resources\V1\InvoiceResource
    * @var array<string,string>
