@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Assert;
@@ -9,6 +10,9 @@ use Tests\TestCase;
 
 class CustomerTest extends TestCase
 {
+  // Perform database migration
+  use RefreshDatabase;
+
   /**
    * A basic feature test example.
    */
@@ -18,11 +22,15 @@ class CustomerTest extends TestCase
     $response->assertStatus(404);
 
     $response = $this->get('/api/v1/customers');
-    $response->assertStatus(500);
+    $response->assertStatus(200);
   }
 
   public function testCreatesCustomerSuccessfully(): void
   {
+    // Needs customer table created!!
+
+    $customer = Customer::factory()->create();
+
     ////$response = $this->withHeaders(
     ////  ["Content-Type" => "application/json"]
     ////)->post('/customers', [
@@ -40,6 +48,19 @@ class CustomerTest extends TestCase
       ]
     );
 
-    $response->assertStatus(500);
+    $response->assertStatus(201)
+      ->assertJson(
+        array('data' =>
+        [
+          "id" => 2,
+          "name" => "Test CustomerName",
+          "type" => "2",
+          "email" => "ttc1@yahoo.com",
+          "address" => "1215 June Street",
+          "city" => "Magna Carta",
+          "state" => "New England",
+          "postalCode" => "40202-5917",
+        ])
+      );
   }
 }
