@@ -27,13 +27,10 @@ class CustomerTest extends TestCase
 
   public function testCreatesCustomerSuccessfully(): void
   {
-    // Needs customer table created!!
-
+    // Create 1st Customer using the factory
     $customer = Customer::factory()->create();
 
-    ////$response = $this->withHeaders(
-    ////  ["Content-Type" => "application/json"]
-    ////)->post('/customers', [
+    // Create a 2nd via JSON API
     $response = $this->postJson(
       "/api/v1/customers",
       [

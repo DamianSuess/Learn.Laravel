@@ -6,10 +6,16 @@ We will be using PHPUnit instead of Pest. Despite Pest being built on top of PHP
 
 ## Reproduce - PHPUnit
 
-1. Create new test using, `php artisan make:test InvoiceTest`
+1. Create new test using, `php artisan make:test CustomerTest`
    1. This will be created in the folder, `tests/Feature/`
-2. Validate via `php artisan test`
-3.
+2. Create new test using, `php artisan make:test InvoiceTest`
+3. Validate via `php artisan test`
+4. Add the ability to run migration scripts
+   1. Inside our new classes add:
+   2. `use Illuminate\Foundation\Testing\RefreshDatabase;`  - _after the namespace declaration_
+   3. `use RefreshDatabase;` - _inside our class' curly braces_
+   4. Now you won't get an HTTP 500 error.
+5. Add some tests
 
 ## Sample Code Highlights
 
