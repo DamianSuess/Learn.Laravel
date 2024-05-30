@@ -25,7 +25,7 @@ class Customer extends BaseModel
   protected $table = 'Customer';
 
   /**
-   * Table columns
+   * Table columns that we're allowed to insert into
    * @var array<string>
    */
   protected $fillable = [
