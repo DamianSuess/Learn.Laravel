@@ -1,0 +1,181 @@
+@baseUrl = http://localhost:8000
+
+GET {{baseUrl}}/api/v1/customers HTTP/1.1
+
+###
+
+GET {{baseUrl}}/api/v1/customers?page=2 HTTP/1.1
+
+###
+
+GET {{baseUrl}}/api/v1/invoices HTTP/1.1
+
+###
+
+GET {{baseUrl}}/api/v1/invoices?page=5 HTTP/1.1
+
+###
+
+# // @name login
+# Test Success: Create Individual (type: 1)
+
+// @name newCustomer
+POST {{baseUrl}}/api/v1/customers HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Test CustomerName",
+  "type": "2",
+  "email": "ttc1@yahoo.com",
+  "address": "1215 June Street",
+  "city": "Magna Carta",
+  "state": "New England",
+  "postalCode": "40202-5917",
+  "country": "USA"
+}
+
+###
+# Failure Case Test: Bad CustomerTypeId
+POST {{baseUrl}}/api/v1/customers HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Test CustomerName",
+  "type": "55",
+  "email": "ttc1@yahoo.com",
+  "address": "1215 June Street",
+  "city": "Magna Carta",
+  "state": "New England",
+  "postalCode": "40202-5917",
+  "country": "USA"
+}
+
+
+###
+# PUT - Update all values for customer
+# NOTE: Supplying CustomerId from previous POST
+# Expected: 200 OK
+
+@customerId = {{newCustomer.response.body.$.data.id}}
+PUT {{baseUrl}}/api/v1/customers/{{customerId}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Mispelled Name",
+  "type": "2",
+  "email": "abc123@yahoo.com",
+  "address": "9999 Jane Street",
+  "city": "Supa Dupa",
+  "state": "Pizza",
+  "postalCode": "55512-5917",
+  "country": "USA"
+}
+
+###
+# PATCH - Update all values for customer
+# NOTE: Supplying CustomerId from previous POST
+# Expected: 200 OK
+
+@customerId = {{newCustomer.response.body.$.data.id}}
+PATCH {{baseUrl}}/api/v1/customers/{{customerId}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "New Name",
+  "email": "new-name@yahoo.com",
+  "type": "1",
+  "state": "New New York"
+}
+
+###
+# PATCH (id:21) - Update all values for customer
+# NOTE: Supplying CustomerId from previous POST
+# Expected: 200 OK
+
+PATCH {{baseUrl}}/api/v1/customers/21 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Vault 21",
+  "email": "vault-21@yahoo.com",
+  "type": "1",
+  "state": "Wasteland"
+}
+
+###
+# Create an invoice attached to CustomerId:21 (if created)
+
+POST {{baseUrl}}/api/v1/invoices HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customerId": "21",
+  "amount": "24.99",
+  "status": "1",
+  "billedDate": "2024-05-29 23:59:59",
+  "paidDate": null
+}
+
+###
+# Bulk insert invoices
+
+POST {{baseUrl}}/api/v1/invoices/bulk HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+[{
+  "customerId": "1",
+  "amount": "15",
+  "status": "1",
+  "billedDate": "2024-04-01 07:45:00",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "25",
+  "status": "2",
+  "billedDate": "2024-04-01 07:55:30",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "30",
+  "status": "3",
+  "billedDate": "2024-04-01 15:59:59",
+  "paidDate": null
+}]
+
+###
+# INVALID: Bulk insert invoices
+
+POST {{baseUrl}}/api/v1/invoices/bulk HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+[{
+  "customerId": "99",
+  "amount": "15",
+  "status": "1",
+  "billedDate": "2024-04-01 07:45:00",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "25",
+  "status": "2",
+  "billedDate": "2024-04-01 07:55:30",
+  "paidDate": null
+},
+{
+  "customerId": "1",
+  "amount": "30",
+  "status": "3",
+  "billedDate": "2024-04-01 15:59:59",
+  "paidDate": null
+}]
