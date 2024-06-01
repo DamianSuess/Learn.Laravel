@@ -6,6 +6,13 @@ We will be using PHPUnit instead of Pest. Despite Pest being built on top of PHP
 
 ## Reproduce - PHPUnit
 
+```sh
+php artisan make:test CustomerTest
+php artisan make:test InvoiceTest
+
+php artisan test
+```
+
 1. Create new test using, `php artisan make:test CustomerTest`
    1. This will be created in the folder, `tests/Feature/`
 2. Create new test using, `php artisan make:test InvoiceTest`
