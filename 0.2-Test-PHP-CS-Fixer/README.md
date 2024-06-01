@@ -23,7 +23,15 @@ This is a sample (base Laravel 11) project which implements PHP-CS-Fixer (PHP Co
 
 1. Install the aforementioned VS Code Extensions
 2. Create a new Laravel project
-3.
+   1. `composer create-project laravel/laravel Test-PHP-CS-Fixer`
+3. `composer require --dev friendsofphp/php-cs-fixer`
+   1. Installs:
+      1. `laravel/sail`
+      2. `laravel/tinker`
+      3. `nesbot/carbon`
+      4. `nunomaduro/collision`
+      5. `nunomaduro/termwind`
+4.
 
 ## Code Sample Highlights
 
