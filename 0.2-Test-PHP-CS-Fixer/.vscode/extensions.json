@@ -13,8 +13,9 @@
     "codingyu.laravel-goto-view",
     // naoray.laravel-goto-components
     // -=[ PHP ]=-
+    "DEVSENSE.phptools-vscode",
     "xdebug.php-debug",
-    "bmewburn.vscode-intelephense-client",
+    //"bmewburn.vscode-intelephense-client",
     "zobo.php-intellisense",
     // DEVSENSE.phptools-vscode  // Replaces: PHP Intelephense, PHP IntelliSense
     // "junstyle.php-cs-fixer",  // Replaces: PHP Intelephense
