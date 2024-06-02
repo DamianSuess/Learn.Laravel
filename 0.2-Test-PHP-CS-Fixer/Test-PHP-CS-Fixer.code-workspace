@@ -60,7 +60,7 @@
     "php-cs-fixer.ignorePHPVersion": false,
     "php-cs-fixer.exclude": [],
     "php-cs-fixer.autoFixBySemicolon": false, // May cause lines to be deleted
-    "php-cs-fixer.autoFixByBracket": true,
+    "php-cs-fixer.autoFixByBracket": false, // Causes lines to format to the far left
     "php-cs-fixer.formatHtml": false,
     "php-cs-fixer.documentFormattingProvider": true,
     "php.suggest.basic": false,

@@ -1,5 +1,12 @@
 <?php
 
+// Xeno Innovations, Inc. and Suess Labs formatting rules (2024)
+// PHP Coding Standards Fixer
+// https://cs.symfony.com/doc/rules
+// https://cs.symfony.com/doc/config.html
+// https://www.php-fig.org/psr/psr-2/
+// https://www.php-fig.org/psr/psr-12/
+
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
@@ -14,8 +21,17 @@ $rules = [
   'blank_line_before_statement' => [
     'statements' => ['return'],
   ],
+  ////"braces" => [
+  ////  'allow_single_line_closure' => false,
+  ////  'position_after_functions_and_oop_constructs' => 'next',
+  ////  'position_after_anonymous_constructs' => 'next',
+  ////  'position_after_control_structures' => 'next',
+  ////],
   'single_space_around_construct' => true,
   'control_structure_braces' => true,
+  ////'control_structure_continuation_position' => [
+  ////  'position' => 'next_line',
+  ////],
   'braces_position' => true,
   'control_structure_continuation_position' => true,
   'declare_parentheses' => true,
@@ -118,7 +134,7 @@ $rules = [
   'single_line_comment_style' => [
     'comment_types' => ['hash'],
   ],
-  'single_quote' => true,
+  'single_quote' => false,
   'space_after_semicolon' => true,
   'standardize_not_equals' => true,
   'switch_case_semicolon_to_colon' => true,

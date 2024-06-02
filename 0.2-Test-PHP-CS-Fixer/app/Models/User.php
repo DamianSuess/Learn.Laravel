@@ -13,7 +13,6 @@ class User extends Authenticatable
 
   /**
    * The attributes that are mass assignable.
-   *
    * @var array<int, string>
    */
   protected $fillable = [
@@ -43,5 +42,31 @@ class User extends Authenticatable
       'email_verified_at' => 'datetime',
       'password' => 'hashed',
     ];
+  }
+
+  public function someMethod()
+  {
+    echo "asdf";
+    echo '';
+
+    if (1 == 2) {
+      echo "";
+    } else {
+      echo "";
+    }
+
+    switch (1) {
+      case 0:
+        {
+          echo "";
+        }
+        break;
+      case 2: {
+        echo "";
+      }
+        break;
+      default:
+        break;
+    }
   }
 }

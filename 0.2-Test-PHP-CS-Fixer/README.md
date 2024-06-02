@@ -38,7 +38,7 @@ This assumes you have installed the aforementioned VS Code Extensions
    3. Notice, `.php-cs-fixer.cache` file was created. This needs ignored
 4. Edit `.gitignore` and add line `.php-cs-fixer.cache`
 
-### Install PHP-CS-Fixer VS Code Extension
+### Next, Install PHP-CS-Fixer VS Code Extension
 
 In this step, we'll be configuring for both opening the project via the `xxx.code-workspace` file and also the directory as a whole. When using the "directory" method, the `.vscode/settings.json` file will be used for configuring PHP-CS-Fixer.
 
