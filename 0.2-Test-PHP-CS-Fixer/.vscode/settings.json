@@ -34,7 +34,7 @@
     "editor.formatOnSave": true
   },
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
-  "php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
+  //"php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
   "php-cs-fixer.onsave": false,
   "php-cs-fixer.rules": "@PSR12",
   "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",

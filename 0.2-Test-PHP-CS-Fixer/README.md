@@ -46,11 +46,12 @@ In this step, we'll be configuring for both opening the project via the `xxx.cod
    1. The extension should have included the `php-cs-fixer.phar` automatically.
    2. If not, you may install php-cs-fixer globally, [Installation](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/installation.rst)
    3. Sample location: `C:\Users\USERNAME\.vscode\extensions\junstyle.php-cs-fixer-0.3.13\php-cs-fixer.phar`
-2. Add following settings to you:
-   1. Project workspace file ending in, `.code-workspace`
-   2. `.vscode/settings.json`
+2. Add following settings to your:
+   1. `.code-workspace` - _When using a project workspace file_
+   2. `.vscode/settings.json` - _When opening the whole folder_
+   3. KEEP THESE IN-SYNC!
 
-Sample `xxx.code-workspace` settings:
+Sample settings:
 
 ```json
     "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
@@ -69,20 +70,6 @@ Sample `xxx.code-workspace` settings:
     "php.suggest.basic": false,
     "php.validate.enable": false,
 ```
-
-### Optional Modifications
-
-#### `composer.json` Scripts
-
-```json
- "scripts": {
-    "format": "vendor/bin/php-cs-fixer fix",
-    "lint": "vendor/bin/php-cs-fixer fix --dry-run",
-    ...
-```
-
-1. `"format"` allows you to fix with `composer format`
-2. `"lint"` allows you to check for files `composer lint`
 
 ## Code Sample Highlights
 
@@ -124,6 +111,42 @@ $finder = Finder::create()
   ->ignoreVCS(true);
 ```
 
+## PHP-CS-Fixer Optional Modifications
+
+### Indent with 2 Spaces and `\n`
+
+To use 2 spaces instead of the default 4 spaces and end lines with `\n`:
+
+```php
+return $config->setFinder($finder)
+  ...
+  ->setIndent(str_pad('', 2))
+  ->setLineEnding("\n")
+  ...;
+```
+
+### Enforce trailing commas in multi line arrays
+
+In the past, ending an array with a trailing `,` comma could be erroneous. However, it has become more lax due to source controls such as git. To include a trailing `,` set `trailing_comma_in_multiline` to `true`.  GCC even has a flag for `fugly-comma`.
+
+```php
+'trailing_comma_in_multiline' => true,
+```
+
+## Optional Modifications
+
+### `composer.json` Scripts
+
+```json
+ "scripts": {
+    "format": "vendor/bin/php-cs-fixer fix",
+    "lint": "vendor/bin/php-cs-fixer fix --dry-run",
+    ...
+```
+
+1. `"format"` allows you to fix with `composer format`
+2. `"lint"` allows you to check for files `composer lint`
+
 ## References
 
 * [PHP-CS-Fixer (GitHub)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
@@ -131,4 +154,8 @@ $finder = Finder::create()
 * Alternate guides:
   * [Alternate 1](https://dev.to/ibrarturi/setup-php-cs-fixer-for-laravel-project-44nf)
   * [Alternate 2](https://www.youtube.com/watch?v=0co_9kVcS38)
-* Alternatively, you can use [Laravel Pint Extension](https://github.com/open-southeners/vscode-laravel-pint)
+* Pint as an Alternatively
+  * Pint uses PHP-CS-Fixer, however, it is geared towards Laravel. And does not require you perform extra install steps.
+  * [Laravel Pint Extension](https://github.com/open-southeners/vscode-laravel-pint)
+  * [Pint Install Guide](https://devinthewild.com/article/laravel-pint-formatting-vscode-phpstorm)
+* [Indent 2 spaces (StackOverflow)](https://stackoverflow.com/questions/37193540/configure-php-cs-fixer-indentation-for-2-spaces-rather-than-4)
