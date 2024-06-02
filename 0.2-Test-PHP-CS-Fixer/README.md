@@ -21,17 +21,20 @@ This is a sample (base Laravel 11) project which implements PHP-CS-Fixer (PHP Co
 
 ## Steps to Reproduce
 
-1. Install the aforementioned VS Code Extensions
-2. Create a new Laravel project
-   1. `composer create-project laravel/laravel Test-PHP-CS-Fixer`
-3. `composer require --dev friendsofphp/php-cs-fixer`
-   1. Installs:
-      1. `laravel/sail`
-      2. `laravel/tinker`
-      3. `nesbot/carbon`
-      4. `nunomaduro/collision`
-      5. `nunomaduro/termwind`
-4.
+This assumes you have installed the aforementioned VS Code Extensions
+
+1. Install PHP-CS-Fixer (_**recommended Method 1**_)
+   1. Method 1 - _use your main `vendor` folder_:
+      1. `composer require --dev friendsofphp/php-cs-fixer`
+   2. Method 2 - _Creates a separate `vendor` folder_:
+      1. `mkdir -p tools/php-cs-fixer`
+      2. `composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer`
+2. Create new `.php-cs-fixer.php` rules file
+3. Execute test manually
+   1. `./vendor/bin/php-cs-fixer fix app`
+   2. This perform `fix` for all files in the `/app/` directory.
+   3. Notice, `.php-cs-fixer.cache` file was created. This needs ignored
+4. Edit `.gitignore` and add line `.php-cs-fixer.cache`
 
 ## Code Sample Highlights
 
@@ -40,3 +43,4 @@ This is a sample (base Laravel 11) project which implements PHP-CS-Fixer (PHP Co
 ## References
 
 * [PHP-CS-Fixer (GitHub)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
+* [Another setup example](https://dev.to/ibrarturi/setup-php-cs-fixer-for-laravel-project-44nf)
