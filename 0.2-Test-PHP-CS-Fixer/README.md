@@ -36,9 +36,59 @@ This assumes you have installed the aforementioned VS Code Extensions
    3. Notice, `.php-cs-fixer.cache` file was created. This needs ignored
 4. Edit `.gitignore` and add line `.php-cs-fixer.cache`
 
+### Optional Modifications
+
+#### `composer.json` Scripts
+
+```json
+ "scripts": {
+    "format": "vendor/bin/php-cs-fixer fix",
+    "lint": "vendor/bin/php-cs-fixer fix --dry-run",
+    ...
+```
+
+1. `"format"` allows you to fix with `composer format`
+2. `"lint"` allows you to check for files `composer lint`
+
 ## Code Sample Highlights
 
-...
+### `.php-cs-fixer.php`
+
+Specifying directories to include:
+
+```php
+$finder = Finder::create()
+  ->in([
+    __DIR__ . '/app',
+    __DIR__ . '/config',
+    __DIR__ . '/database',
+    __DIR__ . '/resources',
+    __DIR__ . '/routes',
+    __DIR__ . '/tests',
+  ])
+  ->name('*.php')
+  ->notName('*.blade.php')
+  ->ignoreDotFiles(true)
+  ->ignoreVCS(true);
+```
+
+Alternatively, this includes all directories except certain directories:
+
+```php
+$finder = Finder::create()
+  ->in(__DIR__)
+  ->exclude([
+    "bootstrap",
+    "storage",
+    "vendor",
+    "docker",
+  ])
+  ->name('*.php')
+  ->notName('*.blade.php')
+  ->notName("server.php");
+  ->ignoreDotFiles(true)
+  ->ignoreVCS(true);
+```
 
 ## References
 
