@@ -24,3 +24,6 @@ yarn-error.log
 !.vscode/extensions.json
 !.vscode/launch.json
 !.vscode/settings.json
+
+# Additional Laravel
+.php-cs-fixer.cache
