@@ -68,6 +68,9 @@ The projects listed here are based on the following examples. The examples in th
 
 Checkout [debugging.md](debugging.md) for more information
 
+1. `php artisan migrate --pretend`
+   1. Show the migration SQL queries before they're ran
+
 ## Naming Conventions
 
 There are many "rules" out there which veer off from one another, however, the following appears to be widely accepted. (_Frankly, I often use Xeno Innovations' legacy rules._)
