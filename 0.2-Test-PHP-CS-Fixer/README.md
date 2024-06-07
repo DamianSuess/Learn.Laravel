@@ -23,6 +23,7 @@ In our steps below, we'll be relying on the PHP-CS-Fixer VS Code extension to in
 
 ## Steps to Reproduce
 
+
 This assumes you have installed the aforementioned VS Code Extensions
 
 1. Install PHP-CS-Fixer (_**recommended Method 1**_)
@@ -43,8 +44,8 @@ This assumes you have installed the aforementioned VS Code Extensions
 In this step, we'll be configuring for both opening the project via the `xxx.code-workspace` file and also the directory as a whole. When using the "directory" method, the `.vscode/settings.json` file will be used for configuring PHP-CS-Fixer.
 
 1. Install extension, `junstyle.php-cs-fixer`
-   1. The extension should have included the `php-cs-fixer.phar` automatically.
-   2. If not, you may install php-cs-fixer globally, [Installation](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/installation.rst)
+   1. The extension includes `php-cs-fixer.phar` automatically.
+   2. Optionally you can install php-cs-fixer globally, [Installation](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/installation.rst)
    3. Sample location: `C:\Users\USERNAME\.vscode\extensions\junstyle.php-cs-fixer-0.3.13\php-cs-fixer.phar`
 2. Add following settings to your:
    1. `.code-workspace` - _When using a project workspace file_
