@@ -36,8 +36,9 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "[php]": {
-      "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-      //"editor.defaultFormatter": "junstyle.php-cs-fixer"
+      //"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+      "editor.defaultFormatter": "junstyle.php-cs-fixer",
+      "editor.formatOnSave": true,
     },
     "[blade]": {
       "editor.autoClosingBrackets": "always",

@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
   }
 
-  public function someMethod()
+  public function someMethod(): void
   {
     echo "asdf";
     echo '';
