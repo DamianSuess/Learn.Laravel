@@ -53,6 +53,8 @@
 
       </table>
 
+      LINKS:
+      {{-- {{ $products->links() }} --}}
       {!! $products->links() !!}
 
     </div>
