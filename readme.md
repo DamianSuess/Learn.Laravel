@@ -27,6 +27,16 @@ In the PascalCase sample project the following mottos are applied:
 
 ## Reproduce Samples
 
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
+### Extensions and More
+
 Before running a sample project please note the following
 
 1. The `.env` files are not saved by default.

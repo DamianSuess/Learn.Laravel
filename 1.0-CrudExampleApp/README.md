@@ -4,6 +4,16 @@ Example of performing CRUD operations via a view's Form input. The displaying of
 
 The pagnate is set to 5 results in the `ProductController.php`
 
+## Installation Steps
+
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
 ## Steps to Reproduce
 
 1. `composer create-project laravel/laravel CrudExampleApp`
