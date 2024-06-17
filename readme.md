@@ -7,19 +7,35 @@ Website: [suesslabs.com](https://suesslabs.com)
 
 ## Overview
 
-Looking back, I've usually always created my own micro-frameworks with PHP to keep things lean and quick. However, maintainability and scalability can become a pinch-point throughout the product's lifecycle, so considerations should be made when starting a new product.
+The following projects dive into the basics and customization of Laravel.
+
+### Foreword
+
+Looking back, I've usually always created custom micro-frameworks with PHP to keep things lean, quick, and target a project's needs. However, there are a few bottlenecks that can come of that. Namingly, _rapid prototyping, maintainability, and scalability_ can quickly pinch points throughout a product's lifecycle. As a consideration, frameworks like **Laravel** can assist with such things.
+
+By all means, explore and build your frameworks! This will teach you a lot of solid fundamentals, especially the core functionality of PHP.
 
 ### PascalCase
 
 In the PascalCase sample project the following mottos are applied:
 
-> 1) The projects using PascalCase is an example for overriding Laravel's default naming conventions. In reality, most organizations have their own (legacy) conventions. Whether it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
+> 1) The projects using **PascalCase** are an example of overriding Laravel's default naming conventions. In reality, most organizations have their own (legacy) conventions. Whether it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
 >
 > 2) Most samples people provide are a 1-to-1 on the naming, leaning into the Laravel "_magic glue_".
 >
-> 3) The point is, a framework should be flexible and well documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
+> 3) A framework should be flexible and well-documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
 
 ## Reproduce Samples
+
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
+### Extensions and More
 
 Before running a sample project please note the following
 

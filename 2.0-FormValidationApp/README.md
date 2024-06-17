@@ -4,6 +4,16 @@ Sample web app performing form validation.
 
 This example retains the previous input box details if the user input is incorrect and provides hints in such an event.
 
+## Installation Steps
+
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
 ## Steps to Reproduce
 
 1. `composer create-project laravel/laravel FormValidationApp`
