@@ -28,12 +28,8 @@ php artisan serve
 composer create-project laravel/laravel 6.0-WebApiServiceApp
 ```
 
-1. Blarg
+1. Coming Soon
 
 ## Code Sample Highlights
 
-...
-
 ## References
-
-* Item-1
