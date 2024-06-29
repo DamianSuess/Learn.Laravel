@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-use App\Http\Requests\ProductStoreRequest;
-use App\Http\Requests\ProductUpdateRequest;
 
 class ProductController extends Controller
 {
@@ -26,7 +26,7 @@ class ProductController extends Controller
   /**
    * Show the form for creating a new resource.
    */
-  public function create()
+  public function create() : View
   {
     return view('products.create');
   }
@@ -46,7 +46,7 @@ class ProductController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Product $product)
+  public function show(Product $product): View
   {
     return view("products.show", compact("product"));
   }
@@ -54,7 +54,7 @@ class ProductController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Product $product)
+  public function edit(Product $product): View
   {
     return view("products.edit", compact("product"));
   }
