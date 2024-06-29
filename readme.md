@@ -72,13 +72,13 @@ The projects listed here are based on the following examples. The examples in th
 
 ### Coming Soon
 
-* [Deleting Multiple Records](https://websolutioncode.com/how-to-deleting-multiple-record-in-laravel)
-* [Publish API Route File](https://www.itsolutionstuff.com/post/how-to-publish-api-route-file-in-laravel-11example.html)
-* [File Upload Example](https://www.itsolutionstuff.com/post/laravel-11-file-upload-example-tutorialexample.html)
-* [AJAX Request Example](https://www.itsolutionstuff.com/post/laravel-11-ajax-request-example-tutorialexample.html)
-* [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
-* [Generate and Read Sitemap XML File Example](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
-* Testing Database with Factory and Seeders - [Blog](https://code.tutsplus.com/how-to-build-a-rest-api-with-laravel-php-full-course--cms-93786t), [Video](https://www.youtube.com/watch?v=YGqCZjdgJJk&t=1045s)
+* Deleting Multiple Records
+* Publish API Route File
+* File Upload Example
+* AJAX Request Example
+* JQuery Ajax Loading Spinner Example
+* Generate and Read Sitemap XML File Example
+* Testing Database with Factory and Seeders
 
 ## Debugging Tips
 
@@ -97,3 +97,10 @@ There are many "rules" out there which veer off from one another, however, the f
 ## Other References
 
 * [Database: Query Builder](https://laravel.com/docs/11.x/queries)
+* [Deleting Multiple Records](https://websolutioncode.com/how-to-deleting-multiple-record-in-laravel)
+* [Publish API Route File](https://www.itsolutionstuff.com/post/how-to-publish-api-route-file-in-laravel-11example.html)
+* [File Upload Example](https://www.itsolutionstuff.com/post/laravel-11-file-upload-example-tutorialexample.html)
+* [AJAX Request Example](https://www.itsolutionstuff.com/post/laravel-11-ajax-request-example-tutorialexample.html)
+* [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
+* [Generate and Read Sitemap XML File Example](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
+* Testing Database with Factory and Seeders - [Blog](https://code.tutsplus.com/how-to-build-a-rest-api-with-laravel-php-full-course--cms-93786t), [Video](https://www.youtube.com/watch?v=YGqCZjdgJJk&t=1045s)
