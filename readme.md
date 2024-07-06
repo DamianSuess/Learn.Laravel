@@ -60,7 +60,15 @@ Before running a sample project please note the following
 3. REST API Login and CRUD operation - _Including VS Code tester using REST Client extension_
 4. REST API and CRUD - _Slightly more complex implementation of the same thing_
 5. Custom DB Naming Conventions - _Column names using PascalCase and not the gross `snake_case`._
-   1. Pascal Case Seeder - _DB Factory and Seeder example using your PascalCase columns_
+   1. Pascal Case - Seeder - _DB Factory and Seeder example using your PascalCase columns_
+   2. Pascal Case - API - _Web API for creating "Customers and Products"_
+   3. Pascal Case - Filter Results
+   4. Pascal Case - Include Invoice
+   5. Pascal Case - POST PUT PATCH - _Create and Update items_
+   6. Pascal Case - Upload Update - _Massive upload information to store in DB_
+   7. Pascal Case - Unit Testing - _How to test your Custom DB Naming Conventions_
+   8. _Pivot Table - **COMING SOON**_
+6. _Web API Service - **COMING SOON** - Use services to link both View and API logic._
 
 ## References
 
