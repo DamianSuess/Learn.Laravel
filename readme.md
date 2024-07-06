@@ -69,6 +69,13 @@ Before running a sample project please note the following
    7. Pascal Case - Unit Testing - _How to test your Custom DB Naming Conventions_
    8. _Pivot Table - **COMING SOON**_
 6. _Web API Service - **COMING SOON** - Use services to link both View and API logic._
+7. Database - Pivot Table
+
+### Creating a Sample
+
+```sh
+composer create-project laravel/laravel #.#-AppName
+```
 
 ## References
 
