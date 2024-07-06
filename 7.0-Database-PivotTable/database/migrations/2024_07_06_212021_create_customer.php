@@ -23,12 +23,18 @@ return new class extends Migration {
       $table->timestamps();
     });
 
-    Schema::create("customer_flight", function (Blueprint $table) {
+    // Default name: customer_flight
+    // Custom table name: ticket
+    Schema::create("tickets", function (Blueprint $table) {
       $table->id();
       $table->string("customer_id");
       $table->string("flight_id");
       $table->primary(["customer_id", "flight_id"]);
+      $table->timestamps();
+      // $table->string("seat");
     });
+
+    //
   }
 
   /**

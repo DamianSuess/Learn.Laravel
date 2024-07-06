@@ -18,4 +18,4 @@ php artisan make:model Flight
 
 ## References
 
-* Item-1
+* [1](https://cosme.dev/post/using-pivot-tables-in-laravel-the-complete-guide-to-custom-intermediary-tables-in-manytomany-relationships)
