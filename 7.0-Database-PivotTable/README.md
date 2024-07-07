@@ -5,11 +5,23 @@ Demonstration of creating database pivot tables with a many-to-many relationship
 ## Steps to Reproduce
 
 ```sh
+# Create basic files
 composer create-project laravel/laravel 7.0-Database-PivotTable
 composer require --dev friendsofphp/php-cs-fixer
+
+# Create migration and base objects
 php artisan make:migration create_customer
 php artisan make:model Customer
 php artisan make:model Flight
+
+# Test data seeder
+php artisan make:factory CustomerFactory
+php artisan make:factory FlightFactory
+php artisan make:seeder CustomerSeeder
+
+# Testing
+php artisan migrate:fresh
+php artisan db:seed --class=CustomerSeeder
 ```
 
 ## Code Sample Highlights

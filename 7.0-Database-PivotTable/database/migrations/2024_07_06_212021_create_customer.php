@@ -28,15 +28,15 @@ return new class extends Migration {
     // Using a custom pivot table name `tickets`. Laravel default: `customer_flight`
     // TODO: Rename, invoices -> invoice
     Schema::create("tickets", function (Blueprint $table) {
-      $table->id();
       $table->string("customer_id");
       $table->string("flight_id");
       $table->primary(["customer_id", "flight_id"]);
       $table->timestamps();
-      // $table->string("seat");  // TODO: Rename, 'discount'
+      // Additional columns
+      $table->string("seat")->nullable();  // TODO: Rename, 'discountcode'
+      //$table->foreign("customer_id")->references("id")->on("customers");
+      //$table->foreign("flight_id")->references("id")->on("flights");
     });
-
-    //
   }
 
   /**

@@ -14,8 +14,9 @@ class Flight extends Model
     return $this->belongsToMany(
       Customer::class,
       "tickets",  // Name of pivot table
-      "flight",   // Column related to our model
-      "client"    // Column related to other model that stores, `client_id`
-      )->withTimestamps(); // Update the `created_at` and `updated_at` timestamps
+      "flight_id",   // Column related to our model
+      "customer_id"  // Column related to other model that stores, `customer_id`
+    )->withTimestamps()     // Update the `created_at` and `updated_at` timestamps
+      ->withPivot("seat");  // Columns on the pivot table to retrieve
   }
 }
