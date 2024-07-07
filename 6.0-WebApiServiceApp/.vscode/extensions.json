@@ -10,8 +10,8 @@
     "DEVSENSE.phptools-vscode",   // Replaces: PHP Intelephense, PHP IntelliSense
     "xdebug.php-debug",
     "junstyle.php-cs-fixer",      // Replaces: PHP Intelephense
-    "zobo.php-intellisense",
     // "bmewburn.vscode-intelephense-client",
+    // "zobo.php-intellisense",
     // -=[ Larvel framework ]=-
     "shufo.vscode-blade-formatter",
     "onecentlin.laravel-blade",
@@ -23,7 +23,7 @@
     // "humao.rest-client",
     // -=[ Other ]=-
     "streetsidesoftware.code-spell-checker",
-    // "eamodio.gitlense"
-    // "esbenp.prettier-vscode"
+    "eamodio.gitlense"
+    // "esbenp.prettier-vscode"   // Alt-to: php-cs-fixer
   ]
 }

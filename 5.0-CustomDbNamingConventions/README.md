@@ -26,6 +26,15 @@ Hard coded column name references
 
 ## Steps to Reproduce
 
+```sh
+composer create-project laravel/laravel 5.0-CustomDbNamingConventions
+
+# Create custom BaseModel, PascalCase Blueprint, and stubs
+php artisan make:model BaseModel
+php artisan make:class Common/PascalBlueprint
+php artisan stub:publish
+```
+
 1. Create base project
 2. Create new `BaseModel.php`
    1. `php artisan make:model BaseModel`
