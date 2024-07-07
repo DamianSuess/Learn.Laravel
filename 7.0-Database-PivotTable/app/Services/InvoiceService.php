@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Customer;
+use App\Models\Invoice;
 
 class InvoiceService
 {
@@ -14,38 +14,38 @@ class InvoiceService
   }
 
   /**
-   * Set a coupon code to the invoice.
+   * Set a coupon code to the product.
    *
-   * @param int     $flightId    Invoice ID
+   * @param int     $productId   Product ID
    * @param string  $couponCode  [Coupon code
    *
    * @return  void
    */
-  public function storeCoupon($flightId, $couponCode): void
+  public function storeCoupon($productId, $couponCode): void
   {
-    $customer = Customer::find(1);
-    $customer->flights()->attach($flightId, ["seat" => $couponCode]);
+    $invoice = Invoice::find(1);
+    $invoice->products()->attach($productId, ["coupon" => $couponCode]);
   }
 
   /**
-   * Get list of customer coupons used.
-   * @param   int   $customerId  Customer ID
+   * Get list of invoice coupons used.
+   * @param   int   $invoiceId  Invoice ID
    * @return  array List of coupons ever used
    */
-  public function getCustomerCouponsUsed($customerId): array
+  public function getInvoiceCouponsUsed($invoiceId): array
   {
     $arr = [];
 
-    $customer = Customer::find($customerId);
-    foreach ($customer->flights as $flight) {
+    $invoice = Invoice::find($invoiceId);
+    foreach ($invoice->products as $product) {
 
-      array_push($arr, $flight->ticket->seat);
+      array_push($arr, $product->invoiceitem->coupon);
 
       // Specify the custom pivot accessor (`ticket`) used for the relationship.
-      echo "Coupon Used: " . $flight->ticket->seat;
+      echo "Coupon Used: " . $product->invoiceitem->coupon;
 
       // Get column data using base "pivot" name
-      // echo "Coupon Used: " . $flight->pivot->seat;   // Use
+      // echo "Coupon Used: " . $product->pivot->coupon;   // Use
     }
 
     return $arr;
@@ -53,15 +53,15 @@ class InvoiceService
 
   /**
    * Update Invoice Coupon Code.
-   * @param int     $customerId  Customer ID
-   * @param int     $invoiceId   Invoice ID
-   * @param string  $couponCode  Coupon Code
+   * @param int     $invoiceId  Invoice ID
+   * @param int     $productId  Product ID
+   * @param string  $couponCode Coupon Code
    * @return  void
    */
-  public function updateInvoiceCoupon($customerId, $invoiceId, $couponCode): void
+  public function updateInvoiceCoupon($invoiceId, $productId, $couponCode): void
   {
-    $customer = Customer::find($customerId);
-    $flight = $customer->flights()->find($invoiceId);
-    $flight->ticket->updateCoupon($couponCode);
+    $invoice = Invoice::find($invoiceId);
+    $product = $invoice->products()->find($productId);
+    $product->invoiceitem->updateCoupon($couponCode);
   }
 }

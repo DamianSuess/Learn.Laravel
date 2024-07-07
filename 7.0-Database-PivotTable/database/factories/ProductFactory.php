@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
-class CustomerFactory extends Factory
+class ProductFactory extends Factory
 {
   /**
    * Define the model's default state.
@@ -17,7 +17,7 @@ class CustomerFactory extends Factory
   {
     return [
       "name" => $this->faker->unique()->name(),
-      // "email" => $this->faker->unique()->safeEmail(),
+      "brand" => $this->faker->unique()->name(),
     ];
   }
 }

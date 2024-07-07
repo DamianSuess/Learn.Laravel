@@ -10,32 +10,43 @@ return new class extends Migration {
    */
   public function up(): void
   {
-    // TODO: Rename, customer
-    Schema::create('customers', function (Blueprint $table) {
+    // Customer
+    // Invoice
+    // Product
+    // InvoiceItems (invoice_product)     - many-to-many
+    // CustomerInvoice (customer_invoice) - one-to-many or many-to-many?
+
+    // TODO: Create, customer table
+
+    // TODO: Rename, invoices -> invoice
+    Schema::create('invoices', function (Blueprint $table) {
       $table->id();
       $table->string("name");
       $table->timestamps();
     });
 
     // TODO: Rename, products -> product
-    Schema::create("flights", function (Blueprint $table) {
+    Schema::create("products", function (Blueprint $table) {
       $table->id();
       $table->string("name");
-      $table->string("airline");
+      $table->string("brand");
       $table->timestamps();
     });
 
-    // Using a custom pivot table name `tickets`. Laravel default: `customer_flight`
-    // TODO: Rename, invoices -> invoice
-    Schema::create("tickets", function (Blueprint $table) {
-      $table->string("customer_id");
-      $table->string("flight_id");
-      $table->primary(["customer_id", "flight_id"]);
+    // Using a custom pivot table name `tickets`. Laravel default: `invoice_product`
+    // TODO: Rename, to something better
+    Schema::create("invoiceitems", function (Blueprint $table) {
+      $table->string("invoice_id");
+      $table->string("product_id");
+      $table->primary(["invoice_id", "product_id"]);
       $table->timestamps();
+
       // Additional columns
-      $table->string("seat")->nullable();  // TODO: Rename, 'discountcode'
-      //$table->foreign("customer_id")->references("id")->on("customers");
-      //$table->foreign("flight_id")->references("id")->on("flights");
+      $table->string("coupon")->nullable();
+
+      // Foreign keys
+      //$table->foreign("invoice_id")->references("id")->on("invoices");
+      //$table->foreign("product_id")->references("id")->on("products");
     });
   }
 
