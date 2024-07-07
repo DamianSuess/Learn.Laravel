@@ -75,6 +75,9 @@ Before running a sample project please note the following
 
 ```sh
 composer create-project laravel/laravel #.#-AppName
+composer require --dev friendsofphp/php-cs-fixer
+# ./vendor/bin/php-cs-fixer fix app # Reformats only /app/ folder
+./vendor/bin/php-cs-fixer fix       # Reformats EVERYTHING!
 ```
 
 ## References
