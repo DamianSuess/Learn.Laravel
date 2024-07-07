@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Ticket extends Model
+class Ticket extends Pivot
 {
   use HasFactory;
 
-  public function addCoupon()
+  public function updateCoupon($couponCode)
   {
-    //$this->coupon = "ABCD";
+    //$this->coupon = $couponCode;
+    $this->seat = $couponCode;
   }
 }

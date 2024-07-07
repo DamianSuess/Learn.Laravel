@@ -13,6 +13,7 @@ composer require --dev friendsofphp/php-cs-fixer
 php artisan make:migration create_customer
 php artisan make:model Customer
 php artisan make:model Flight
+php artisan make:class Services/InvoiceService
 
 # Test data seeder
 php artisan make:factory CustomerFactory
