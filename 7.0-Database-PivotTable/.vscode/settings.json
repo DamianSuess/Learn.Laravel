@@ -1,0 +1,54 @@
+{
+  "cSpell.words": [
+    "Dttm",
+    "Laravel",
+    "Suess",
+    "SuessLabs",
+    "tparam",
+    "uninitialization",
+    "Uninitializing",
+    "Xeno"
+  ],
+  "C_Cpp.errorSquiggles": "enabled",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  //"editor.defaultFormatter": "junstyle.php-cs-fixer",
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[blade]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+    //"editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+  },
+  //"[html]": {
+  //  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //},
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php.suggest.basic": false,
+  "php.validate.enable": false,
+  "intelephense.files.exclude": [
+    "**/.git/**",
+    "**/.svn/**",
+    "**/.hg/**",
+    "**/CVS/**",
+    "**/.DS_Store/**",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**/{Tests,tests}/**",
+    "**/.history/**",
+    "**/vendor/**/vendor/**"
+  ]
+}

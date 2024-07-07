@@ -10,12 +10,14 @@ return new class extends Migration {
    */
   public function up(): void
   {
-    Schema::create('customer', function (Blueprint $table) {
+    // TODO: Rename, customer
+    Schema::create('customers', function (Blueprint $table) {
       $table->id();
       $table->string("name");
       $table->timestamps();
     });
 
+    // TODO: Rename, products -> product
     Schema::create("flights", function (Blueprint $table) {
       $table->id();
       $table->string("name");
@@ -23,15 +25,15 @@ return new class extends Migration {
       $table->timestamps();
     });
 
-    // Default name: customer_flight
-    // Custom table name: ticket
+    // Using a custom pivot table name `tickets`. Laravel default: `customer_flight`
+    // TODO: Rename, invoices -> invoice
     Schema::create("tickets", function (Blueprint $table) {
       $table->id();
       $table->string("customer_id");
       $table->string("flight_id");
       $table->primary(["customer_id", "flight_id"]);
       $table->timestamps();
-      // $table->string("seat");
+      // $table->string("seat");  // TODO: Rename, 'discount'
     });
 
     //
