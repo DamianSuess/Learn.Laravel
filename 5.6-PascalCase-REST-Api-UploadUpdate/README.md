@@ -4,6 +4,10 @@ Building on the previous example, **5.6-PascalCase-REST-Api**, we're adding the 
 
 ## Reproduce
 
+```sh
+php artisan make:request V1\BulkStoreInvoiceRequest
+```
+
 1. Create `BulkStoreInvoiceRequest.php`
    1. File: `app/Http/Requests/V1/BulkStoreInvoiceRequest.php`
 2. `InvoiceController` create `function bulkStore(BulkStoreInvoiceRequest $request)`

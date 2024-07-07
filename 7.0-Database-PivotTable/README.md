@@ -25,6 +25,11 @@ php artisan migrate:fresh
 php artisan db:seed --class=CustomerSeeder
 ```
 
+### TO DO
+
+1. Seed the pivot table
+2. Create unit tests
+
 ## Code Sample Highlights
 
 ...

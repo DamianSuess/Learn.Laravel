@@ -6,18 +6,18 @@
   //  * stylelint.vscode-stylelint
   //  * firsttris.vscode-jest-runner ??
   "recommendations": [
-    // -=[ Larvel framework ]=-
-    "shufo.vscode-blade-formatter",
-    "onecentlin.laravel-blade",
-    "amiralizadeh9480.laravel-extra-intellisense",
-    "codingyu.laravel-goto-view",
-    // naoray.laravel-goto-components
     // -=[ PHP ]=-
     "DEVSENSE.phptools-vscode", // Replaces: PHP Intelephense, PHP IntelliSense
     "xdebug.php-debug",
     "zobo.php-intellisense",
     "junstyle.php-cs-fixer", // Replaces: PHP Intelephense
     //"bmewburn.vscode-intelephense-client",
+    // -=[ Larvel framework ]=-
+    "shufo.vscode-blade-formatter",
+    "onecentlin.laravel-blade",
+    "amiralizadeh9480.laravel-extra-intellisense",
+    "codingyu.laravel-goto-view",
+    // naoray.laravel-goto-components
     // -=[ HTML ]=-
     // "bradlc.vscode-tailwindcss",
     // "humao.rest-client",

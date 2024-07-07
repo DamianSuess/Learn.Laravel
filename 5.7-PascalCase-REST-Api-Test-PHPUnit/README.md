@@ -7,10 +7,14 @@ We will be using PHPUnit instead of Pest. Despite Pest being built on top of PHP
 ## Reproduce - PHPUnit
 
 ```sh
+# Create feature tests
 php artisan make:test CustomerTest
 php artisan make:test InvoiceTest
+# php artisan make:test SomeTest --unit    # Create unit test (not used here)
 
+# Testing
 php artisan test
+php artisan test --profile    # Test running profiler
 ```
 
 1. Create new test using, `php artisan make:test CustomerTest`

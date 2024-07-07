@@ -20,6 +20,17 @@ This leverages the Stubs for class templates and overrides `Blueprint` class wit
 
 ## Reproduce
 
+```sh
+php artisan install:api
+php artisan make:controller Api/V1/CustomerController
+php artisan make:controller Api/V1/InvoiceController
+php artisan migrate:fresh --seed
+php artisan make:resource V1\CustomerResource
+php artisan make:resource V1\CustomerCollection
+php artisan make:resource V1\InvoiceResource
+php artisan make:resource V1\InvoiceCollection
+```
+
 1. Starting with the previous project, _**5.2-PascalCase-REST-Api**_
 2. Install API routes
    1. `php artisan install:api`
