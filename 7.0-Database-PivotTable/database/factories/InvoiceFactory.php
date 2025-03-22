@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Flight>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Invoice>
  */
-class FlightFactory extends Factory
+class InvoiceFactory extends Factory
 {
   /**
    * Define the model's default state.
@@ -17,7 +17,7 @@ class FlightFactory extends Factory
   {
     return [
       "name" => $this->faker->unique()->name(),
-      "airline" => $this->faker->unique()->name(),
+      // "email" => $this->faker->unique()->safeEmail(),
     ];
   }
 }

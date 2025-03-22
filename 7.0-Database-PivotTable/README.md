@@ -12,12 +12,12 @@ composer require --dev friendsofphp/php-cs-fixer
 # Create migration and base objects
 php artisan make:migration create_customer
 php artisan make:model Customer
-php artisan make:model Flight
+php artisan make:model Product
 php artisan make:class Services/InvoiceService
 
 # Test data seeder
 php artisan make:factory CustomerFactory
-php artisan make:factory FlightFactory
+php artisan make:factory ProductFactory
 php artisan make:seeder CustomerSeeder
 
 # Testing

@@ -2,19 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
-use App\Models\Flight;
+use App\Models\Invoice;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class CustomerSeeder extends Seeder
+class InvoiceSeeder extends Seeder
 {
   /**
    * Run the database seeds.
    */
   public function run(): void
   {
-    Customer::factory()
-      ->has(Flight::factory()->count(3))
+    Invoice::factory()
+      ->has(Product::factory()->count(3))
       ->create();
   }
 }
