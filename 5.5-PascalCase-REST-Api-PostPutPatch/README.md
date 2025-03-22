@@ -4,6 +4,11 @@ Building on the previous example, **5.4-PascalCase-REST-Api**, we're adding the 
 
 ## Reproduce
 
+```sh
+php artisan make:request V1\StoreCustomerRequest
+php artisan make:request V1\UpdateCustomerRequest
+```
+
 ### Part 1 - Create POST handler AKA: "_store()_"
 
 1. Starting with the previous project, _**5.4-PascalCase-Filter**_

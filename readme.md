@@ -7,19 +7,35 @@ Website: [suesslabs.com](https://suesslabs.com)
 
 ## Overview
 
-Looking back, I've usually always created my own micro-frameworks with PHP to keep things lean and quick. However, maintainability and scalability can become a pinch-point throughout the product's lifecycle, so considerations should be made when starting a new product.
+The following projects dive into the basics and customization of Laravel.
+
+### Foreword
+
+Looking back, I've usually always created custom micro-frameworks with PHP to keep things lean, quick, and target a project's needs. However, there are a few bottlenecks that can come of that. Namingly, _rapid prototyping, maintainability, and scalability_ can quickly pinch points throughout a product's lifecycle. As a consideration, frameworks like **Laravel** can assist with such things.
+
+By all means, explore and build your frameworks! This will teach you a lot of solid fundamentals, especially the core functionality of PHP.
 
 ### PascalCase
 
 In the PascalCase sample project the following mottos are applied:
 
-> 1) The projects using PascalCase is an example for overriding Laravel's default naming conventions. In reality, most organizations have their own (legacy) conventions. Whether it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
+> 1) The projects using **PascalCase** are an example of overriding Laravel's default naming conventions. In reality, most organizations have their own (legacy) conventions. Whether it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
 >
 > 2) Most samples people provide are a 1-to-1 on the naming, leaning into the Laravel "_magic glue_".
 >
-> 3) The point is, a framework should be flexible and well documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
+> 3) A framework should be flexible and well-documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
 
 ## Reproduce Samples
+
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
+### Extensions and More
 
 Before running a sample project please note the following
 
@@ -44,7 +60,25 @@ Before running a sample project please note the following
 3. REST API Login and CRUD operation - _Including VS Code tester using REST Client extension_
 4. REST API and CRUD - _Slightly more complex implementation of the same thing_
 5. Custom DB Naming Conventions - _Column names using PascalCase and not the gross `snake_case`._
-   1. Pascal Case Seeder - _DB Factory and Seeder example using your PascalCase columns_
+   1. Pascal Case - Seeder - _DB Factory and Seeder example using your PascalCase columns_
+   2. Pascal Case - API - _Web API for creating "Customers and Products"_
+   3. Pascal Case - Filter Results
+   4. Pascal Case - Include Invoice
+   5. Pascal Case - POST PUT PATCH - _Create and Update items_
+   6. Pascal Case - Upload Update - _Massive upload information to store in DB_
+   7. Pascal Case - Unit Testing - _How to test your Custom DB Naming Conventions_
+   8. _Pivot Table - **COMING SOON**_
+6. _Web API Service - **COMING SOON** - Use services to link both View and API logic._
+7. Database - Pivot Table
+
+### Creating a Sample
+
+```sh
+composer create-project laravel/laravel #.#-AppName
+composer require --dev friendsofphp/php-cs-fixer
+./vendor/bin/php-cs-fixer fix       # Reformats EVERYTHING!
+# ./vendor/bin/php-cs-fixer fix app # Reformats only /app/ folder
+```
 
 ## References
 
@@ -56,13 +90,13 @@ The projects listed here are based on the following examples. The examples in th
 
 ### Coming Soon
 
-* [Deleting Multiple Records](https://websolutioncode.com/how-to-deleting-multiple-record-in-laravel)
-* [Publish API Route File](https://www.itsolutionstuff.com/post/how-to-publish-api-route-file-in-laravel-11example.html)
-* [File Upload Example](https://www.itsolutionstuff.com/post/laravel-11-file-upload-example-tutorialexample.html)
-* [AJAX Request Example](https://www.itsolutionstuff.com/post/laravel-11-ajax-request-example-tutorialexample.html)
-* [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
-* [Generate and Read Sitemap XML File Example](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
-* Testing Database with Factory and Seeders - [Blog](https://code.tutsplus.com/how-to-build-a-rest-api-with-laravel-php-full-course--cms-93786t), [Video](https://www.youtube.com/watch?v=YGqCZjdgJJk&t=1045s)
+* Deleting Multiple Records
+* Publish API Route File
+* File Upload Example
+* AJAX Request Example
+* JQuery Ajax Loading Spinner Example
+* Generate and Read Sitemap XML File Example
+* Testing Database with Factory and Seeders
 
 ## Debugging Tips
 
@@ -81,3 +115,10 @@ There are many "rules" out there which veer off from one another, however, the f
 ## Other References
 
 * [Database: Query Builder](https://laravel.com/docs/11.x/queries)
+* [Deleting Multiple Records](https://websolutioncode.com/how-to-deleting-multiple-record-in-laravel)
+* [Publish API Route File](https://www.itsolutionstuff.com/post/how-to-publish-api-route-file-in-laravel-11example.html)
+* [File Upload Example](https://www.itsolutionstuff.com/post/laravel-11-file-upload-example-tutorialexample.html)
+* [AJAX Request Example](https://www.itsolutionstuff.com/post/laravel-11-ajax-request-example-tutorialexample.html)
+* [JQuery Ajax Loading Spinner Example](https://www.itsolutionstuff.com/post/laravel-jquery-ajax-loading-spinner-exampleexample.html)
+* [Generate and Read Sitemap XML File Example](https://www.itsolutionstuff.com/post/laravel-11-generate-and-read-sitemap-xml-file-tutorialexample.html)
+* Testing Database with Factory and Seeders - [Blog](https://code.tutsplus.com/how-to-build-a-rest-api-with-laravel-php-full-course--cms-93786t), [Video](https://www.youtube.com/watch?v=YGqCZjdgJJk&t=1045s)

@@ -49,7 +49,7 @@ class InvoiceController extends Controller
   /**
    * Store a newly created invoice resource into storage
    * @param \Illuminate\Http\Request
-   * @return \Illuminate\Http\Response
+   * @return InvoiceResource|\Illuminate\Http\Response
    */
   public function store(Request $request) : InvoiceResource
   {

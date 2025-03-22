@@ -11,7 +11,6 @@ class FormController extends Controller
 {
   /**
    * Show the application dashboard.
-   *
    * @return \Illuminate\Http\Response
    */
   public function create(): View
@@ -21,9 +20,7 @@ class FormController extends Controller
 
   /**
    * Stores validates the user entry and stores into the database if successful.
-   *
    * @param   Request           $request  HTTP Form input.
-   *
    * @return  RedirectResponse            HTTP Response class which performs the redirect.
    */
   public function store(Request $request): RedirectResponse

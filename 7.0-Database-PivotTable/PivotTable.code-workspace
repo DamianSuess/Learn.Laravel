@@ -1,0 +1,66 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // Laravel Blade Snippets (used for syntax highlighting)
+    "blade.format.enable": false,
+    // Laravel Blade Formatter
+    "bladeFormatter.format.enabled": true,
+    "bladeFormatter.format.indentSize": 2,
+    "bladeFormatter.format.indentInnerHtml": true,
+    "bladeFormatter.format.useTabs": false,
+    "bladeFormatter.format.noMultipleEmptyLines": true,
+    "bladeFormatter.format.noPhpSyntaxCheck": false,
+    "bladeFormatter.format.noSingleQuote": false,
+    "bladeFormatter.format.sortHtmlAttributes": "none",
+    "bladeFormatter.format.sortTailwindcssClasses": true,
+    "bladeFormatter.format.customHtmlAttributesOrder": "",
+    "bladeFormatter.format.wrapAttributes": "aligned-multiple",
+    "bladeFormatter.format.wrapAttributesMinAttrs": 2,
+    "bladeFormatter.format.wrapLineLength": 160,
+    "bladeFormatter.misc.dontShowNewVersionMessage": false,
+    // Others
+    // "terminal.integrated.cwd": "${workspaceFolder}",
+    "git.openRepositoryInParentFolders": "always",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "[php]": {
+      //"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+      "editor.defaultFormatter": "junstyle.php-cs-fixer",
+      "editor.formatOnSave": true,
+    },
+    "[blade]": {
+      "editor.autoClosingBrackets": "always",
+      "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+      //"editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features",
+      "editor.formatOnSave": true
+    },
+    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    //"php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
+    "php-cs-fixer.onsave": false,
+    "php-cs-fixer.rules": "@PSR12",
+    "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",
+    "php-cs-fixer.allowRisky": false,
+    "php-cs-fixer.pathMode": "override",
+    "php-cs-fixer.ignorePHPVersion": false,
+    "php-cs-fixer.exclude": [],
+    "php-cs-fixer.autoFixBySemicolon": false, // May cause lines to be deleted
+    "php-cs-fixer.autoFixByBracket": false, // Causes lines to format to the far left
+    "php-cs-fixer.formatHtml": false,
+    "php-cs-fixer.documentFormattingProvider": true,
+    "php.suggest.basic": false,
+    "php.validate.enable": false,
+  }
+}
