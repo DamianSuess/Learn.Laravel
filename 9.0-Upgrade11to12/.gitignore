@@ -6,6 +6,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/pail
 /vendor
 .env
 .env.backup
@@ -19,7 +20,9 @@ npm-debug.log
 yarn-error.log
 /.fleet
 /.idea
-/.vscode
+/.nova
+## /.vscode   <-- Laravel 12 suggests ignoring VS Code
+/.zed
 
 # VS Code
 !.vscode/extensions.json
@@ -28,3 +31,4 @@ yarn-error.log
 
 # Other Laravel
 .php-cs-fixer.cache
+
