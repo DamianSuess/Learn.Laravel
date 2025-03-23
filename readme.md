@@ -25,6 +25,30 @@ In the PascalCase sample project the following mottos are applied:
 >
 > 3) A framework should be flexible and well-documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
 
+## Creating a New Laravel Project
+
+```sh
+# Create blank broject
+composer create-project laravel/laravel MyNewApp
+
+# Create project using specific version "11.*" or "11.6"
+composer create-project laravel/laravel 9.0-Upgrade11to12 11.*
+
+# Add DB Migration Script (replace, "product", with your name)
+# As a former DBA plural makes me cringe, Laravel likes plural like, "products" instead of "product"  ):
+php artisan make:migration create_product_table --create=product
+
+# Run DB Migrations
+php artisan migrate
+
+# Create new Form Validation class
+# Path: Path: app/Http/Requests/ProductStoreRequest.php
+php artisan make:request ProductStoreRequest
+
+# Create Controller and Model classes
+artisan make:controller ProductController --resource --model=Product`
+```
+
 ## Reproduce Samples
 
 ```sh
