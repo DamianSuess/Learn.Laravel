@@ -136,6 +136,19 @@ There are many "rules" out there which veer off from one another, however, the f
 * Models - Always singular and `PascalCase`
 * Controllers - Usually singular and ending with the word, `Controller`. i.e. `PostController`
 
+## Future Examples
+
+* [Sanctum](https://laravel.com/docs/11.x/sanctum) vs [Passport (OAuth2)](https://laravel.com/docs/11.x/passport)
+  * Sanctum - Lightweight, single page apps, mobile apps, token based APIs.
+  * Passport - OAuth2
+  * Installing:
+    * Sanctum: `php artisan install:api`
+    * Passport: `php artisan install:api --passport`
+* Sail with Docker
+* [LiveWire](https://livewire.laravel.com/) ([GitHub](https://github.com/laravel/livewire-starter-kit))
+  * "_Building dynamic, reactive, frontend UIs using just PHP._"
+  * UI with: Tailwindscss, [FluxUI](https://fluxui.dev/) ([github](https://github.com/livewire/flux))
+
 ## Other References
 
 * [Database: Query Builder](https://laravel.com/docs/11.x/queries)
