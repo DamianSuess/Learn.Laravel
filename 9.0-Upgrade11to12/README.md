@@ -6,10 +6,17 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 
 ## About Laravel
 
-This example was created show the delta between Laravel v11.6 and v12 via the pull request and documented outlines.
+This example was created show the delta between Laravel v11 and v12 via the pull request and documented outlines.
 
-Check out the official [upgrade to Laravel 12](https://laravel.com/docs/12.x/upgrade) page for more information.
+Check out the official [upgrade to Laravel 12](https://laravel.com/docs/12.x/upgrade) page for more information. For complete changes, check out the [GitHub 11.x <- 12.x](https://github.com/laravel/laravel/compare/11.x...12.x) comparison.
 
-## Upgrading
 
-1.
+## Basic Upgrading
+
+1. Updating Dependencies
+   * `laravel/framework` to ^12.0
+   * `phpunit/phpunit` to ^11.0
+   * `pestphp/pest` to ^3.0
+2. Carbon 2.x must upgrade to v3.x
+3. Update the Laravel Installer
+   * `composer global update laravel/installer`
