@@ -12,6 +12,7 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 composer create-project laravel/laravel 10.1-Livewire-Intro
 composer require livewire/livewire
 php artisan make:livewire sample-world
+php artisan make:livewire Lifecycle-View
 ```
 
 1. Create project
@@ -35,7 +36,9 @@ php artisan make:livewire sample-world
 
 ## References
 
-For more [LiveWire](https://livewire.laravel.com) examples, check out the official documentation page.
+For more [Livewire](https://livewire.laravel.com) examples, check out the official documentation page.
 
-* [LiveWire - Installation](https://livewire.laravel.com/screencast/getting_started/installation)
-* [LiveWire - Actions](https://livewire.laravel.com/screencast/getting_started/actions?autoplay=true)
+* [Livewire - Installation](https://livewire.laravel.com/screencast/getting_started/installation)
+* [Livewire - Actions](https://livewire.laravel.com/screencast/getting_started/actions?autoplay=true)
+* [Livewire - Components](https://livewire.laravel.com/screencast/getting_started/page-components?autoplay=true])
+* [GitHub](https://github.com/livewire/screencast--the-basics)
