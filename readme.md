@@ -5,34 +5,73 @@ In this edition of the Suess Labs' Learn repository, we'll dive into the Laravel
 Author: [Damian Suess](https://www.linkedin.com/in/damiansuess/)<br />
 Website: [suesslabs.com](https://suesslabs.com)
 
+## Quick-Start Running Samples
+
+1. Open a project
+2. Rename, `.env.example` as `.env`
+3. Install/reload packages (`composer install`)
+4. Run database migrations and generate keys
+5. Run the project (`php artisan serve`)
+
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
 ## Overview
 
 The following projects dive into the basics and customization of Laravel.
 
-### Foreword
+> ### Foreword
+> Looking back, I've usually always created custom micro-frameworks with PHP to keep things lean, quick, and target a project's needs. However, there are a few bottlenecks that can come of that. Namely, _rapid prototyping, maintainability, and scalability_ can quickly pinch points throughout a product's lifecycle. As a consideration, frameworks like **Laravel** can assist with such things.
+>
+> By all means, explore and build your frameworks! This will teach you a lot of solid fundamentals, especially the core functionality of PHP.
 
-Looking back, I've usually always created custom micro-frameworks with PHP to keep things lean, quick, and target a project's needs. However, there are a few bottlenecks that can come of that. Namingly, _rapid prototyping, maintainability, and scalability_ can quickly pinch points throughout a product's lifecycle. As a consideration, frameworks like **Laravel** can assist with such things.
+### Guides
 
-By all means, explore and build your frameworks! This will teach you a lot of solid fundamentals, especially the core functionality of PHP.
+| File | Description |
+|-|-|
+| [laravel-terminology.md](laravel-terminology.md) | New to Laravel? Check out the doc to understand the folder structures and terminology used. |
+| [install-guide.md](install-guide.md) | Quick-start guide to installing PHP, Laravel, Xdebug, Composer, etc. |
+| [debugging.md](debugging.md) | How to debug your project using VS Code basics |
+
+### Clearing Cache
+
+The following commands are used to clear the cache
+
+```sh
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
+```
+
+For a deeper clean, delete the folder, `/vendor/` (60 MB).
+
+After doing so, you will need to execute `composer install` to reload the packages.
+
 
 ### PascalCase
 
-In the PascalCase sample project the following mottos are applied:
+In the PascalCase sample projects the following mottos are applied:
 
-> 1) The projects using **PascalCase** are an example of overriding Laravel's default naming conventions. In reality, most organizations have their own (legacy) conventions. Whether it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
+> 1) The projects using **PascalCase** are an example of overriding Laravel's default naming conventions. In reality, most organizations have their own (_legacy_) conventions. As an example, variable names such as it be `passwd` vs. `password`, `userName` vs. `name`, or `rememberToken` instead of `remember_token`.
 >
 > 2) Most samples people provide are a 1-to-1 on the naming, leaning into the Laravel "_magic glue_".
 >
 > 3) A framework should be flexible and well-documented to suit the customer's needs. When it's too ridged, copious amounts of scaffolding and code smells will occur.
 
-## Creating a New Laravel Project
+## Creating a New Laravel Sample Project
 
 ```sh
-# Create blank broject
+# Create blank project
 composer create-project laravel/laravel MyNewApp
 
 # Create project using specific version "11.*" or "11.6"
-composer create-project laravel/laravel 9.0-Upgrade11to12 11.*
+composer create-project laravel/laravel SampleLaravel11App 11.*
 
 # Add DB Migration Script (replace, "product", with your name)
 # As a former DBA plural makes me cringe, Laravel likes plural like, "products" instead of "product"  ):
@@ -47,16 +86,6 @@ php artisan make:request ProductStoreRequest
 
 # Create Controller and Model classes
 artisan make:controller ProductController --resource --model=Product`
-```
-
-## Reproduce Samples
-
-```sh
-composer install
-cp .env.example .env
-php artisan migrate
-php artisan key:generate
-php artisan serve
 ```
 
 ### Extensions and More
