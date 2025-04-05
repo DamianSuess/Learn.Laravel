@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <livewire:sample-view />
   </body>
 
 </html>
