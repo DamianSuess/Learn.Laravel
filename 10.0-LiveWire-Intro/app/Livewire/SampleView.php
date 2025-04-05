@@ -8,6 +8,21 @@ class SampleView extends Component
 {
   public int $counter = 1;
 
+  /**
+   * Input item.
+   * @var string
+   */
+  public string $item = "";
+
+  /**
+   * Collection of items.
+   * @var array
+   */
+  public $items = [
+    "Item 1",
+    "Item 2",
+  ];
+
   public function increment(): void
   {
     $this->counter++;
@@ -21,6 +36,15 @@ class SampleView extends Component
   public function decrement(): void
   {
     $this->counter--;
+  }
+
+  public function addItem(): void
+  {
+    // Add "item" to "items" collection
+    $this->items[] = $this->item;
+
+    // Reset $item back to default text defined in this class (i.e. $item="initial-value";)
+    $this->reset("item");
   }
 
   public function render()
