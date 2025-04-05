@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title("Counter Sample")]
 class SampleView extends Component
 {
   public int $counter = 1;
