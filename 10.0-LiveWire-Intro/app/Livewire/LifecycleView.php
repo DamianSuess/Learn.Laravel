@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title("Lifecycle Sample")]
 class LifecycleView extends Component
 {
   /**
