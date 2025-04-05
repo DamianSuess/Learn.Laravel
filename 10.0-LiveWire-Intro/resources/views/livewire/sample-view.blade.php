@@ -24,8 +24,23 @@
   </p>
   <h2>List Sample</h2>
   <form wire:submit="addItem">
-    <input type="text" wire:model="item" />
-    <button type="submit">Add</button>
+    <p>
+      1-way binding input:
+      <input type="text" wire:model="item" />
+      <button type="submit">Add</button>
+    </p>
+    <p>
+      {{-- Live update with default 256ms debounce after keystroke --}}
+      2-way binding input:
+      <input type="text" wire:model.live="item" />
+      <span>{{ $item }}</span>
+    </p>
+    <p>
+      {{-- Live update with custom debounce --}}
+      2-way binding input (2ms):
+      <input type="text" wire:model.live.debounce.2ms="item" />
+      <span>{{ $item }}</span>
+    </p>
     <ul>
       @foreach ($items as $item)
         <li>{{ $item }}</li>
