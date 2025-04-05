@@ -21,7 +21,6 @@ auth.json
 /.fleet
 /.idea
 /.nova
-/.vscode
 
 # VS Code
 !.vscode/extensions.json

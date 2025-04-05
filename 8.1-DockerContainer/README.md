@@ -8,7 +8,9 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 
 ## Steps to Reproduce
 
-1. Blarg
+_COMING SOON!_
+
+1. Check out the sample video for full info
 
 ## Code Sample Highlights
 

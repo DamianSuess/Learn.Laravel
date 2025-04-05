@@ -5,6 +5,22 @@ In this edition of the Suess Labs' Learn repository, we'll dive into the Laravel
 Author: [Damian Suess](https://www.linkedin.com/in/damiansuess/)<br />
 Website: [suesslabs.com](https://suesslabs.com)
 
+## Quick-Start Running Samples
+
+1. Open a project
+2. Rename, `.env.example` as `.env`
+3. Install/reload packages (`composer install`)
+4. Run database migrations and generate keys
+5. Run the project (`php artisan serve`)
+
+```sh
+composer install
+cp .env.example .env
+php artisan migrate
+php artisan key:generate
+php artisan serve
+```
+
 ## Overview
 
 The following projects dive into the basics and customization of Laravel.
@@ -21,6 +37,22 @@ The following projects dive into the basics and customization of Laravel.
 | [laravel-terminology.md](laravel-terminology.md) | New to Laravel? Check out the doc to understand the folder structures and terminology used. |
 | [install-guide.md](install-guide.md) | Quick-start guide to installing PHP, Laravel, Xdebug, Composer, etc. |
 | [debugging.md](debugging.md) | How to debug your project using VS Code basics |
+
+### Clearing Cache
+
+The following commands are used to clear the cache
+
+```sh
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
+```
+
+For a deeper clean, delete the folder, `/vendor/` (60 MB).
+
+After doing so, you will need to execute `composer install` to reload the packages.
+
 
 ### PascalCase
 
@@ -54,16 +86,6 @@ php artisan make:request ProductStoreRequest
 
 # Create Controller and Model classes
 artisan make:controller ProductController --resource --model=Product`
-```
-
-## Reproduce Samples
-
-```sh
-composer install
-cp .env.example .env
-php artisan migrate
-php artisan key:generate
-php artisan serve
 ```
 
 ### Extensions and More

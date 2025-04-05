@@ -1,0 +1,29 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  //
+  // Other Recommendations:
+  //  * stylelint.vscode-stylelint
+  //  * firsttris.vscode-jest-runner ??
+  "recommendations": [
+    // -=[ PHP ]=-
+    "DEVSENSE.phptools-vscode",   // Replaces: PHP Intelephense, PHP IntelliSense
+    "xdebug.php-debug",
+    "junstyle.php-cs-fixer",      // Replaces: PHP Intelephense
+    "zobo.php-intellisense",
+    // "bmewburn.vscode-intelephense-client",
+    // -=[ Larvel framework ]=-
+    "shufo.vscode-blade-formatter",
+    "onecentlin.laravel-blade",
+    "amiralizadeh9480.laravel-extra-intellisense",
+    "codingyu.laravel-goto-view",
+    // "naoray.laravel-goto-components",
+    // -=[ HTML ]=-
+    // "bradlc.vscode-tailwindcss",
+    // "humao.rest-client",
+    // -=[ Other ]=-
+    "streetsidesoftware.code-spell-checker",
+    // "eamodio.gitlense"
+    // "esbenp.prettier-vscode"
+  ]
+}
