@@ -10,6 +10,7 @@
 
   <body>
     <livewire:sample-view />
+    {{-- <livewire:lifecycle-view /> --}}
   </body>
 
 </html>
