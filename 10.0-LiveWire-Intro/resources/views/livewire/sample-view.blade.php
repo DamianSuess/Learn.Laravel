@@ -17,10 +17,9 @@
     <button wire:click="increment">+</button>
     <button wire:click="incrementBy(10)">+10</button>
     <button wire:click="decrement">-</button>
-
+  </p>
   <p>
     <button wire:mouseenter="increment" wire:mouseleave="decrement">enter/leave</button>
     <button wire:click.throttle.1000ms="increment">Throttle (1s) increment</button>
-  </p>
   </p>
 </div>
