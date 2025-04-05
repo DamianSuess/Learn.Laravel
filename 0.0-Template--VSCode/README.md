@@ -4,7 +4,7 @@
 Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 </p>
 
-# Laravel 11 - Project Name Here
+# Laravel 12 - Project Name Here
 
 ## Steps to Reproduce
 
