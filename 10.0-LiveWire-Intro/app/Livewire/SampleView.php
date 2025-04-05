@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use Illuminate\View\View;
 use Livewire\Component;
 
 class SampleView extends Component
@@ -14,12 +13,7 @@ class SampleView extends Component
     $this->counter++;
   }
 
-  public function decrement(): void
-  {
-    $this->counter--;
-  }
-
-  public function render(): View
+  public function render()
   {
     return view('livewire.sample-view');
   }

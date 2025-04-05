@@ -1,10 +1,10 @@
 <div>
-  <div>
+  <p>
     Current epoch time is: {{ time() }}
     <button wire:click="$refresh">Live page refresh</button>
-  </div>
+  </p>
 
-  <div>
+  <p>
     {{--
       Other events to action on:
       * wire:mouseenter   - Hover over button
@@ -15,5 +15,5 @@
     --}}
     Count: {{ $counter }}
     <button wire:click="increment">+</button>
-    <button wire:click="decrement">-</button>
-  </div>
+  </p>
+</div>
