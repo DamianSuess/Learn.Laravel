@@ -1,3 +1,5 @@
+# Copyright 2025 Xeno Innovations, Inc.
+
 /.phpunit.cache
 /node_modules
 /public/build
@@ -15,9 +17,17 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/auth.json
+auth.json
 /.fleet
 /.idea
 /.nova
 /.vscode
-/.zed
+
+# VS Code
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# Other Laravel
+.php-cs-fixer.cache
+
