@@ -29,6 +29,23 @@ zend_extension = xdebug
 1. Install [Composer](https://getcomposer.org/Composer-Setup.exe)
 2. Terminal: `composer global require laravel/installer`
 
+### Update Laravel Installer
+
+```sh
+laravel -V          # Display version
+composer global update laravel/installer
+```
+
+### Reinstall Installer
+If the installer isn't updating, reinstall it `:)`
+
+```sh
+# Reinstall
+composer global remove laravel/installer
+composer global update
+composer global require laravel/installer
+```
+
 ## PHP Configuration
 
 ```ini
