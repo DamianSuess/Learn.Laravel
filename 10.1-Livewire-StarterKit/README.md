@@ -6,6 +6,8 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 
 # Laravel 12 - Livewire Startup Kit Example
 
+Note this project uses, Node, which will cause an additional **~50 MB of bloat** in your dev environment.
+
 ## Steps to Reproduce
 
 Note, if you prefer a more MVC approach to Livewire (_separating your view from controller_), chose **Volt: "NO"**.
