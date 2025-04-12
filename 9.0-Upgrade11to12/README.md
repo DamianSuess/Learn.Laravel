@@ -12,12 +12,15 @@ Check out the official [upgrade to Laravel 12](https://laravel.com/docs/12.x/upg
 
 ## Basic Upgrading
 
-1. Updating Dependencies
+1. Open, `composer.json`
+2. Updating Dependencies
    * `laravel/framework` to ^12.0
    * `phpunit/phpunit` to ^11.0
    * `pestphp/pest` to ^3.0
-2. Carbon 2.x must upgrade to v3.x
-3. Update the Laravel Installer
+3. Carbon 2.x must upgrade to v3.x
+4. Update packages
+   * `composer update`
+5. Update the Laravel Installer
    * `composer global update laravel/installer`
 
 ## Creating Delta Sample
