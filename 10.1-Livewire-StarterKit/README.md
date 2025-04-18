@@ -19,11 +19,11 @@ Note, if you prefer a more MVC approach to Livewire (_separating your view from 
    4. Testing Framewor?: `0` (Pest)
    5. Run npm install? `yes`
 2. Enter the newly created directory
-   1. Update/install Vite assets:
-   1. `npm install`
-   2. `npm run build`
-3. `composer install`
-4. `php artisan serve`
+3. Install packages (i.e. Vite assets):
+   1. `composer install`
+   2. `npm install`
+   3. `npm run build`
+5. `php artisan serve`
 
 ## Requirements
 
