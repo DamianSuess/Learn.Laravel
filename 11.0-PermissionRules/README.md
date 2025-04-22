@@ -16,4 +16,4 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 
 ## References
 
-* Item-1
+* [Spatie - Laravel Permissions](https://spatie.be/docs/laravel-permission/)
