@@ -53,7 +53,6 @@ For a deeper clean, delete the folder, `/vendor/` (60 MB).
 
 After doing so, you will need to execute `composer install` to reload the packages.
 
-
 ### PascalCase
 
 In the PascalCase sample projects the following mottos are applied:

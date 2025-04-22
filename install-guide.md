@@ -7,6 +7,20 @@
 * [Xdebug](https://xdebug.org/docs/install)
 * [Composer](https://getcomposer.org/Composer-Setup.exe)
 
+## PHP Cfg / Debugging
+
+### PHP Configuration
+
+```ini
+[PHP]
+...
+extension=curl
+extension=fileinfo
+extension=mbstring
+extension=pdo_sqlite
+extension=zip
+```
+
 ## Install Xdebug
 
 Follow the [Installation Wizard](https://xdebug.org/wizard) instructions.
@@ -20,23 +34,33 @@ Sample:
 
 ```ini
 [PHP]
-...
+; ...
 zend_extension = xdebug
+
+; ...(EOF)...
+[XDebug]
+xdebug.mode=debug
+xdebug.start_with_request=yes
+
+; So XDebug doesn't log on generic Laravel or Composer command
+xdebug.log_level = 0
 ```
 
 ## Installing Composer
 
 1. Install [Composer](https://getcomposer.org/Composer-Setup.exe)
-2. Terminal: `composer global require laravel/installer`
+2. Install Laravel
+   * `composer global require laravel/installer`
 
 ### Update Laravel Installer
 
 ```sh
-laravel -V          # Display version
+laravel -V          # Display version (i.e. "5.14.2")
 composer global update laravel/installer
 ```
 
 ### Reinstall Installer
+
 If the installer isn't updating, reinstall it `:)`
 
 ```sh
@@ -45,17 +69,3 @@ composer global remove laravel/installer
 composer global update
 composer global require laravel/installer
 ```
-
-## PHP Configuration
-
-```ini
-[PHP]
-...
-extension=curl
-extension=fileinfo
-extension=mbstring
-extension=pdo_sqlite
-extension=zip
-```
-
-## XDebug
