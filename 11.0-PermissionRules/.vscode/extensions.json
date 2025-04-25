@@ -7,11 +7,11 @@
   //  * firsttris.vscode-jest-runner ??
   "recommendations": [
     // -=[ PHP ]=-
-    "DEVSENSE.phptools-vscode",   // Replaces: PHP Intelephense, PHP IntelliSense
+    "DEVSENSE.phptools-vscode", // Replaces: PHP Intelephense, PHP IntelliSense
     "xdebug.php-debug",
     "junstyle.php-cs-fixer",      // Replaces: PHP Intelephense
-    "zobo.php-intellisense",
-    // "bmewburn.vscode-intelephense-client",
+    ////"open-southeners.laravel-pint", // Replaces: PHP-CS-Fixer
+    //"zobo.php-intellisense",
     // -=[ Larvel framework ]=-
     "shufo.vscode-blade-formatter",
     "onecentlin.laravel-blade",

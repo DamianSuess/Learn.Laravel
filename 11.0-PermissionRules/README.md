@@ -8,7 +8,15 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 
 ## Steps to Reproduce
 
-1. Blarg
+1. [RTFM](https://spatie.be/docs/laravel-permission/v6/installation-laravel) - _Read the F****** Manual_
+   1. `composer require spatie/laravel-permission`
+   2. `php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"`
+   3. `php artisan optimize:clear`
+   4. `php artisan config:clear`
+   5. `php artisan migrate`
+2. Modify `user.php` model trait
+   * `use HasRoles;`
+3. xxx
 
 ## Code Sample Highlights
 
