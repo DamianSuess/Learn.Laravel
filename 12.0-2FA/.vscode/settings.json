@@ -1,0 +1,52 @@
+{
+  "cSpell.words": [
+    "Dttm",
+    "Laravel",
+    "Suess",
+    "SuessLabs",
+    "tparam",
+    "uninitialization",
+    "Uninitializing",
+    "Xeno"
+  ],
+  "C_Cpp.errorSquiggles": "enabled",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  //"editor.defaultFormatter": "junstyle.php-cs-fixer",
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[blade]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+    //"editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+  },
+  //"[html]": {
+  //  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  //},
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  //"php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR12",
+  "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.ignorePHPVersion": false,
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixBySemicolon": false, // May cause lines to be deleted
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
+  "php.suggest.basic": false,
+  "php.validate.enable": false,
+}
