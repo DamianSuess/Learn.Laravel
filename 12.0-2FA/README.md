@@ -4,7 +4,7 @@
 Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 </p>
 
-# Laravel 12 - Project Name Here
+# Laravel 12 - Sample Two-Factor Authentication (2FA) Sample
 
 ## Steps to Reproduce
 
