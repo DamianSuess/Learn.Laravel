@@ -23,7 +23,7 @@ Note, if you prefer a more MVC approach to Livewire (_separating your view from 
    1. `composer install`
    2. `npm install`
    3. `npm run build`
-5. `php artisan serve`
+4. `php artisan serve`
 
 ## Requirements
 

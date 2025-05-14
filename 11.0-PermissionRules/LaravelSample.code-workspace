@@ -35,15 +35,10 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    ////"[php]": {
-    ////  //"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-    ////  "editor.defaultFormatter": "junstyle.php-cs-fixer",
-    ////  "editor.formatOnSave": true,
-    ////},
     "[php]": {
-      // "editor.defaultFormatter": "junstyle.php-cs-fixer"
-      "editor.defaultFormatter": "open-southeners.laravel-pint",
-      "editor.formatOnSave": true
+      //"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+      "editor.defaultFormatter": "junstyle.php-cs-fixer",
+      "editor.formatOnSave": true,
     },
     "[blade]": {
       "editor.autoClosingBrackets": "always",
