@@ -65,12 +65,19 @@ In the PascalCase sample projects the following mottos are applied:
 
 ## Creating a New Laravel Sample Project
 
+The following uses PHP-CS-Fixer instead of Pint, mostly due to [issue 369](https://github.com/laravel/pint/issues/369).
+
 ```sh
 # Create blank project
 composer create-project laravel/laravel MyNewApp
 
 # Create project using specific version "11.*" or "11.6"
 composer create-project laravel/laravel SampleLaravel11App 11.*
+
+# Cleanup Code Rules!
+# PINT forces us into 4 spaces (lame)
+composer require --dev friendsofphp/php-cs-fixer         
+./vendor/bin/php-cs-fixer fix
 
 # Add DB Migration Script (replace, "product", with your name)
 # As a former DBA plural makes me cringe, Laravel likes plural like, "products" instead of "product"  ):
