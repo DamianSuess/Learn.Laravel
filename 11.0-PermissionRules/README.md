@@ -25,3 +25,4 @@ Learn Laravel with Suess Labs and Xeno Innovations, Inc.
 ## References
 
 * [Spatie - Laravel Permissions](https://spatie.be/docs/laravel-permission/)
+* [Tutorial](https://www.allphptricks.com/laravel-11-spatie-user-roles-and-permissions/)
