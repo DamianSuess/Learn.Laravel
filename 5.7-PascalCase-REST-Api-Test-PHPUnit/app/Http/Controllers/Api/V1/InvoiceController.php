@@ -18,7 +18,7 @@ class InvoiceController extends Controller
    * @return \Illuminate\Http\Response
    */
   // public function index()
-  public function index(Request $request)
+  public function index(Request $request) : InvoiceCollection
   {
     // return Invoice::all();
     // return new InvoiceCollection(Invoice::paginate());
@@ -42,7 +42,7 @@ class InvoiceController extends Controller
    *
    * @return  \Illuminate\Http\Response
    */
-  public function create()
+  public function create() : void
   {
   }
 
@@ -51,7 +51,7 @@ class InvoiceController extends Controller
    * @param \Illuminate\Http\Request
    * @return InvoiceResource|\Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(Request $request) : InvoiceResource
   {
     // Create a new Invoice using the inputs
     $items = $request->all(); // Pulls from, $request->parameters[]
@@ -99,9 +99,9 @@ class InvoiceController extends Controller
    *
    * @param   Invoice  $invoice  InvoiceId
    *
-   * @return  \Illuminate\Http\Response
+   * @return  InvoiceResource
    */
-  public function show(Invoice $invoice)
+  public function show(Invoice $invoice) : InvoiceResource
   {
     return new InvoiceResource($invoice);
   }
